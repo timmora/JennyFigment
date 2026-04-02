@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="kids-zone-page">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grandpa Tony's Jokes! — Kids Zone | Jenny Figment</title>
+  <meta name="description" content="Hear Grandpa Tony's funniest jokes! A safe, fun joke generator for young readers." />
+  <!-- COPPA: No data collection, no tracking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/design-system.css" /><link rel="stylesheet" href="../css/layout.css" /><link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/kids-zone.css" />
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+</head>
+<body class="kids-zone-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-nav" role="banner">
+    <div class="container site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Jenny Figment — Home"><span class="site-nav__logo-text" style="color:var(--cream-light);">Jenny Figment</span></a>
+      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="../index.html" style="color:rgba(247,223,234,0.7);">← Main Site</a></li><li><a href="../kids-zone.html" style="color:rgba(247,223,234,0.7);" aria-current="page">Kids Zone</a></li></ul></nav>
+      <div class="site-nav__right"><button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span></button></div>
+    </div>
+  </header>
+  <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation"><ul class="nav-drawer__links" role="list"><li><a href="../index.html">← Main Site</a></li><li><a href="../kids-zone.html">Kids Zone</a></li></ul></nav>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="kz-activity-hero" style="background:#FFF4E0;padding-block:var(--space-12);" aria-labelledby="tony-heading">
+      <div class="container">
+        <a href="../kids-zone.html" class="kz-back-link" style="color:var(--tony-amber);">← Back to Kids Zone</a>
+        <div class="kz-activity-portrait-wrap" aria-hidden="true">
+          <img class="kz-activity-portrait" src="../assets/images/character-grandpa-tony.png" alt="" width="220" height="280" loading="eager" decoding="async" />
+        </div>
+        <h1 id="tony-heading" class="kz-activity-title" style="color:var(--tony-amber);">Grandpa Tony's Jokes!</h1>
+        <p class="kz-activity-subtitle">Get ready to laugh — Grandpa Tony has the BEST jokes in the whole world!</p>
+      </div>
+    </section>
+
+    <!-- Joke generator -->
+    <section class="section kz-activity-section" style="background:#FFF8EC;" aria-label="Joke generator">
+      <div class="container">
+        <div class="joke-card">
+          <img class="joke-card__grandpa joke-card__grandpa--art" src="../assets/images/character-grandpa-tony.png" alt="" width="120" height="144" loading="lazy" decoding="async" />
+
+          <div id="joke-setup" class="joke-card__setup" aria-live="polite" aria-atomic="false">
+            Why did the book go to the doctor?
+          </div>
+
+          <div class="joke-card__punchline-wrapper">
+            <div id="joke-punchline" class="joke-card__punchline" aria-live="polite" aria-atomic="true">
+              Because it had too many stories!
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
+            <button id="reveal-btn" class="joke-card__btn" aria-label="Reveal the punchline">
+              What's the Punchline?
+            </button>
+            <button id="next-btn" class="joke-card__btn" style="background:var(--jenny-purple);box-shadow:0 4px 0 rgba(80,30,100,0.4);display:none;" aria-label="Load next joke">
+              Next Joke! →
+            </button>
+          </div>
+
+          <p class="joke-counter">
+            Joke <span id="joke-current">1</span> of <span id="joke-total">25</span>
+          </p>
+        </div>
+
+        <!-- More characters -->
+        <div style="text-align:center;margin-top:var(--space-12);">
+          <h2 style="font-family:var(--font-kids);font-size:var(--text-2xl);margin-bottom:var(--space-6);">Visit the Other Characters!</h2>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;">
+            <a href="jenny-qa.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Chat with Jenny</a>
+            <a href="flora-pinkerdoodles.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Bake Pinkerdoodles</a>
+            <a href="arachna-coloring.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Color with Arachna</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <div class="site-footer__brand-title">Jenny Figment</div>
+          <p>Award-winning children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
+          <div class="site-footer__social" aria-label="Social media links">
+            <a href="#" aria-label="Facebook" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">f</span>Facebook</a>
+            <a href="#" aria-label="Instagram" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
+            <a href="#" aria-label="Pinterest" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">P</span>Pinterest</a>
+          </div>
+        </div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="../books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="../books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="../books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="../educators-parents.html">Resources &amp; Guides</a></li><li><a href="../educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="../educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="../about.html">About Jennifer Hayes</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../kids-zone.html">Kids Zone ✦</a></li></ul></div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© 2024 Jennifer Hayes. All rights reserved.</span>
+        <span>Jenny Figment</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script type="module" src="../js/kids-zone/joke-generator.js"></script>
+</body>
+</html>

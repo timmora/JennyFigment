@@ -1,0 +1,702 @@
+/* ============================================
+   JENNY FIGMENT — Kids Zone
+   Visual mode overrides + interactive widgets
+   ============================================ */
+
+/* ── Root overrides for Kids Zone pages ──────── */
+.kids-zone-page {
+  --font-heading: 'Fredoka', var(--font-body);
+  --text-base: clamp(1.05rem, 0.95rem + 0.5vw, 1.2rem);
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2.5rem;
+}
+
+/* Kids Zone body bg */
+.kids-zone-page body,
+.kids-zone-page {
+  background-color: #FEF0F8;
+}
+
+/* Kids Zone nav override — softer dark */
+.kids-zone-page .site-nav {
+  background-color: rgba(43, 22, 27, 0.97);
+  border-bottom-color: rgba(255, 106, 151, 0.25);
+}
+
+.kids-zone-page .site-nav__logo-text {
+  color: var(--cream-light);
+}
+
+.kids-zone-page .site-nav__links a {
+  color: rgba(247, 223, 234, 0.75);
+}
+
+.kids-zone-page .site-nav__links a:hover {
+  background: rgba(255, 106, 151, 0.15);
+  color: var(--pink-soft);
+}
+
+/* ── Hero / Hub ──────────────────────────────── */
+.kz-hero {
+  background: var(--burgundy);
+  min-height: 60svh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-16);
+}
+
+.kz-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Floating stars */
+.kz-star {
+  position: absolute;
+  border-radius: 50%;
+  animation: kz-float var(--dur, 4s) ease-in-out var(--del, 0s) infinite;
+  opacity: 0.6;
+}
+
+@keyframes kz-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.1); }
+}
+
+.kz-hero__content {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  text-align: center;
+}
+
+.kz-hero__label {
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--page-accent-hero-label, var(--pink-soft));
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.kz-hero__title {
+  font-family: var(--font-kids);
+  font-size: clamp(2.5rem, 3rem + 3vw, 5rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: var(--space-5);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.kz-hero__subtitle {
+  font-family: var(--font-kids);
+  font-size: var(--text-xl);
+  color: rgba(255,255,255,0.85);
+  max-width: 46ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  line-height: 1.5;
+}
+
+/* Back to main site link in Kids Zone */
+.kz-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  margin-bottom: var(--space-6);
+  transition: color var(--duration-fast);
+  font-family: var(--font-kids);
+}
+
+.kz-back-link:hover {
+  color: var(--pink-soft);
+}
+
+/* ── Character select cards ──────────────────── */
+.kz-characters {
+  background: #FEF0F8;
+  padding-block: var(--space-section);
+  border-top: 4px solid var(--page-accent, var(--arachna-teal));
+}
+
+.kz-char-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+@media (min-width: 48em) {
+  .kz-char-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (min-width: 64em) {
+  .kz-char-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.kz-char-card {
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  transition: transform var(--duration-normal) var(--ease-bounce),
+              box-shadow var(--duration-normal);
+  position: relative;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+
+.kz-char-card:hover {
+  transform: translateY(-10px) rotate(-1deg);
+}
+
+.kz-char-card--jenny  { background: rgba(123,75,148,0.1); border-color: rgba(123,75,148,0.3); box-shadow: 4px 4px 0 rgba(123,75,148,0.2); }
+.kz-char-card--tony   { background: rgba(212,136,58,0.1); border-color: rgba(212,136,58,0.3); box-shadow: 4px 4px 0 rgba(212,136,58,0.2); }
+.kz-char-card--flora  { background: rgba(107,175,107,0.1); border-color: rgba(107,175,107,0.3); box-shadow: 4px 4px 0 rgba(107,175,107,0.2); }
+.kz-char-card--arachna { background: rgba(58,173,168,0.1); border-color: rgba(58,173,168,0.3); box-shadow: 4px 4px 0 rgba(58,173,168,0.2); }
+
+.kz-char-card:hover.kz-char-card--jenny  { box-shadow: 6px 10px 0 rgba(123,75,148,0.25), 0 20px 40px rgba(123,75,148,0.15); }
+.kz-char-card:hover.kz-char-card--tony   { box-shadow: 6px 10px 0 rgba(212,136,58,0.25), 0 20px 40px rgba(212,136,58,0.15); }
+.kz-char-card:hover.kz-char-card--flora  { box-shadow: 6px 10px 0 rgba(107,175,107,0.25), 0 20px 40px rgba(107,175,107,0.15); }
+.kz-char-card:hover.kz-char-card--arachna { box-shadow: 6px 10px 0 rgba(58,173,168,0.25), 0 20px 40px rgba(58,173,168,0.15); }
+
+.kz-char-card__emoji {
+  font-size: 4.5rem;
+  line-height: 1;
+  display: block;
+  transition: transform var(--duration-normal) var(--ease-bounce);
+}
+
+.kz-char-card:hover .kz-char-card__emoji {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Character PNGs use real transparency (alpha); drop-shadow follows the silhouette. */
+.kz-char-card__portrait-wrap {
+  width: 9rem;
+  height: 11rem;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+  transition: transform var(--duration-normal) var(--ease-bounce);
+}
+
+.kz-char-card__portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(43, 22, 27, 0.14));
+}
+
+.kz-char-card:hover .kz-char-card__portrait-wrap {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.kz-char-card__name {
+  font-family: var(--font-kids);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--burgundy);
+  line-height: 1.2;
+}
+
+.kz-char-card__activity {
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  color: var(--burgundy-light);
+  line-height: 1.4;
+}
+
+.kz-char-card__cta {
+  margin-top: var(--space-2);
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  display: inline-block;
+}
+
+.kz-char-card--jenny  .kz-char-card__cta { background: var(--jenny-purple); color: white; }
+.kz-char-card--tony   .kz-char-card__cta { background: var(--tony-amber); color: white; }
+.kz-char-card--flora  .kz-char-card__cta { background: var(--flora-green); color: white; }
+.kz-char-card--arachna .kz-char-card__cta { background: var(--arachna-teal); color: white; }
+
+/* ── Activity page shared styles ──────────────── */
+.kz-activity-hero {
+  padding-block: var(--space-12) var(--space-8);
+  text-align: center;
+}
+
+.kz-activity-title {
+  font-family: var(--font-kids);
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-3);
+  line-height: 1.15;
+}
+
+.kz-activity-subtitle {
+  font-family: var(--font-kids);
+  font-size: var(--text-lg);
+  color: var(--burgundy-light);
+  max-width: 46ch;
+  margin-inline: auto;
+}
+
+.kz-activity-section {
+  padding-block: var(--space-section);
+}
+
+.kz-activity-portrait-wrap {
+  width: min(11rem, 42vw);
+  max-height: 14rem;
+  margin-inline: auto;
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-xl);
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+}
+
+.kz-activity-portrait {
+  width: 100%;
+  height: auto;
+  max-height: 14rem;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  filter: drop-shadow(0 6px 16px rgba(43, 22, 27, 0.16));
+}
+
+/* ── Joke generator ──────────────────────────── */
+.joke-card {
+  background: #FFF8EC;
+  border-radius: var(--radius-xl);
+  border: 3px solid rgba(212,136,58,0.3);
+  box-shadow: 5px 5px 0 rgba(212,136,58,0.2);
+  padding: var(--space-10);
+  text-align: center;
+  max-width: 36rem;
+  margin-inline: auto;
+  position: relative;
+}
+
+.joke-card__grandpa {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: var(--space-4);
+  animation: float 4s ease-in-out infinite;
+}
+
+.joke-card__grandpa--art {
+  width: 7.5rem;
+  height: 9rem;
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  filter: drop-shadow(0 6px 14px rgba(43, 22, 27, 0.14));
+}
+
+.joke-card__setup {
+  font-family: var(--font-kids);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--burgundy);
+  line-height: 1.5;
+  margin-bottom: var(--space-6);
+  min-height: 4rem;
+}
+
+.joke-card__punchline-wrapper {
+  min-height: 3.5rem;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+}
+
+.joke-card__punchline {
+  font-family: var(--font-kids);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--tony-amber);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s, transform 0.4s var(--ease-bounce);
+  line-height: 1.4;
+}
+
+.joke-card__punchline.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.joke-card__btn {
+  font-family: var(--font-kids);
+  font-size: var(--text-lg);
+  padding: var(--space-4) var(--space-8);
+  background: var(--tony-amber);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(180,100,20,0.5);
+  transition: transform var(--duration-fast) var(--ease-bounce), box-shadow var(--duration-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.joke-card__btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 rgba(180,100,20,0.4);
+}
+
+.joke-card__btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 rgba(180,100,20,0.5);
+}
+
+.joke-counter {
+  font-family: var(--font-kids);
+  font-size: var(--text-xs);
+  color: var(--burgundy-light);
+  margin-top: var(--space-4);
+}
+
+/* ── Q&A (Jenny) ─────────────────────────────── */
+.qa-grid {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.qa-item {
+  border-radius: var(--radius-lg);
+  border: 2.5px solid rgba(123,75,148,0.2);
+  overflow: hidden;
+  background: rgba(123,75,148,0.04);
+}
+
+.qa-question-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-5) var(--space-6);
+  text-align: left;
+  font-family: var(--font-kids);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--burgundy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  transition: background var(--duration-fast), color var(--duration-fast);
+}
+
+.qa-question-btn:hover {
+  background: rgba(123,75,148,0.06);
+  color: var(--jenny-purple);
+}
+
+.qa-question-btn[aria-expanded="true"] {
+  background: rgba(123,75,148,0.08);
+  color: var(--jenny-purple);
+}
+
+.qa-icon {
+  font-size: 1.2rem;
+  transition: transform var(--duration-normal) var(--ease-bounce);
+  flex-shrink: 0;
+  color: var(--jenny-purple);
+}
+
+.qa-question-btn[aria-expanded="true"] .qa-icon {
+  transform: rotate(45deg);
+}
+
+.qa-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-smooth);
+}
+
+.qa-answer.is-open {
+  max-height: 20rem;
+}
+
+.qa-answer__inner {
+  padding: 0 var(--space-6) var(--space-5);
+}
+
+/* Jenny speech bubble style */
+.jenny-bubble {
+  background: var(--jenny-purple);
+  color: white;
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-kids);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  position: relative;
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.jenny-avatar {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Recipe stepper (Flora) ──────────────────── */
+.recipe-wrapper {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.recipe-step {
+  display: none;
+  animation: fade-up 0.4s var(--ease-smooth) both;
+}
+
+.recipe-step.is-active {
+  display: block;
+}
+
+.recipe-step__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.recipe-step__number {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--flora-green);
+  color: white;
+  font-family: var(--font-kids);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+}
+
+.recipe-step__title {
+  font-family: var(--font-kids);
+  font-size: var(--text-2xl);
+  color: var(--burgundy);
+  line-height: 1.2;
+}
+
+.recipe-step__illustration {
+  font-size: 5rem;
+  text-align: center;
+  margin-bottom: var(--space-6);
+  display: block;
+  animation: float 4s ease-in-out infinite;
+}
+
+.recipe-step__text {
+  font-family: var(--font-kids);
+  font-size: var(--text-lg);
+  color: var(--burgundy-warm);
+  line-height: 1.8;
+  background: rgba(107,175,107,0.08);
+  border-left: 4px solid var(--flora-green);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-5) var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.recipe-step__ingredients {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--space-6);
+}
+
+.recipe-step__ingredients li {
+  font-family: var(--font-kids);
+  font-size: var(--text-base);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-bottom: 1px dashed rgba(107,175,107,0.2);
+  margin-bottom: 0;
+}
+
+.recipe-step__ingredients li::before {
+  content: '🌸';
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.recipe-stepper-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.recipe-progress {
+  flex: 1;
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.recipe-progress-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--pink-soft);
+  transition: background var(--duration-fast), transform var(--duration-fast);
+}
+
+.recipe-progress-dot.is-active {
+  background: var(--flora-green);
+  transform: scale(1.4);
+}
+
+/* ── Coloring canvas ──────────────────────────── */
+.coloring-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 64em) {
+  .coloring-layout {
+    grid-template-columns: 1fr 240px;
+  }
+}
+
+.canvas-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 3px solid var(--arachna-teal);
+  box-shadow: 5px 5px 0 rgba(58,173,168,0.2);
+  background: white;
+  touch-action: none;
+}
+
+.coloring-canvas {
+  display: block;
+  width: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.coloring-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+@media (min-width: 64em) {
+  .color-palette {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.color-swatch {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-bounce), border-color var(--duration-fast);
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+}
+
+.color-swatch:hover,
+.color-swatch.is-selected {
+  transform: scale(1.15);
+  border-color: var(--burgundy);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.brush-size-group {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.brush-size-btn {
+  border-radius: 50%;
+  background: var(--burgundy);
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: border-color var(--duration-fast), transform var(--duration-fast) var(--ease-bounce);
+  flex-shrink: 0;
+}
+
+.brush-size-btn.is-selected {
+  border-color: var(--arachna-teal);
+  transform: scale(1.2);
+}
+
+.coloring-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.coloring-toolbar-label {
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--burgundy-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Print: show all recipe steps */
+@media print {
+  .recipe-step { display: block !important; page-break-inside: avoid; margin-bottom: 2rem; }
+  .recipe-stepper-controls { display: none; }
+  .site-nav, .site-footer, .kz-activity-hero .kz-back-link { display: none; }
+}

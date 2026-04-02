@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="kids-zone-page">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kids Zone — Jenny Figment's Imagination Hub!</title>
+  <meta name="description" content="Welcome to Jenny's Kids Zone! Chat with Jenny, hear Grandpa Tony's jokes, bake Pinkerdoodles with Flora, and color with Arachna. Safe fun for young readers!" />
+  <!-- COPPA: No analytics, no tracking scripts on this page -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/design-system.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/kids-zone.css" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+</head>
+<body class="kids-zone-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Nav (simplified for Kids Zone) -->
+  <header class="site-nav" role="banner">
+    <div class="container site-nav__inner">
+      <a href="index.html" class="site-nav__logo" aria-label="Jenny Figment — Home">
+        <span class="site-nav__logo-text" style="color:var(--cream-light);">Jenny Figment</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="site-nav__links" role="list">
+          <li><a href="index.html" style="color:rgba(247,223,234,0.7);">← Back to Main Site</a></li>
+          <li><a href="books.html" style="color:rgba(247,223,234,0.7);">Books</a></li>
+          <li><a href="educators-parents.html" style="color:rgba(247,223,234,0.7);">For Grown-Ups</a></li>
+        </ul>
+      </nav>
+      <div class="site-nav__right">
+        <button id="nav-toggle" class="nav-toggle" style="--hamburger-color:var(--cream-light);" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
+          <span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
+    <ul class="nav-drawer__links" role="list">
+      <li><a href="index.html">← Main Site</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="educators-parents.html">For Grown-Ups</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="kz-hero" aria-labelledby="kz-heading">
+      <div class="kz-hero__bg" aria-hidden="true">
+        <div class="kz-star" style="width:12px;height:12px;top:15%;left:8%;background:var(--pink-soft);--dur:3s;--del:0s;"></div>
+        <div class="kz-star" style="width:8px;height:8px;top:70%;left:90%;background:var(--tony-amber);--dur:4s;--del:0.5s;"></div>
+        <div class="kz-star" style="width:14px;height:14px;top:40%;left:3%;background:var(--flora-green);--dur:5s;--del:1s;"></div>
+        <div class="kz-star" style="width:10px;height:10px;top:80%;left:60%;background:var(--arachna-teal);--dur:3.5s;--del:1.5s;"></div>
+        <div class="kz-star" style="width:6px;height:6px;top:25%;left:75%;background:white;--dur:2.5s;--del:0.8s;"></div>
+        <div class="kz-star" style="width:16px;height:16px;top:55%;left:45%;background:var(--andy-blue);--dur:4.5s;--del:2s;opacity:0.4;"></div>
+      </div>
+      <div class="container kz-hero__content">
+        <span class="kz-hero__label">Welcome to</span>
+        <h1 id="kz-heading" class="kz-hero__title">
+          Jenny's Imagination Zone!
+        </h1>
+        <p class="kz-hero__subtitle">
+          Pick a character to start your adventure!
+        </p>
+        <a href="#characters" class="btn btn--primary btn--lg" style="font-family:var(--font-kids);font-size:var(--text-xl);">
+          Let's Go!
+        </a>
+      </div>
+    </section>
+
+    <!-- Character select -->
+    <section class="kz-characters" id="characters" aria-labelledby="chars-kz-heading">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:var(--space-10);">
+          <h2 id="chars-kz-heading" style="font-family:var(--font-kids);font-size:var(--text-3xl);color:var(--burgundy);" data-reveal>
+            Who Do You Want to Visit?
+          </h2>
+          <p style="font-family:var(--font-kids);font-size:var(--text-lg);color:var(--burgundy-light);" data-reveal data-reveal-delay="1">
+            Click on a character to start the fun!
+          </p>
+        </div>
+
+        <div class="kz-char-grid">
+          <!-- Jenny -->
+          <a href="kids-zone/jenny-qa.html" class="kz-char-card kz-char-card--jenny" data-reveal data-reveal-delay="1">
+            <span class="kz-char-card__emoji" aria-hidden="true" style="font-family:var(--font-heading);font-size:4rem;font-weight:900;color:var(--jenny-purple);">J</span>
+            <div class="kz-char-card__name">Jenny Figment</div>
+            <div class="kz-char-card__activity">Ask Jenny anything! She'll answer your biggest questions with her extraordinary imagination.</div>
+            <span class="kz-char-card__cta">Chat with Jenny →</span>
+          </a>
+
+          <!-- Grandpa Tony -->
+          <a href="kids-zone/grandpa-tony-jokes.html" class="kz-char-card kz-char-card--tony" data-reveal data-reveal-delay="2">
+            <span class="kz-char-card__portrait-wrap" aria-hidden="true">
+              <img class="kz-char-card__portrait" src="assets/images/character-grandpa-tony.png" alt="" width="180" height="220" loading="lazy" decoding="async" />
+            </span>
+            <div class="kz-char-card__name">Grandpa Tony</div>
+            <div class="kz-char-card__activity">Get ready to laugh! Grandpa Tony has the best (and silliest) jokes in the whole world.</div>
+            <span class="kz-char-card__cta">Hear a Joke!</span>
+          </a>
+
+          <!-- Flora Margaret -->
+          <a href="kids-zone/flora-pinkerdoodles.html" class="kz-char-card kz-char-card--flora" data-reveal data-reveal-delay="3">
+            <span class="kz-char-card__portrait-wrap" aria-hidden="true">
+              <img class="kz-char-card__portrait" src="assets/images/character-flora-margaret.png" alt="" width="180" height="220" loading="lazy" decoding="async" />
+            </span>
+            <div class="kz-char-card__name">Flora Margaret</div>
+            <div class="kz-char-card__activity">Bake the famous Pinkerdoodles with Flora! Step-by-step recipe and baking science fun.</div>
+            <span class="kz-char-card__cta">Let's Bake!</span>
+          </a>
+
+          <!-- Arachna -->
+          <a href="kids-zone/arachna-coloring.html" class="kz-char-card kz-char-card--arachna" data-reveal data-reveal-delay="4">
+            <span class="kz-char-card__portrait-wrap" aria-hidden="true">
+              <img class="kz-char-card__portrait" src="assets/images/character-arachna.png" alt="" width="180" height="220" loading="lazy" decoding="async" />
+            </span>
+            <div class="kz-char-card__name">Arachna</div>
+            <div class="kz-char-card__activity">Color Arachna and friends with your favorite colors! Use the digital coloring canvas or print it out.</div>
+            <span class="kz-char-card__cta">Start Coloring!</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safe note for parents -->
+    <div style="background:var(--burgundy);color:var(--cream-light);padding:var(--space-5) 0;" role="note" aria-label="For parents">
+      <div class="container" style="display:flex;align-items:flex-start;gap:var(--space-4);flex-wrap:wrap;">
+        <div>
+          <strong style="font-size:var(--text-sm);">For Parents:</strong>
+          <p style="font-size:var(--text-sm);opacity:0.7;margin:0;max-width:70ch;">The Kids Zone does not collect any personal information from children. No accounts, no forms, no cookies. All activities are self-contained and safe. <a href="contact.html" style="color:var(--pink-soft);">Contact us</a> with any questions.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <div class="site-footer__brand-title">Jenny Figment</div>
+          <p>Award-winning children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
+          <div class="site-footer__social" aria-label="Social media links">
+            <a href="#" aria-label="Facebook" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">f</span>Facebook</a>
+            <a href="#" aria-label="Instagram" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
+            <a href="#" aria-label="Pinterest" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">P</span>Pinterest</a>
+          </div>
+        </div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">Jenny Figment Book 1</a></li><li><a href="books/jenny-figment-book-2.html">Jenny Figment Book 2</a></li><li><a href="books/riddle-fairy-tale-village.html">Riddle of the Fairy Tale Village</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents.html">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© 2024 Jennifer Hayes. All rights reserved.</span>
+        <span>Jenny Figment</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

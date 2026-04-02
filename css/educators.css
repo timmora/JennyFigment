@@ -1,0 +1,424 @@
+/* ============================================
+   JENNY FIGMENT — Educators & Parents
+   ============================================ */
+
+.educators-hero {
+  background: var(--burgundy);
+  padding-block: var(--space-16) var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+
+.educators-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
+}
+
+.educators-hero__content {
+  position: relative;
+  z-index: 1;
+  color: var(--cream-light);
+}
+
+.educators-hero .section-title { color: var(--cream-light); }
+.educators-hero .section-subtitle { color: rgba(247, 223, 234, 0.75); }
+
+/* ── Audience tabs ──────────────────────────── */
+.audience-tabs {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.audience-tab {
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  border: 2px solid var(--cream);
+  background: transparent;
+  color: var(--burgundy-light);
+  transition: all var(--duration-fast);
+  font-family: var(--font-body);
+}
+
+.audience-tab.is-active,
+.audience-tab:hover {
+  background-color: var(--page-accent, var(--pink-hot));
+  border-color: var(--page-accent, var(--pink-hot));
+  color: var(--white);
+}
+
+/* ── Resource grid ──────────────────────────── */
+.resources-section {
+  background-color: var(--cream-light);
+}
+
+.resource-filter {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.filter-btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid var(--cream);
+  background: var(--white);
+  color: var(--burgundy-light);
+  transition: all var(--duration-fast);
+  font-family: var(--font-body);
+}
+
+.filter-btn.is-active,
+.filter-btn:hover {
+  background: var(--page-accent-soft, var(--pink-glow));
+  border-color: var(--page-accent, var(--pink-hot));
+  color: var(--page-accent, var(--pink-hot));
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 48em) {
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) {
+  .resources-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Author's note (grown-up kids) ─────────── */
+.grown-up-note {
+  border-top: 1px solid var(--cream);
+  border-bottom: 1px solid var(--cream);
+}
+
+.grown-up-note__inner {
+  text-align: center;
+}
+
+.grown-up-note__inner .section-title {
+  margin-bottom: var(--space-8);
+}
+
+.grown-up-note__prose {
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: left;
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--burgundy);
+}
+
+.grown-up-note__prose p {
+  margin: 0 0 var(--space-4);
+}
+
+.grown-up-note__list {
+  margin: 0 0 var(--space-6);
+  padding-left: var(--space-6);
+  list-style-type: disc;
+}
+
+.grown-up-note__list li {
+  margin-bottom: var(--space-2);
+}
+
+.grown-up-note__list--short {
+  margin-bottom: var(--space-4);
+}
+
+.grown-up-note__prose p.grown-up-note__signoff {
+  margin-top: var(--space-8);
+  margin-bottom: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  color: var(--burgundy-light);
+}
+
+/* ── School Visits CTA block ──────────────── */
+.school-visit-cta {
+  background: var(--burgundy-warm);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  color: var(--cream-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.school-visit-cta::after {
+  content: '🎓';
+  position: absolute;
+  right: var(--space-8);
+  bottom: var(--space-4);
+  font-size: 6rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.school-visit-cta__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--cream-light);
+  margin-bottom: var(--space-3);
+}
+
+.school-visit-cta__text {
+  font-size: var(--text-base);
+  color: rgba(247, 223, 234, 0.75);
+  max-width: 52ch;
+  margin-bottom: var(--space-6);
+}
+
+/* ── School Visits Page ──────────────────── */
+.visits-hero {
+  background-color: var(--cream-paper);
+  padding-block: var(--space-16);
+  border-bottom: 1px solid var(--cream);
+}
+
+.visits-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-block: var(--space-8);
+}
+
+@media (min-width: 48em) {
+  .visits-details {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.visits-detail-card {
+  background: var(--cream-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  border: 1px solid var(--cream);
+}
+
+.visits-detail-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.visits-detail-card__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--page-accent, var(--pink-hot));
+  margin-bottom: var(--space-2);
+}
+
+.visits-detail-card__value {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  color: var(--burgundy);
+}
+
+/* Inquiry form */
+.inquiry-form-section {
+  background-color: var(--cream-light);
+}
+
+.inquiry-form {
+  background: var(--cream-paper);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  box-shadow: var(--shadow-md);
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.inquiry-form__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+.inquiry-form__subtitle {
+  font-size: var(--text-base);
+  color: var(--burgundy-light);
+  margin-bottom: var(--space-8);
+}
+
+/* Extraordinary Kids section */
+.extraordinary-kids {
+  background: var(--jenny-purple);
+  color: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.extraordinary-kids__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  color: var(--white);
+  margin-bottom: var(--space-3);
+}
+
+.extraordinary-kids__logo-wrap {
+  margin: 0 auto var(--space-6);
+  max-width: 15rem;
+  padding: 0;
+}
+
+.extraordinary-kids__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+.extraordinary-kids__text {
+  font-size: var(--text-lg);
+  opacity: 0.85;
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+}
+
+/* School visits — horizontal testimonials */
+.visits-testimonials-section .section-title {
+  margin-bottom: var(--space-2);
+}
+
+.visits-testimonials__hint {
+  font-size: var(--text-sm);
+  color: var(--burgundy-light);
+  margin: 0 0 var(--space-5);
+  max-width: 40ch;
+}
+
+.visits-testimonials__scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: var(--space-2) var(--space-4);
+  margin-top: var(--space-2);
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.visits-testimonials__marquee {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--space-5);
+  width: max-content;
+}
+
+.visits-testimonials__track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: var(--space-5);
+  flex: 0 0 auto;
+}
+
+.visits-testimonials__scroller:focus-visible {
+  outline: 2px solid var(--pink-hot);
+  outline-offset: 4px;
+}
+
+.visits-testimonials__scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.visits-testimonials__scroller .testimonial-card {
+  flex: 0 0 min(36rem, calc(100vw - 2.5rem));
+  box-sizing: border-box;
+  max-height: 24rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.visits-testimonials__scroller .star-rating {
+  flex-shrink: 0;
+}
+
+.visits-testimonials__scroller .testimonial-card__author,
+.visits-testimonials__scroller .testimonial-card__role {
+  flex-shrink: 0;
+}
+
+/* Quote + non-scrolling “more below” strip (cue sits outside overflow so it never covers text) */
+.visits-testimonials__scroller .testimonial-card__quote-frame {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-4);
+}
+
+.visits-testimonials__scroller .testimonial-card__quote-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  padding-right: var(--space-2);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.visits-testimonials__scroller .testimonial-card__quote-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.visits-testimonials__scroller .testimonial-card__quote-more-cue {
+  flex-shrink: 0;
+  display: none;
+  text-align: center;
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(250, 3, 107, 0.14);
+  margin-top: var(--space-1);
+  font-size: var(--text-lg);
+  line-height: 1;
+  letter-spacing: 0.2em;
+  color: var(--pink-hot);
+  opacity: 0.55;
+  font-family: var(--font-body);
+}
+
+.visits-testimonials__scroller .testimonial-card__quote-frame.has-more-below .testimonial-card__quote-more-cue {
+  display: block;
+}
+
+.visits-testimonials__scroller .testimonial-card__quote-more-cue::before {
+  content: '· · ·';
+}
+
+.visits-testimonials__scroller .testimonial-card__quote {
+  margin-bottom: 0;
+}

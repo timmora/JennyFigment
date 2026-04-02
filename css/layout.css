@@ -1,0 +1,165 @@
+/* ============================================
+   JENNY FIGMENT — Layout System
+   ============================================ */
+
+/* --- Container --- */
+.container {
+  width: min(90%, 72rem);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.container--narrow {
+  width: min(90%, 52rem);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.container--wide {
+  width: min(95%, 84rem);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* --- Section spacing --- */
+.section {
+  padding-block: var(--space-section);
+}
+
+.section--compact {
+  padding-block: calc(var(--space-section) * 0.6);
+}
+
+.section--flush {
+  padding-block: 0;
+}
+
+/* --- Grid utilities --- */
+.grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
+.grid--4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64em) {
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid--4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 80em) {
+  .grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Flex utilities --- */
+.flex {
+  display: flex;
+}
+
+.flex--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex--between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex--col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
+}
+
+.flex--gap-sm { gap: var(--space-3); }
+.flex--gap { gap: var(--space-4); }
+.flex--gap-md { gap: var(--space-6); }
+.flex--gap-lg { gap: var(--space-8); }
+
+/* --- Stack (vertical spacing) --- */
+.stack > * + * {
+  margin-block-start: var(--space-4);
+}
+
+.stack--sm > * + * {
+  margin-block-start: var(--space-2);
+}
+
+.stack--lg > * + * {
+  margin-block-start: var(--space-8);
+}
+
+.stack--xl > * + * {
+  margin-block-start: var(--space-12);
+}
+
+/* --- Responsive visibility --- */
+.hide-mobile {
+  display: none;
+}
+
+.hide-desktop {
+  display: block;
+}
+
+@media (min-width: 64em) {
+  .hide-mobile {
+    display: block;
+  }
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* --- Aspect ratio boxes --- */
+.aspect-square {
+  aspect-ratio: 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-book {
+  aspect-ratio: 2 / 3;
+}
+
+/* --- Full bleed sections --- */
+.full-bleed {
+  width: 100vw;
+  margin-inline: calc(-50vw + 50%);
+}

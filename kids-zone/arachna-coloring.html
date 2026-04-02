@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="kids-zone-page">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color with Arachna! — Kids Zone | Jenny Figment</title>
+  <meta name="description" content="Digital coloring page featuring Arachna and friends! Paint with colors on the canvas or download a printable PDF." />
+  <!-- COPPA: No data collection, no tracking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/design-system.css" /><link rel="stylesheet" href="../css/layout.css" /><link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/kids-zone.css" />
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+</head>
+<body class="kids-zone-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-nav" role="banner">
+    <div class="container site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Jenny Figment — Home"><span class="site-nav__logo-text" style="color:var(--cream-light);">Jenny Figment</span></a>
+      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="../index.html" style="color:rgba(247,223,234,0.7);">← Main Site</a></li><li><a href="../kids-zone.html" style="color:rgba(247,223,234,0.7);" aria-current="page">Kids Zone</a></li></ul></nav>
+      <div class="site-nav__right"><button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span></button></div>
+    </div>
+  </header>
+  <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation"><ul class="nav-drawer__links" role="list"><li><a href="../index.html">← Main Site</a></li><li><a href="../kids-zone.html">Kids Zone</a></li></ul></nav>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="kz-activity-hero" style="background:linear-gradient(145deg,#E0F7F5,#E8F5FF);padding-block:var(--space-12);" aria-labelledby="arachna-heading">
+      <div class="container">
+        <a href="../kids-zone.html" class="kz-back-link" style="color:var(--arachna-teal);">← Back to Kids Zone</a>
+        <div class="kz-activity-portrait-wrap" style="animation:float 4s ease-in-out infinite;" aria-hidden="true">
+          <img class="kz-activity-portrait" src="../assets/images/character-arachna.png" alt="" width="220" height="280" loading="eager" decoding="async" />
+        </div>
+        <h1 id="arachna-heading" class="kz-activity-title" style="color:var(--arachna-teal);">Color with Arachna!</h1>
+        <p class="kz-activity-subtitle">Use the digital canvas to paint Arachna in your favorite colors! 🎨</p>
+        <p style="font-family:var(--font-kids);font-size:var(--text-sm);color:var(--burgundy-light);margin-top:var(--space-2);">Or <a href="../educators-parents.html" style="color:var(--arachna-teal);">download a printable coloring page PDF</a> to color with real crayons!</p>
+      </div>
+    </section>
+
+    <!-- Coloring canvas section -->
+    <section class="section kz-activity-section" style="background:#EEF9F8;" aria-label="Digital coloring canvas">
+      <div class="container">
+        <div class="coloring-layout">
+          <!-- Canvas -->
+          <div>
+            <div class="canvas-wrapper" id="canvas-wrapper">
+              <canvas
+                id="coloring-canvas"
+                class="coloring-canvas"
+                width="600"
+                height="600"
+                role="img"
+                aria-label="Digital coloring canvas with an outline drawing of Arachna the spider. Use the color palette and brush tools on the right side to paint the image."
+              ></canvas>
+            </div>
+            <p style="font-family:var(--font-kids);font-size:var(--text-xs);color:var(--burgundy-light);text-align:center;margin-top:var(--space-2);">Click and drag to draw! 🖌️</p>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="coloring-toolbar">
+            <!-- Colors -->
+            <div>
+              <div class="coloring-toolbar-label">Pick a Color</div>
+              <div class="color-palette" id="color-palette" role="group" aria-label="Color palette">
+                <button class="color-swatch is-selected" style="background:#FA036B;" data-color="#FA036B" aria-label="Hot pink" title="Hot pink"></button>
+                <button class="color-swatch" style="background:#FF6A97;" data-color="#FF6A97" aria-label="Pink" title="Pink"></button>
+                <button class="color-swatch" style="background:#7B4B94;" data-color="#7B4B94" aria-label="Purple" title="Purple"></button>
+                <button class="color-swatch" style="background:#3AADA8;" data-color="#3AADA8" aria-label="Teal" title="Teal"></button>
+                <button class="color-swatch" style="background:#6BAF6B;" data-color="#6BAF6B" aria-label="Green" title="Green"></button>
+                <button class="color-swatch" style="background:#D4883A;" data-color="#D4883A" aria-label="Orange" title="Orange"></button>
+                <button class="color-swatch" style="background:#4A7BD4;" data-color="#4A7BD4" aria-label="Blue" title="Blue"></button>
+                <button class="color-swatch" style="background:#F7DFEA;" data-color="#F7DFEA" aria-label="Cream" title="Cream"></button>
+                <button class="color-swatch" style="background:#2B161B;" data-color="#2B161B" aria-label="Dark brown" title="Dark brown"></button>
+                <button class="color-swatch" style="background:#FFD700;" data-color="#FFD700" aria-label="Gold" title="Gold"></button>
+                <button class="color-swatch" style="background:#FF4500;" data-color="#FF4500" aria-label="Red orange" title="Red orange"></button>
+                <button class="color-swatch" style="background:#FFFFFF;border:1.5px solid #ddd;" data-color="#FFFFFF" aria-label="White" title="White"></button>
+              </div>
+            </div>
+
+            <!-- Brush size -->
+            <div>
+              <div class="coloring-toolbar-label">Brush Size</div>
+              <div class="brush-size-group" role="group" aria-label="Brush size">
+                <button class="brush-size-btn is-selected" style="width:12px;height:12px;" data-size="6" aria-label="Small brush" title="Small"></button>
+                <button class="brush-size-btn" style="width:18px;height:18px;" data-size="12" aria-label="Medium brush" title="Medium"></button>
+                <button class="brush-size-btn" style="width:26px;height:26px;" data-size="20" aria-label="Large brush" title="Large"></button>
+                <button class="brush-size-btn" style="width:34px;height:34px;" data-size="32" aria-label="Extra large brush" title="Extra large"></button>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="coloring-actions">
+              <div class="coloring-toolbar-label">Tools</div>
+              <button id="btn-clear" class="btn btn--sm btn--secondary" style="font-family:var(--font-kids);" aria-label="Clear canvas and start over">🗑️ Start Over</button>
+              <button id="btn-save" class="btn btn--sm btn--primary" style="font-family:var(--font-kids);" aria-label="Save your coloring as an image">💾 Save My Art!</button>
+              <a href="../educators-parents.html" class="btn btn--sm btn--outline-pink" style="font-family:var(--font-kids);text-align:center;" aria-label="Download printable PDF version">🖨️ Print Version</a>
+            </div>
+
+            <!-- Accessibility note -->
+            <p style="font-family:var(--font-kids);font-size:var(--text-xs);color:var(--burgundy-light);line-height:1.5;">
+              Can't use the digital canvas? <a href="../educators-parents.html" style="color:var(--arachna-teal);">Download a printable coloring page PDF</a> to color with crayons or markers!
+            </p>
+          </div>
+        </div>
+
+        <!-- More characters -->
+        <div style="text-align:center;margin-top:var(--space-12);">
+          <h2 style="font-family:var(--font-kids);font-size:var(--text-2xl);margin-bottom:var(--space-6);">Visit the Other Characters! 🌟</h2>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;">
+            <a href="jenny-qa.html" class="btn btn--secondary" style="font-family:var(--font-kids);">🧒 Chat with Jenny</a>
+            <a href="grandpa-tony-jokes.html" class="btn btn--secondary" style="font-family:var(--font-kids);">👴 Grandpa Tony's Jokes</a>
+            <a href="flora-pinkerdoodles.html" class="btn btn--secondary" style="font-family:var(--font-kids);">🌸 Bake Pinkerdoodles</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <div class="site-footer__brand-title">Jenny Figment</div>
+          <p>Award-winning children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
+          <div class="site-footer__social" aria-label="Social media links">
+            <a href="#" aria-label="Facebook" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">f</span>Facebook</a>
+            <a href="#" aria-label="Instagram" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
+            <a href="#" aria-label="Pinterest" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">P</span>Pinterest</a>
+          </div>
+        </div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="../books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="../books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="../books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="../educators-parents.html">Resources &amp; Guides</a></li><li><a href="../educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="../educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="../about.html">About Jennifer Hayes</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../kids-zone.html">Kids Zone ✦</a></li></ul></div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© 2024 Jennifer Hayes. All rights reserved.</span>
+        <span>Jenny Figment</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script type="module" src="../js/kids-zone/coloring-canvas.js"></script>
+</body>
+</html>
