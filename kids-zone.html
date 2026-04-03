@@ -80,7 +80,9 @@
         <div class="kz-char-grid">
           <!-- Jenny -->
           <a href="kids-zone/jenny-qa.html" class="kz-char-card kz-char-card--jenny" data-reveal data-reveal-delay="1">
-            <span class="kz-char-card__emoji" aria-hidden="true" style="font-family:var(--font-heading);font-size:4rem;font-weight:900;color:var(--jenny-purple);">J</span>
+            <span class="kz-char-card__portrait-wrap kz-char-card__portrait-wrap--book" aria-hidden="true">
+              <img class="kz-char-card__portrait" src="assets/images/books/cover-jenny-figment-book-1.png" alt="" width="180" height="270" loading="lazy" decoding="async" />
+            </span>
             <div class="kz-char-card__name">Jenny Figment</div>
             <div class="kz-char-card__activity">Ask Jenny anything! She'll answer your biggest questions with her extraordinary imagination.</div>
             <span class="kz-char-card__cta">Chat with Jenny →</span>
@@ -112,9 +114,22 @@
               <img class="kz-char-card__portrait" src="assets/images/character-arachna.png" alt="" width="180" height="220" loading="lazy" decoding="async" />
             </span>
             <div class="kz-char-card__name">Arachna</div>
-            <div class="kz-char-card__activity">Color Arachna and friends with your favorite colors! Use the digital coloring canvas or print it out.</div>
+            <div class="kz-char-card__activity">Paint on a blank digital canvas with your favorite colors, or print a coloring page from the resources page.</div>
             <span class="kz-char-card__cta">Start Coloring!</span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Imagination spark -->
+    <section class="kz-spark section" aria-labelledby="spark-heading">
+      <div class="container">
+        <div class="kz-spark__card" data-reveal>
+          <span class="kz-spark__label" id="spark-heading">Imagination spark</span>
+          <p class="kz-spark__prompt" id="kz-spark-text" aria-live="polite">Loading a fun idea…</p>
+          <div class="kz-spark__actions">
+            <button type="button" class="btn btn--primary btn--lg" id="kz-spark-new" style="font-family:var(--font-kids);">Another idea!</button>
+          </div>
         </div>
       </div>
     </section>
@@ -135,14 +150,14 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <div class="site-footer__brand-title">Jenny Figment</div>
-          <p>Award-winning children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
+          <p>Children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
           <div class="site-footer__social" aria-label="Social media links">
             <a href="#" aria-label="Facebook" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">f</span>Facebook</a>
             <a href="#" aria-label="Instagram" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
-            <a href="#" aria-label="Pinterest" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">P</span>Pinterest</a>
+            <a href="#" aria-label="Twitter" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true"></span>Twitter</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">Jenny Figment Book 1</a></li><li><a href="books/jenny-figment-book-2.html">Jenny Figment Book 2</a></li><li><a href="books/riddle-fairy-tale-village.html">Riddle of the Fairy Tale Village</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
         <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents.html">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
         <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
       </div>
@@ -154,5 +169,6 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script src="js/kids-zone/kz-hub.js" defer></script>
 </body>
 </html>

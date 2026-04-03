@@ -215,6 +215,10 @@
   transform: translateY(-4px) scale(1.02);
 }
 
+.kz-char-card__portrait-wrap--book .kz-char-card__portrait {
+  border-radius: var(--radius-sm);
+}
+
 .kz-char-card__name {
   font-family: var(--font-kids);
   font-size: var(--text-xl);
@@ -245,6 +249,75 @@
 .kz-char-card--flora  .kz-char-card__cta { background: var(--flora-green); color: white; }
 .kz-char-card--arachna .kz-char-card__cta { background: var(--arachna-teal); color: white; }
 
+/* ── Hub: imagination spark ──────────────────── */
+.kz-spark {
+  background: linear-gradient(180deg, #FEF0F8 0%, #F5EEFF 100%);
+  padding-block: var(--space-12);
+}
+
+.kz-spark__card {
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 3px solid rgba(123, 75, 148, 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  box-shadow: 6px 8px 0 rgba(123, 75, 148, 0.12);
+}
+
+.kz-spark__label {
+  font-family: var(--font-kids);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--jenny-purple);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.kz-spark__prompt {
+  font-family: var(--font-kids);
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  color: var(--burgundy);
+  line-height: 1.55;
+  margin: 0 0 var(--space-6);
+  min-height: 4.5em;
+}
+
+.kz-spark__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ── Cross-links at bottom of each activity ───── */
+.kz-other-chars {
+  text-align: center;
+  margin-top: var(--space-12);
+}
+
+.kz-other-chars__title {
+  font-family: var(--font-kids);
+  font-size: var(--text-2xl);
+  margin: 0 0 var(--space-6);
+  color: var(--burgundy);
+  line-height: 1.2;
+}
+
+.kz-other-chars__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+.kz-other-chars__links .btn {
+  font-family: var(--font-kids);
+}
+
 /* ── Activity page shared styles ──────────────── */
 .kz-activity-hero {
   padding-block: var(--space-12) var(--space-8);
@@ -264,6 +337,16 @@
   color: var(--burgundy-light);
   max-width: 46ch;
   margin-inline: auto;
+}
+
+.kz-activity-hero-link-note {
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  color: var(--burgundy-light);
+  max-width: 46ch;
+  margin-inline: auto;
+  margin-top: var(--space-2);
+  text-align: center;
 }
 
 .kz-activity-section {
@@ -388,7 +471,26 @@
   margin-top: var(--space-4);
 }
 
+.joke-hint kbd {
+  font-family: var(--font-kids);
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(43, 22, 27, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
 /* ── Q&A (Jenny) ─────────────────────────────── */
+.qa-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-bottom: var(--space-8);
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
 .qa-grid {
   display: grid;
   gap: var(--space-5);
@@ -449,11 +551,11 @@
 }
 
 .qa-answer.is-open {
-  max-height: 20rem;
+  max-height: min(80vh, 36rem);
 }
 
 .qa-answer__inner {
-  padding: 0 var(--space-6) var(--space-5);
+  padding: var(--space-5) var(--space-6) var(--space-5);
 }
 
 /* Jenny speech bubble style */
@@ -581,16 +683,35 @@
 }
 
 .recipe-progress-dot {
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
+  padding: 0;
+  border: 2px solid transparent;
   background: var(--pink-soft);
-  transition: background var(--duration-fast), transform var(--duration-fast);
+  cursor: pointer;
+  transition: background var(--duration-fast), transform var(--duration-fast), border-color var(--duration-fast);
+}
+
+.recipe-progress-dot:hover,
+.recipe-progress-dot:focus-visible {
+  border-color: var(--flora-green);
+  outline: none;
+  transform: scale(1.15);
 }
 
 .recipe-progress-dot.is-active {
   background: var(--flora-green);
-  transform: scale(1.4);
+  transform: scale(1.45);
+}
+
+.recipe-progress-text {
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: #3d7a3d;
+  text-align: center;
+  margin-bottom: var(--space-4);
 }
 
 /* ── Coloring canvas ──────────────────────────── */
@@ -606,8 +727,14 @@
   }
 }
 
+/* Square frame + absolute canvas = full area is drawable (avoids max-width:100%
+   on canvas shrinking width while inline height stays large, which misaligns coords). */
 .canvas-wrapper {
   position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  aspect-ratio: 1;
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 3px solid var(--arachna-teal);
@@ -617,8 +744,12 @@
 }
 
 .coloring-canvas {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
+  height: 100%;
+  max-width: none;
   cursor: crosshair;
   touch-action: none;
 }

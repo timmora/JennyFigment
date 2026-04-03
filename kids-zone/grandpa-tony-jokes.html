@@ -36,7 +36,7 @@
     <!-- Joke generator -->
     <section class="section kz-activity-section" style="background:#FFF8EC;" aria-label="Joke generator">
       <div class="container">
-        <div class="joke-card">
+        <div class="joke-card" id="joke-card" tabindex="0" role="region" aria-label="Joke card. Focus here and press Space to reveal the punchline or go to the next joke.">
           <img class="joke-card__grandpa joke-card__grandpa--art" src="../assets/images/character-grandpa-tony.png" alt="" width="120" height="144" loading="lazy" decoding="async" />
 
           <div id="joke-setup" class="joke-card__setup" aria-live="polite" aria-atomic="false">
@@ -50,10 +50,10 @@
           </div>
 
           <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);">
-            <button id="reveal-btn" class="joke-card__btn" aria-label="Reveal the punchline">
+            <button type="button" id="reveal-btn" class="joke-card__btn" aria-label="Reveal the punchline">
               What's the Punchline?
             </button>
-            <button id="next-btn" class="joke-card__btn" style="background:var(--jenny-purple);box-shadow:0 4px 0 rgba(80,30,100,0.4);display:none;" aria-label="Load next joke">
+            <button type="button" id="next-btn" class="joke-card__btn" style="background:var(--jenny-purple);box-shadow:0 4px 0 rgba(80,30,100,0.4);display:none;" aria-label="Load next joke">
               Next Joke! →
             </button>
           </div>
@@ -61,17 +61,17 @@
           <p class="joke-counter">
             Joke <span id="joke-current">1</span> of <span id="joke-total">25</span>
           </p>
+          <p class="joke-hint" style="font-family:var(--font-kids);font-size:var(--text-xs);color:var(--burgundy-light);margin-top:var(--space-3);">Tip: Click the card, then press <kbd>Space</kbd> to reveal or go to the next joke!</p>
         </div>
 
-        <!-- More characters -->
-        <div style="text-align:center;margin-top:var(--space-12);">
-          <h2 style="font-family:var(--font-kids);font-size:var(--text-2xl);margin-bottom:var(--space-6);">Visit the Other Characters!</h2>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;">
-            <a href="jenny-qa.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Chat with Jenny</a>
-            <a href="flora-pinkerdoodles.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Bake Pinkerdoodles</a>
-            <a href="arachna-coloring.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Color with Arachna</a>
+        <nav class="kz-other-chars" aria-labelledby="kz-other-chars-heading">
+          <h2 id="kz-other-chars-heading" class="kz-other-chars__title">Visit the Other Characters!</h2>
+          <div class="kz-other-chars__links">
+            <a href="jenny-qa.html" class="btn btn--secondary">Chat with Jenny</a>
+            <a href="flora-pinkerdoodles.html" class="btn btn--secondary">Bake Pinkerdoodles</a>
+            <a href="arachna-coloring.html" class="btn btn--secondary">Color with Arachna</a>
           </div>
-        </div>
+        </nav>
       </div>
     </section>
   </main>
@@ -81,11 +81,11 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <div class="site-footer__brand-title">Jenny Figment</div>
-          <p>Award-winning children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
+          <p>Children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
           <div class="site-footer__social" aria-label="Social media links">
             <a href="#" aria-label="Facebook" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">f</span>Facebook</a>
             <a href="#" aria-label="Instagram" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
-            <a href="#" aria-label="Pinterest" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">P</span>Pinterest</a>
+            <a href="#" aria-label="Twitter" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true"></span>Twitter</a>
           </div>
         </div>
         <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="../books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="../books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="../books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
@@ -100,6 +100,6 @@
   </footer>
 
   <script src="../js/main.js" defer></script>
-  <script type="module" src="../js/kids-zone/joke-generator.js"></script>
+  <script src="../js/kids-zone/joke-generator.js" defer></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ const JOKES = [
   { setup: "What did the ocean say to the beach?", punchline: "Nothing, it just waved! 🌊" },
   { setup: "Why do cows wear bells?", punchline: "Because their horns don't work! 🐄" },
   { setup: "What do you call a sleeping bull?", punchline: "A bulldozer! 🐂" },
-  { setup: "Why can't you give Elsa a balloon?", punchline: "She'll let it go! ❄️" },
+  { setup: "What kind of tree fits in your hand?", punchline: "A palm tree! 🌴" },
   { setup: "What do you call a magic dog?", punchline: "A labracadabrador! 🐕" },
   { setup: "Why did the banana go to the doctor?", punchline: "Because it wasn't peeling well! 🍌" },
   { setup: "What do elves learn in school?", punchline: "The elf-abet! 🧝" },
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('next-btn');
   const currentEl = document.getElementById('joke-current');
   const totalEl = document.getElementById('joke-total');
+  const jokeCard = document.getElementById('joke-card');
 
   if (!setupEl || !punchlineEl || !revealBtn || !nextBtn) return;
 
@@ -54,27 +55,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let index = 0;
   let revealed = false;
 
-  totalEl.textContent = String(JOKES.length);
+  if (totalEl) totalEl.textContent = String(JOKES.length);
 
   function loadJoke(i) {
     const joke = deck[i];
+    if (!joke) return;
     revealed = false;
 
-    // Reset state
     punchlineEl.classList.remove('is-revealed');
     punchlineEl.textContent = '';
     revealBtn.style.display = 'inline-flex';
     nextBtn.style.display = 'none';
 
-    // Set setup
     setupEl.textContent = joke.setup;
-    currentEl.textContent = String(i + 1);
+    if (currentEl) currentEl.textContent = String(i + 1);
   }
 
   function revealPunchline() {
     if (revealed) return;
+    const joke = deck[index];
+    if (!joke) return;
     revealed = true;
-    punchlineEl.textContent = deck[index].punchline;
+    punchlineEl.textContent = joke.punchline;
     // Trigger animation on next frame
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -94,16 +96,31 @@ document.addEventListener('DOMContentLoaded', () => {
     loadJoke(index);
   }
 
-  revealBtn.addEventListener('click', revealPunchline);
-  nextBtn.addEventListener('click', nextJoke);
+  revealBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    revealPunchline();
+  });
+  nextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    nextJoke();
+  });
 
-  // Keyboard: space or enter on the card area also reveals
+  jokeCard?.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t === revealBtn || t === nextBtn || revealBtn.contains(t) || nextBtn.contains(t)) return;
+    jokeCard.focus();
+  });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === ' ' || e.key === 'Enter') {
-      if (document.activeElement === revealBtn || document.activeElement === nextBtn) return;
-      if (!revealed) revealPunchline();
-      else nextJoke();
-    }
+    if (e.key !== ' ' && e.key !== 'Enter') return;
+    if (!jokeCard?.contains(document.activeElement)) return;
+    const ae = document.activeElement;
+    if (ae === revealBtn || ae === nextBtn) return;
+    if (e.key === ' ') e.preventDefault();
+    if (!revealed) revealPunchline();
+    else nextJoke();
   });
 
   loadJoke(0);

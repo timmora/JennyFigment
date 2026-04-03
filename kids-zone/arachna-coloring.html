@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Color with Arachna! — Kids Zone | Jenny Figment</title>
-  <meta name="description" content="Digital coloring page featuring Arachna and friends! Paint with colors on the canvas or download a printable PDF." />
+  <meta name="description" content="Free blank digital canvas for kids — paint and draw in the Kids Zone! Or download a printable coloring page from the resources page." />
   <!-- COPPA: No data collection, no tracking -->
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../css/design-system.css" /><link rel="stylesheet" href="../css/layout.css" /><link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/kids-zone.css" />
@@ -29,8 +29,8 @@
           <img class="kz-activity-portrait" src="../assets/images/character-arachna.png" alt="" width="220" height="280" loading="eager" decoding="async" />
         </div>
         <h1 id="arachna-heading" class="kz-activity-title" style="color:var(--arachna-teal);">Color with Arachna!</h1>
-        <p class="kz-activity-subtitle">Use the digital canvas to paint Arachna in your favorite colors! 🎨</p>
-        <p style="font-family:var(--font-kids);font-size:var(--text-sm);color:var(--burgundy-light);margin-top:var(--space-2);">Or <a href="../educators-parents.html" style="color:var(--arachna-teal);">download a printable coloring page PDF</a> to color with real crayons!</p>
+        <p class="kz-activity-subtitle">Start with a blank canvas and create anything you imagine!</p>
+        <p class="kz-activity-hero-link-note">Or <a href="../educators-parents.html" style="color:var(--arachna-teal);">download a printable coloring page PDF</a> to color with real crayons!</p>
       </div>
     </section>
 
@@ -47,7 +47,7 @@
                 width="600"
                 height="600"
                 role="img"
-                aria-label="Digital coloring canvas with an outline drawing of Arachna the spider. Use the color palette and brush tools on the right side to paint the image."
+                aria-label="Blank white drawing canvas. Choose a color and brush size, then click and drag to paint."
               ></canvas>
             </div>
             <p style="font-family:var(--font-kids);font-size:var(--text-xs);color:var(--burgundy-light);text-align:center;margin-top:var(--space-2);">Click and drag to draw! 🖌️</p>
@@ -88,8 +88,9 @@
             <!-- Actions -->
             <div class="coloring-actions">
               <div class="coloring-toolbar-label">Tools</div>
-              <button id="btn-clear" class="btn btn--sm btn--secondary" style="font-family:var(--font-kids);" aria-label="Clear canvas and start over">🗑️ Start Over</button>
-              <button id="btn-save" class="btn btn--sm btn--primary" style="font-family:var(--font-kids);" aria-label="Save your coloring as an image">💾 Save My Art!</button>
+              <button type="button" id="btn-undo" class="btn btn--sm btn--secondary" style="font-family:var(--font-kids);" aria-label="Undo last brush strokes" disabled>↩️ Undo</button>
+              <button type="button" id="btn-clear" class="btn btn--sm btn--secondary" style="font-family:var(--font-kids);" aria-label="Clear canvas and start over">🗑️ Start Over</button>
+              <button type="button" id="btn-save" class="btn btn--sm btn--primary" style="font-family:var(--font-kids);" aria-label="Save your drawing as an image">💾 Save My Art!</button>
               <a href="../educators-parents.html" class="btn btn--sm btn--outline-pink" style="font-family:var(--font-kids);text-align:center;" aria-label="Download printable PDF version">🖨️ Print Version</a>
             </div>
 
@@ -100,15 +101,14 @@
           </div>
         </div>
 
-        <!-- More characters -->
-        <div style="text-align:center;margin-top:var(--space-12);">
-          <h2 style="font-family:var(--font-kids);font-size:var(--text-2xl);margin-bottom:var(--space-6);">Visit the Other Characters! 🌟</h2>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;">
-            <a href="jenny-qa.html" class="btn btn--secondary" style="font-family:var(--font-kids);">🧒 Chat with Jenny</a>
-            <a href="grandpa-tony-jokes.html" class="btn btn--secondary" style="font-family:var(--font-kids);">👴 Grandpa Tony's Jokes</a>
-            <a href="flora-pinkerdoodles.html" class="btn btn--secondary" style="font-family:var(--font-kids);">🌸 Bake Pinkerdoodles</a>
+        <nav class="kz-other-chars" aria-labelledby="kz-other-chars-heading">
+          <h2 id="kz-other-chars-heading" class="kz-other-chars__title">Visit the Other Characters!</h2>
+          <div class="kz-other-chars__links">
+            <a href="jenny-qa.html" class="btn btn--secondary">Chat with Jenny</a>
+            <a href="grandpa-tony-jokes.html" class="btn btn--secondary">Grandpa Tony's Jokes</a>
+            <a href="flora-pinkerdoodles.html" class="btn btn--secondary">Bake Pinkerdoodles</a>
           </div>
-        </div>
+        </nav>
       </div>
     </section>
   </main>
@@ -118,11 +118,11 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <div class="site-footer__brand-title">Jenny Figment</div>
-          <p>Award-winning children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
+          <p>Children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
           <div class="site-footer__social" aria-label="Social media links">
             <a href="#" aria-label="Facebook" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">f</span>Facebook</a>
             <a href="#" aria-label="Instagram" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
-            <a href="#" aria-label="Pinterest" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">P</span>Pinterest</a>
+            <a href="#" aria-label="Twitter" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true"></span>Twitter</a>
           </div>
         </div>
         <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="../books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="../books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="../books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
@@ -137,6 +137,6 @@
   </footer>
 
   <script src="../js/main.js" defer></script>
-  <script type="module" src="../js/kids-zone/coloring-canvas.js"></script>
+  <script src="../js/kids-zone/coloring-canvas.js" defer></script>
 </body>
 </html>

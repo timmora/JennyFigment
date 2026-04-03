@@ -125,23 +125,26 @@
 
           </div>
 
+          <p class="recipe-progress-text" id="recipe-progress-text" aria-live="polite">Step 1 of 6</p>
           <!-- Stepper controls -->
           <div class="recipe-stepper-controls" role="group" aria-label="Recipe navigation">
-            <button id="recipe-prev" class="btn btn--secondary" style="font-family:var(--font-kids);" aria-label="Previous step" disabled>← Back</button>
-            <div class="recipe-progress" id="recipe-progress" aria-label="Recipe progress" role="status" aria-live="polite"></div>
-            <button id="recipe-next" class="btn btn--primary" style="font-family:var(--font-kids);" aria-label="Next step">Next Step →</button>
+            <button type="button" id="recipe-prev" class="btn btn--secondary" style="font-family:var(--font-kids);" aria-label="Previous step" disabled>← Back</button>
+            <div class="recipe-progress" id="recipe-progress" aria-label="Recipe progress dots"></div>
+            <button type="button" id="recipe-next" class="btn btn--primary" style="font-family:var(--font-kids);" aria-label="Next step">Next Step →</button>
           </div>
-
-          <!-- More characters -->
-          <div style="text-align:center;margin-top:var(--space-12);">
-            <h2 style="font-family:var(--font-kids);font-size:var(--text-2xl);margin-bottom:var(--space-6);">Visit the Other Characters!</h2>
-            <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;">
-              <a href="jenny-qa.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Chat with Jenny</a>
-              <a href="grandpa-tony-jokes.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Grandpa Tony's Jokes</a>
-              <a href="arachna-coloring.html" class="btn btn--secondary" style="font-family:var(--font-kids);">Color with Arachna</a>
-            </div>
+          <div style="text-align:center;margin-top:var(--space-4);">
+            <button type="button" id="recipe-restart" class="btn btn--outline-pink" style="font-family:var(--font-kids);display:none;" aria-label="Start recipe from the beginning">Bake again from the start</button>
           </div>
         </div>
+
+        <nav class="kz-other-chars" aria-labelledby="kz-other-chars-heading">
+          <h2 id="kz-other-chars-heading" class="kz-other-chars__title">Visit the Other Characters!</h2>
+          <div class="kz-other-chars__links">
+            <a href="jenny-qa.html" class="btn btn--secondary">Chat with Jenny</a>
+            <a href="grandpa-tony-jokes.html" class="btn btn--secondary">Grandpa Tony's Jokes</a>
+            <a href="arachna-coloring.html" class="btn btn--secondary">Color with Arachna</a>
+          </div>
+        </nav>
       </div>
     </section>
   </main>
@@ -151,11 +154,11 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <div class="site-footer__brand-title">Jenny Figment</div>
-          <p>Award-winning children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
+          <p>Children's books by Jennifer Hayes. Spark imagination, one story at a time.</p>
           <div class="site-footer__social" aria-label="Social media links">
             <a href="#" aria-label="Facebook" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">f</span>Facebook</a>
             <a href="#" aria-label="Instagram" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
-            <a href="#" aria-label="Pinterest" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true">P</span>Pinterest</a>
+            <a href="#" aria-label="Twitter" rel="noopener"><span class="site-footer__social-icon" aria-hidden="true"></span>Twitter</a>
           </div>
         </div>
         <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="../books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="../books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="../books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
@@ -170,6 +173,6 @@
   </footer>
 
   <script src="../js/main.js" defer></script>
-  <script type="module" src="../js/kids-zone/recipe-stepper.js"></script>
+  <script src="../js/kids-zone/recipe-stepper.js" defer></script>
 </body>
 </html>

@@ -97,13 +97,16 @@
 /* ── Book timeline ──────────────────────────── */
 .timeline {
   position: relative;
+  /* One x-axis for line + dots: line is 2px wide; dot centered on line via translateX(-50%). */
+  --timeline-line-x: 0.75rem;
+  --timeline-dot-size: 0.75rem;
   padding-left: var(--space-8);
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 0.75rem;
+  left: calc(var(--timeline-line-x) - 1px);
   top: 0;
   bottom: 0;
   width: 2px;
@@ -119,14 +122,15 @@
 .timeline__item::before {
   content: '';
   position: absolute;
-  left: calc(-2rem - 1px);
+  left: calc(var(--timeline-line-x) - var(--space-8));
   top: 0.3em;
-  width: 0.75rem;
-  height: 0.75rem;
+  width: var(--timeline-dot-size);
+  height: var(--timeline-dot-size);
   border-radius: 50%;
   background: var(--pink-hot);
   border: 2px solid var(--white);
   box-shadow: 0 0 0 2px var(--pink-hot);
+  transform: translateX(-50%);
 }
 
 .timeline__year {
@@ -319,4 +323,25 @@
 
 .faq-answer.is-open {
   display: block;
+}
+
+/* ── Contact: icon-only social links ───────── */
+.contact-social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.contact-social-icons__link {
+  padding: 0;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-social-icons__link svg {
+  flex-shrink: 0;
 }
