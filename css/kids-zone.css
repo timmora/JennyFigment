@@ -38,6 +38,29 @@
   color: var(--pink-soft);
 }
 
+/* Header: logo left, primary nav centered in the bar, toggle/CTA right */
+.kids-zone-page .site-nav__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.kids-zone-page .site-nav__logo {
+  justify-self: start;
+}
+
+.kids-zone-page .site-nav__inner > nav {
+  justify-self: center;
+}
+
+.kids-zone-page .site-nav__right {
+  justify-self: end;
+}
+
+.kids-zone-page .nav-drawer__links a {
+  text-align: center;
+}
+
 /* ── Hero / Hub ──────────────────────────────── */
 .kz-hero {
   background: var(--burgundy);
