@@ -1205,6 +1205,9 @@
 }
 
 .badge--pink { background: var(--pink-soft); color: var(--burgundy); }
+/* Book detail reader bands — use on all title pages for Ages / Grades consistency */
+.badge--ages { background: var(--pink-soft); color: var(--burgundy); }
+.badge--grades { background: rgba(123, 75, 148, 0.15); color: var(--jenny-purple); }
 .badge--purple { background: rgba(123, 75, 148, 0.15); color: var(--jenny-purple); }
 .badge--amber { background: rgba(212, 136, 58, 0.15); color: var(--tony-amber); }
 .badge--green { background: rgba(107, 175, 107, 0.15); color: #3d7a3d; }

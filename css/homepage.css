@@ -43,7 +43,7 @@
   z-index: 1;
   display: grid;
   gap: var(--space-8);
-  align-items: start;
+  align-items: center;
 }
 
 @media (min-width: 64em) {
