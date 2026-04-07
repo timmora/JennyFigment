@@ -828,9 +828,20 @@
   flex-shrink: 0;
 }
 
+.brush-size-btn:hover:not(.is-selected) {
+  border-color: rgba(58, 173, 168, 0.55);
+  transform: scale(1.08);
+}
+
 .brush-size-btn.is-selected {
   border-color: var(--arachna-teal);
   transform: scale(1.2);
+}
+
+/* Dark kids headers: hamburger hit area visible on hover */
+body.kids-zone-page .nav-toggle:hover,
+html.kids-zone-page .nav-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .coloring-actions {
