@@ -180,6 +180,8 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-4);
+  height: 100%;
+  min-height: 0;
   transition: transform var(--duration-normal) var(--ease-bounce),
               box-shadow var(--duration-normal);
   position: relative;
@@ -255,10 +257,12 @@
   font-size: var(--text-sm);
   color: var(--burgundy-light);
   line-height: 1.4;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .kz-char-card__cta {
-  margin-top: var(--space-2);
+  flex-shrink: 0;
   font-family: var(--font-kids);
   font-size: var(--text-sm);
   font-weight: 700;
@@ -685,24 +689,34 @@
 }
 
 .recipe-step__ingredients li::before {
-  content: '🌸';
+  content: '🍰';
   font-size: 1rem;
   flex-shrink: 0;
 }
 
 .recipe-stepper-controls {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  margin-top: var(--space-8);
+  gap: var(--space-3);
+  margin-top: 0;
+}
+
+.recipe-stepper-controls #recipe-prev {
+  justify-self: start;
+}
+
+.recipe-stepper-controls #recipe-next {
+  justify-self: end;
 }
 
 .recipe-progress {
-  flex: 1;
+  justify-self: center;
   display: flex;
+  flex: none;
   gap: var(--space-2);
   justify-content: center;
+  align-items: center;
 }
 
 .recipe-progress-dot {
@@ -733,11 +747,29 @@
   font-size: var(--text-sm);
   font-weight: 700;
   color: #3d7a3d;
+  /* Override global `p { max-width: 65ch }` so the line centers in the full recipe column */
+  max-width: none;
+  width: 100%;
   text-align: center;
-  margin-bottom: var(--space-4);
+  margin-inline: auto;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 /* ── Coloring canvas ──────────────────────────── */
+.coloring-canvas-hint {
+  font-family: var(--font-kids);
+  font-size: var(--text-xs);
+  color: var(--burgundy-light);
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+  /* Match .canvas-wrapper width so the line centers under the frame (override global `p { max-width: 65ch }`) */
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  margin-inline: auto;
+}
+
 .coloring-layout {
   display: grid;
   grid-template-columns: 1fr;
