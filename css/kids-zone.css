@@ -520,7 +520,7 @@ html.kids-zone-page .nav-toggle:hover {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--jenny-purple);
+  color: var(--pink-hot);
   display: block;
   margin-bottom: var(--space-4);
 }
@@ -542,9 +542,9 @@ html.kids-zone-page .nav-toggle:hover {
   gap: var(--space-3);
 }
 
-/* Sticker-style spark button */
+/* Sticker-style spark button — same pink family as .kz-hero */
 .kz-spark .btn--primary {
-  background: var(--jenny-purple);
+  background: var(--pink-hot);
   color: white;
   border: 3px solid var(--ink);
   box-shadow: 5px 5px 0 var(--ink);
@@ -555,7 +555,7 @@ html.kids-zone-page .nav-toggle:hover {
 }
 
 .kz-spark .btn--primary:hover {
-  background: var(--jenny-purple);
+  background: var(--pink-hot);
   transform: translateY(-3px);
   box-shadow: 5px 8px 0 var(--ink);
 }
