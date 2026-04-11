@@ -357,3 +357,17 @@
   margin-inline: auto;
   justify-content: center;
 }
+
+/* Cream hairlines above and below each homepage band (single seam between adjacent sections) */
+#main-content > .section {
+  border-bottom: 1px solid var(--cream);
+}
+
+#main-content > .section:first-child,
+#main-content > *:not(.section) + .section {
+  border-top: 1px solid var(--cream);
+}
+
+#main-content > .section + .section {
+  border-top: none;
+}
