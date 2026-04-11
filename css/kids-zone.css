@@ -1,75 +1,208 @@
 /* ============================================
    JENNY FIGMENT — Kids Zone
-   Visual mode overrides + interactive widgets
+   Sticker Book aesthetic
+   Fonts: Boogaloo (display) + Nunito (body)
    ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;600;700;800&display=swap');
 
 /* ── Root overrides for Kids Zone pages ──────── */
 .kids-zone-page {
-  --font-heading: 'Fredoka', var(--font-body);
+  --font-kids-display: 'Boogaloo', cursive;
+  --font-kids: 'Nunito', sans-serif;
+  --font-heading: 'Boogaloo', cursive;
   --text-base: clamp(1.05rem, 0.95rem + 0.5vw, 1.2rem);
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
   --radius-xl: 2.5rem;
+  /* Sticker book design tokens */
+  --ink: #1a1a1a;
+  --sticker-shadow-sm: 4px 4px 0 #1a1a1a;
+  --sticker-shadow-md: 7px 7px 0 #1a1a1a;
+  --dot-grid: radial-gradient(circle, rgba(43, 22, 27, 0.11) 1.5px, transparent 1.5px);
 }
 
-/* Kids Zone body bg */
-.kids-zone-page body,
-.kids-zone-page {
-  background-color: #FEF0F8;
+/* ── Hide site footer in Kids Zone ──────────── */
+.kids-zone-page .site-footer {
+  display: none;
 }
 
-/* Kids Zone nav override — softer dark */
+/* ── Page background: cream dot-grid paper ───── */
+.kids-zone-page,
+.kids-zone-page body {
+  background-color: #fdf8f3;
+  background-image: var(--dot-grid);
+  background-size: 28px 28px;
+}
+
+/* ── Kids Zone nav: solid ink black ─────────── */
 .kids-zone-page .site-nav {
-  background-color: rgba(43, 22, 27, 0.97);
-  border-bottom-color: rgba(255, 106, 151, 0.25);
+  background-color: var(--ink);
+  border-bottom: 3px solid var(--ink);
 }
 
-.kids-zone-page .site-nav__logo-text {
-  color: var(--cream-light);
-}
-
-.kids-zone-page .site-nav__links a {
-  color: rgba(247, 223, 234, 0.75);
-}
-
-.kids-zone-page .site-nav__links a:hover {
-  background: rgba(255, 106, 151, 0.15);
-  color: var(--pink-soft);
-}
-
-/* Header: logo left, primary nav centered in the bar, toggle/CTA right */
+/* 3-column grid: logo | links | toggle */
 .kids-zone-page .site-nav__inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  height: 4.5rem;
 }
 
 .kids-zone-page .site-nav__logo {
   justify-self: start;
+  gap: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Logo wordmark */
+.kids-zone-page .site-nav__logo-text {
+  font-family: var(--font-kids-display);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  color: white;
+  letter-spacing: 0.03em;
+  display: block;
+}
+
+/* "Kids Zone" label beneath the wordmark */
+.kids-zone-page .site-nav__logo::after {
+  content: '✦ Kids Zone';
+  font-family: var(--font-kids);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink-soft);
+  display: block;
+  margin-top: 1px;
+  line-height: 1;
 }
 
 .kids-zone-page .site-nav__inner > nav {
   justify-self: center;
+  align-self: center;
+  display: flex;
+  align-items: center;
 }
 
+/* ── Desktop nav links: sticker pill badges ── */
+.kids-zone-page .site-nav__links {
+  gap: var(--space-3);
+}
+
+/* Top spacing for hub + activity nav pills (applies to single- or multi-link rows) */
+@media (min-width: 64em) {
+  .kids-zone-page .site-nav__links {
+    margin-top: var(--space-2);
+  }
+}
+
+.kids-zone-page .site-nav__links a {
+  font-family: var(--font-kids-display);
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 0.4em var(--space-5);
+  box-shadow: 3px 3px 0 var(--ink);
+  text-decoration: none;
+  display: block;
+  transition: transform 0.15s var(--ease-bounce), box-shadow 0.15s;
+}
+
+.kids-zone-page .site-nav__links a:hover,
+.kids-zone-page .site-nav__links a[aria-current="page"] {
+  background: white;
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 3px 6px 0 var(--ink);
+}
+
+.kids-zone-page .site-nav__links a[aria-current="page"]::before {
+  content: '← ';
+}
+
+/* ── Hamburger: sticker button ───────────────── */
 .kids-zone-page .site-nav__right {
   justify-self: end;
 }
 
-.kids-zone-page .nav-drawer__links a {
-  text-align: center;
+.kids-zone-page .nav-toggle {
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.15s var(--ease-bounce), box-shadow 0.15s;
 }
 
-/* ── Hero / Hub ──────────────────────────────── */
+body.kids-zone-page .nav-toggle:hover,
+html.kids-zone-page .nav-toggle:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 0 var(--ink);
+}
+
+.kids-zone-page .nav-toggle span {
+  background-color: var(--ink);
+}
+
+/* ── Mobile drawer: ink black + pill links ─── */
+.kids-zone-page .nav-drawer {
+  background-color: var(--ink);
+  border-top: none;
+}
+
+.kids-zone-page .nav-drawer__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  margin: 0;
+}
+
+.kids-zone-page .nav-drawer__links li {
+  border-bottom: none;
+  width: 100%;
+  max-width: 280px;
+}
+
+.kids-zone-page .nav-drawer__links a {
+  font-family: var(--font-kids-display);
+  font-size: var(--text-xl);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: white;
+  border: 2.5px solid white;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-6);
+  box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.3);
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  transition: transform 0.15s var(--ease-bounce), box-shadow 0.15s;
+}
+
+.kids-zone-page .nav-drawer__links a:hover {
+  color: var(--ink);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 4px 7px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ── Hero ──────────────────────────────────── */
 .kz-hero {
-  background: var(--burgundy);
+  background: var(--pink-hot);
   min-height: 60svh;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
   padding-block: var(--space-16);
+  border-bottom: 4px solid var(--ink);
 }
 
 .kz-hero__bg {
@@ -78,78 +211,121 @@
   pointer-events: none;
 }
 
-/* Floating stars */
+/* Stars as 5-pointed clip-path shapes */
 .kz-star {
   position: absolute;
-  border-radius: 50%;
-  animation: kz-float var(--dur, 4s) ease-in-out var(--del, 0s) infinite;
-  opacity: 0.6;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: kz-spin var(--dur, 8s) linear var(--del, 0s) infinite;
+  opacity: 0.9;
 }
 
-@keyframes kz-float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.1); }
+@keyframes kz-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .kz-hero__content {
   position: relative;
   z-index: 1;
-  color: var(--white);
+  color: white;
   text-align: center;
 }
 
+/* "Welcome to" — sticker badge pill */
 .kz-hero__label {
-  font-family: var(--font-kids);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  display: inline-block;
+  font-family: var(--font-kids-display);
+  font-size: var(--text-base);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--page-accent-hero-label, var(--pink-soft));
-  margin-bottom: var(--space-4);
-  display: block;
+  background: white;
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-6);
+  box-shadow: var(--sticker-shadow-sm);
+  margin-bottom: var(--space-5);
 }
 
+/* Big outlined title */
 .kz-hero__title {
-  font-family: var(--font-kids);
-  font-size: clamp(2.5rem, 3rem + 3vw, 5rem);
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: var(--space-5);
-  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  font-family: var(--font-kids-display);
+  font-size: clamp(2.5rem, 3rem + 3vw, 5.5rem);
+  color: white;
+  -webkit-text-stroke: 3px var(--ink);
+  paint-order: stroke fill;
+  line-height: 1.05;
+  margin-bottom: var(--space-6);
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.01em;
 }
 
 .kz-hero__subtitle {
   font-family: var(--font-kids);
-  font-size: var(--text-xl);
-  color: rgba(255,255,255,0.85);
-  max-width: 46ch;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 42ch;
   margin-inline: auto;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
   line-height: 1.5;
 }
 
-/* Back to main site link in Kids Zone */
+/* Sticker-style "Let's Go!" button */
+.kz-hero .btn--primary {
+  background: white;
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-full);
+  box-shadow: 5px 5px 0 var(--ink);
+  font-family: var(--font-kids-display);
+  font-size: var(--text-xl);
+  letter-spacing: 0.03em;
+  transition: transform 0.15s var(--ease-bounce), box-shadow 0.15s;
+}
+
+.kz-hero .btn--primary:hover {
+  background: white;
+  color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 5px 9px 0 var(--ink);
+}
+
+.kz-hero .btn--primary:active {
+  transform: translateY(2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* Back to main site link */
 .kz-back-link {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.6);
+  font-family: var(--font-kids);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   margin-bottom: var(--space-6);
   transition: color var(--duration-fast);
-  font-family: var(--font-kids);
 }
 
 .kz-back-link:hover {
-  color: var(--pink-soft);
+  color: white;
 }
 
 /* ── Character select cards ──────────────────── */
 .kz-characters {
-  background: #FEF0F8;
+  background: transparent;
   padding-block: var(--space-section);
-  border-top: 4px solid var(--page-accent, var(--arachna-teal));
+  border-top: none;
+}
+
+/* Section heading: Boogaloo + wavy underline */
+#chars-kz-heading {
+  font-family: var(--font-kids-display) !important;
+  display: inline-block;
+  padding-bottom: var(--space-2);
+  border-bottom: 3px wavy var(--jenny-purple);
 }
 
 .kz-char-grid {
@@ -171,8 +347,9 @@
   }
 }
 
+/* Sticker card base */
 .kz-char-card {
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   padding: var(--space-8) var(--space-6);
   text-decoration: none;
   text-align: center;
@@ -181,40 +358,64 @@
   align-items: center;
   gap: var(--space-4);
   height: 100%;
-  min-height: 0;
-  transition: transform var(--duration-normal) var(--ease-bounce),
-              box-shadow var(--duration-normal);
+  background: white;
+  border: 3.5px solid var(--ink);
   position: relative;
   overflow: hidden;
-  border: 3px solid transparent;
 }
 
-.kz-char-card:hover {
-  transform: translateY(-10px) rotate(-1deg);
+/* Holographic shine sweep on hover */
+.kz-char-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.72) 50%,
+    transparent 62%
+  );
+  background-size: 260% 100%;
+  background-position: 260% 0;
+  transition: background-position 0.55s ease;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
-.kz-char-card--jenny  { background: rgba(123,75,148,0.1); border-color: rgba(123,75,148,0.3); box-shadow: 4px 4px 0 rgba(123,75,148,0.2); }
-.kz-char-card--tony   { background: rgba(212,136,58,0.1); border-color: rgba(212,136,58,0.3); box-shadow: 4px 4px 0 rgba(212,136,58,0.2); }
-.kz-char-card--flora  { background: rgba(107,175,107,0.1); border-color: rgba(107,175,107,0.3); box-shadow: 4px 4px 0 rgba(107,175,107,0.2); }
-.kz-char-card--arachna { background: rgba(58,173,168,0.1); border-color: rgba(58,173,168,0.3); box-shadow: 4px 4px 0 rgba(58,173,168,0.2); }
-
-.kz-char-card:hover.kz-char-card--jenny  { box-shadow: 6px 10px 0 rgba(123,75,148,0.25), 0 20px 40px rgba(123,75,148,0.15); }
-.kz-char-card:hover.kz-char-card--tony   { box-shadow: 6px 10px 0 rgba(212,136,58,0.25), 0 20px 40px rgba(212,136,58,0.15); }
-.kz-char-card:hover.kz-char-card--flora  { box-shadow: 6px 10px 0 rgba(107,175,107,0.25), 0 20px 40px rgba(107,175,107,0.15); }
-.kz-char-card:hover.kz-char-card--arachna { box-shadow: 6px 10px 0 rgba(58,173,168,0.25), 0 20px 40px rgba(58,173,168,0.15); }
-
-.kz-char-card__emoji {
-  font-size: 4.5rem;
-  line-height: 1;
-  display: block;
-  transition: transform var(--duration-normal) var(--ease-bounce);
+.kz-char-card:hover::before {
+  background-position: -60% 0;
 }
 
-.kz-char-card:hover .kz-char-card__emoji {
-  transform: scale(1.2) rotate(10deg);
+/* Per-character colored shadow + slight default rotation */
+.kz-char-card--jenny {
+  box-shadow: 7px 7px 0 var(--jenny-purple);
+  transform: rotate(-1.5deg);
+  transition: transform 0.25s var(--ease-bounce), box-shadow 0.25s;
+}
+.kz-char-card--tony {
+  box-shadow: 7px 7px 0 var(--tony-amber);
+  transform: rotate(1deg);
+  transition: transform 0.25s var(--ease-bounce), box-shadow 0.25s;
+}
+.kz-char-card--flora {
+  box-shadow: 7px 7px 0 var(--flora-green);
+  transform: rotate(-0.8deg);
+  transition: transform 0.25s var(--ease-bounce), box-shadow 0.25s;
+}
+.kz-char-card--arachna {
+  box-shadow: 7px 7px 0 var(--arachna-teal);
+  transform: rotate(1.5deg);
+  transition: transform 0.25s var(--ease-bounce), box-shadow 0.25s;
 }
 
-/* Character PNGs use real transparency (alpha); drop-shadow follows the silhouette. */
+/* Hover: straighten, lift, bigger shadow */
+.kz-char-card--jenny:hover   { transform: rotate(0deg) translateY(-8px); box-shadow: 9px 14px 0 var(--jenny-purple); }
+.kz-char-card--tony:hover    { transform: rotate(0deg) translateY(-8px); box-shadow: 9px 14px 0 var(--tony-amber); }
+.kz-char-card--flora:hover   { transform: rotate(0deg) translateY(-8px); box-shadow: 9px 14px 0 var(--flora-green); }
+.kz-char-card--arachna:hover { transform: rotate(0deg) translateY(-8px); box-shadow: 9px 14px 0 var(--arachna-teal); }
+
+/* Character portraits */
 .kz-char-card__portrait-wrap {
   width: 9rem;
   height: 11rem;
@@ -224,6 +425,8 @@
   align-items: flex-end;
   justify-content: center;
   overflow: visible;
+  position: relative;
+  z-index: 1;
   transition: transform var(--duration-normal) var(--ease-bounce);
 }
 
@@ -237,7 +440,7 @@
 }
 
 .kz-char-card:hover .kz-char-card__portrait-wrap {
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-4px) scale(1.03);
 }
 
 .kz-char-card__portrait-wrap--book .kz-char-card__portrait {
@@ -245,59 +448,77 @@
 }
 
 .kz-char-card__name {
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-xl);
-  font-weight: 700;
-  color: var(--burgundy);
+  color: var(--ink);
   line-height: 1.2;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.02em;
 }
 
 .kz-char-card__activity {
   font-family: var(--font-kids);
   font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--burgundy-light);
-  line-height: 1.4;
+  line-height: 1.5;
   flex: 1 1 auto;
   min-height: 0;
+  position: relative;
+  z-index: 1;
 }
 
+/* CTA: sticker pill button */
 .kz-char-card__cta {
   flex-shrink: 0;
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-sm);
   font-weight: 700;
+  letter-spacing: 0.03em;
   padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-full);
   display: inline-block;
+  border: 2.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.15s, transform 0.15s;
 }
 
-.kz-char-card--jenny  .kz-char-card__cta { background: var(--jenny-purple); color: white; }
-.kz-char-card--tony   .kz-char-card__cta { background: var(--tony-amber); color: white; }
-.kz-char-card--flora  .kz-char-card__cta { background: var(--flora-green); color: white; }
+.kz-char-card:hover .kz-char-card__cta {
+  box-shadow: 2px 2px 0 var(--ink);
+  transform: translateY(1px);
+}
+
+.kz-char-card--jenny   .kz-char-card__cta { background: var(--jenny-purple); color: white; }
+.kz-char-card--tony    .kz-char-card__cta { background: var(--tony-amber);   color: white; }
+.kz-char-card--flora   .kz-char-card__cta { background: var(--flora-green);  color: white; }
 .kz-char-card--arachna .kz-char-card__cta { background: var(--arachna-teal); color: white; }
 
 /* ── Hub: imagination spark ──────────────────── */
 .kz-spark {
-  background: linear-gradient(180deg, #FEF0F8 0%, #F5EEFF 100%);
+  background: transparent;
   padding-block: var(--space-12);
+  border-top: 4px solid var(--ink);
 }
 
 .kz-spark__card {
   max-width: 40rem;
   margin-inline: auto;
   text-align: center;
-  background: rgba(255, 255, 255, 0.85);
-  border: 3px solid rgba(123, 75, 148, 0.25);
+  background: #fff9ec;
+  border: 3.5px solid var(--ink);
   border-radius: var(--radius-xl);
   padding: var(--space-8) var(--space-6);
-  box-shadow: 6px 8px 0 rgba(123, 75, 148, 0.12);
+  box-shadow: 8px 8px 0 var(--ink);
 }
 
 .kz-spark__label {
   font-family: var(--font-kids);
   font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--jenny-purple);
   display: block;
@@ -307,8 +528,9 @@
 .kz-spark__prompt {
   font-family: var(--font-kids);
   font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  font-weight: 600;
   color: var(--burgundy);
-  line-height: 1.55;
+  line-height: 1.6;
   margin: 0 0 var(--space-6);
   min-height: 4.5em;
 }
@@ -320,6 +542,29 @@
   gap: var(--space-3);
 }
 
+/* Sticker-style spark button */
+.kz-spark .btn--primary {
+  background: var(--jenny-purple);
+  color: white;
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  font-family: var(--font-kids-display);
+  font-size: var(--text-lg);
+  letter-spacing: 0.03em;
+  transition: transform 0.15s var(--ease-bounce), box-shadow 0.15s;
+}
+
+.kz-spark .btn--primary:hover {
+  background: var(--jenny-purple);
+  transform: translateY(-3px);
+  box-shadow: 5px 8px 0 var(--ink);
+}
+
+.kz-spark .btn--primary:active {
+  transform: translateY(2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
 /* ── Cross-links at bottom of each activity ───── */
 .kz-other-chars {
   text-align: center;
@@ -327,11 +572,12 @@
 }
 
 .kz-other-chars__title {
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-2xl);
   margin: 0 0 var(--space-6);
   color: var(--burgundy);
   line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 .kz-other-chars__links {
@@ -343,6 +589,7 @@
 
 .kz-other-chars__links .btn {
   font-family: var(--font-kids);
+  font-weight: 700;
 }
 
 /* ── Activity page shared styles ──────────────── */
@@ -352,15 +599,17 @@
 }
 
 .kz-activity-title {
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-3xl);
   margin-bottom: var(--space-3);
   line-height: 1.15;
+  letter-spacing: 0.02em;
 }
 
 .kz-activity-subtitle {
   font-family: var(--font-kids);
   font-size: var(--text-lg);
+  font-weight: 600;
   color: var(--burgundy-light);
   max-width: 46ch;
   margin-inline: auto;
@@ -369,6 +618,7 @@
 .kz-activity-hero-link-note {
   font-family: var(--font-kids);
   font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--burgundy-light);
   max-width: 46ch;
   margin-inline: auto;
@@ -434,13 +684,13 @@
 }
 
 .joke-card__setup {
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-xl);
-  font-weight: 600;
   color: var(--burgundy);
   line-height: 1.5;
   margin-bottom: var(--space-6);
   min-height: 4rem;
+  letter-spacing: 0.02em;
 }
 
 .joke-card__punchline-wrapper {
@@ -450,14 +700,14 @@
 }
 
 .joke-card__punchline {
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-xl);
-  font-weight: 700;
   color: var(--tony-amber);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.4s, transform 0.4s var(--ease-bounce);
   line-height: 1.4;
+  letter-spacing: 0.02em;
 }
 
 .joke-card__punchline.is-revealed {
@@ -466,8 +716,9 @@
 }
 
 .joke-card__btn {
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-lg);
+  letter-spacing: 0.03em;
   padding: var(--space-4) var(--space-8);
   background: var(--tony-amber);
   color: white;
@@ -494,6 +745,7 @@
 .joke-counter {
   font-family: var(--font-kids);
   font-size: var(--text-xs);
+  font-weight: 600;
   color: var(--burgundy-light);
   margin-top: var(--space-4);
 }
@@ -541,7 +793,7 @@
   text-align: left;
   font-family: var(--font-kids);
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--burgundy);
   display: flex;
   align-items: center;
@@ -585,7 +837,7 @@
   padding: var(--space-5) var(--space-6) var(--space-5);
 }
 
-/* Jenny speech bubble style */
+/* Jenny speech bubble */
 .jenny-bubble {
   background: var(--jenny-purple);
   color: white;
@@ -593,6 +845,7 @@
   padding: var(--space-4) var(--space-5);
   font-family: var(--font-kids);
   font-size: var(--text-base);
+  font-weight: 600;
   line-height: 1.6;
   position: relative;
   display: flex;
@@ -634,9 +887,8 @@
   border-radius: 50%;
   background: var(--flora-green);
   color: white;
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-xl);
-  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -645,10 +897,11 @@
 }
 
 .recipe-step__title {
-  font-family: var(--font-kids);
+  font-family: var(--font-kids-display);
   font-size: var(--text-2xl);
   color: var(--burgundy);
   line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 .recipe-step__illustration {
@@ -662,6 +915,7 @@
 .recipe-step__text {
   font-family: var(--font-kids);
   font-size: var(--text-lg);
+  font-weight: 600;
   color: var(--burgundy-warm);
   line-height: 1.8;
   background: rgba(107,175,107,0.08);
@@ -680,6 +934,7 @@
 .recipe-step__ingredients li {
   font-family: var(--font-kids);
   font-size: var(--text-base);
+  font-weight: 600;
   padding: var(--space-2) var(--space-3);
   display: flex;
   align-items: center;
@@ -747,7 +1002,6 @@
   font-size: var(--text-sm);
   font-weight: 700;
   color: #3d7a3d;
-  /* Override global `p { max-width: 65ch }` so the line centers in the full recipe column */
   max-width: none;
   width: 100%;
   text-align: center;
@@ -760,10 +1014,10 @@
 .coloring-canvas-hint {
   font-family: var(--font-kids);
   font-size: var(--text-xs);
+  font-weight: 600;
   color: var(--burgundy-light);
   margin-top: var(--space-2);
   margin-bottom: 0;
-  /* Match .canvas-wrapper width so the line centers under the frame (override global `p { max-width: 65ch }`) */
   max-width: 600px;
   width: 100%;
   text-align: center;
@@ -782,8 +1036,6 @@
   }
 }
 
-/* Square frame + absolute canvas = full area is drawable (avoids max-width:100%
-   on canvas shrinking width while inline height stays large, which misaligns coords). */
 .canvas-wrapper {
   position: relative;
   width: 100%;
@@ -870,12 +1122,6 @@
   transform: scale(1.2);
 }
 
-/* Dark kids headers: hamburger hit area visible on hover */
-body.kids-zone-page .nav-toggle:hover,
-html.kids-zone-page .nav-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
 .coloring-actions {
   display: flex;
   flex-direction: column;
@@ -885,10 +1131,125 @@ html.kids-zone-page .nav-toggle:hover {
 .coloring-toolbar-label {
   font-family: var(--font-kids);
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--burgundy-light);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+/* ── Page load animations (Sticker Book entrance) ── */
+
+/* Hero badge: drops from above and bounces into place */
+@keyframes kz-badge-drop {
+  0%   { opacity: 0; transform: translateY(-22px) scale(0.75); }
+  55%  { opacity: 1; transform: translateY(5px) scale(1.07); }
+  75%  { transform: translateY(-2px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Hero title: stamps down from slightly larger, snaps into place */
+@keyframes kz-stamp {
+  0%   { opacity: 0; transform: scale(1.3) rotate(-2.5deg); }
+  50%  { opacity: 1; transform: scale(0.95) rotate(0.5deg); }
+  70%  { transform: scale(1.03) rotate(-0.2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* Subtitle / spark card: slides up gently */
+@keyframes kz-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Button: pops out of nothing */
+@keyframes kz-pop {
+  0%   { opacity: 0; transform: scale(0.35); }
+  55%  { opacity: 1; transform: scale(1.16); }
+  75%  { transform: scale(0.94); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/*
+  Character cards: drop in using the CSS `translate` property
+  (separate from `transform`) so the card's rotation and
+  hover transitions are completely unaffected.
+*/
+@keyframes kz-card-drop {
+  0%   { opacity: 0; translate: 0 -32px; }
+  55%  { opacity: 1; translate: 0 6px; }
+  75%  { translate: 0 -2px; }
+  100% { opacity: 1; translate: 0 0; }
+}
+
+/* ── Apply to hero elements ─────────────────── */
+.kz-hero__label {
+  animation: kz-badge-drop 0.55s var(--ease-bounce) 0.08s both;
+}
+
+.kz-hero__title {
+  animation: kz-stamp 0.65s var(--ease-bounce) 0.24s both;
+}
+
+.kz-hero__subtitle {
+  animation: kz-fade-up 0.5s ease 0.52s both;
+}
+
+.kz-hero .btn--primary {
+  animation: kz-pop 0.5s var(--ease-bounce) 0.68s both;
+}
+
+/* ── Character cards: staggered drop ─────────── */
+@supports (translate: 0px) {
+  .kz-char-card {
+    animation: kz-card-drop 0.55s var(--ease-bounce) var(--card-del, 0.78s) both;
+  }
+
+  .kz-char-card--jenny  { --card-del: 0.78s; }
+  .kz-char-card--tony   { --card-del: 0.94s; }
+  .kz-char-card--flora  { --card-del: 1.10s; }
+  .kz-char-card--arachna { --card-del: 1.26s; }
+}
+
+/* ── Spark card ──────────────────────────────── */
+.kz-spark__card {
+  animation: kz-fade-up 0.6s ease 1.05s both;
+}
+
+/* ── Activity page entrances ─────────────────── */
+.kz-activity-portrait-wrap {
+  animation: kz-pop 0.55s var(--ease-bounce) 0.12s both;
+}
+
+.kz-activity-title {
+  animation: kz-fade-up 0.5s ease 0.28s both;
+}
+
+.kz-activity-subtitle {
+  animation: kz-fade-up 0.5s ease 0.42s both;
+}
+
+/* ── Respect reduced motion preference ──────── */
+@media (prefers-reduced-motion: reduce) {
+  .kz-hero__label,
+  .kz-hero__title,
+  .kz-hero__subtitle,
+  .kz-hero .btn--primary,
+  .kz-spark__card,
+  .kz-activity-portrait-wrap,
+  .kz-activity-title,
+  .kz-activity-subtitle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .kz-char-card {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+  }
+  .kz-star {
+    animation: none !important;
+  }
 }
 
 /* Print: show all recipe steps */

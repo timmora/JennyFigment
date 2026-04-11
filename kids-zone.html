@@ -16,17 +16,17 @@
   <header class="site-nav" role="banner">
     <div class="container site-nav__inner">
       <a href="index.html" class="site-nav__logo" aria-label="Jennifer Hayes — Home">
-        <span class="site-nav__logo-text" style="color:var(--cream-light);">Jennifer Hayes</span>
+        <span class="site-nav__logo-text">Jennifer Hayes</span>
       </a>
       <nav aria-label="Primary">
         <ul class="site-nav__links" role="list">
-          <li><a href="books.html" style="color:rgba(247,223,234,0.7);">Books</a></li>
-          <li><a href="educators-parents.html" style="color:rgba(247,223,234,0.7);">For Grown-Ups</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="educators-parents.html">For Grown-Ups</a></li>
         </ul>
       </nav>
       <div class="site-nav__right">
-        <button id="nav-toggle" class="nav-toggle" style="--hamburger-color:var(--cream-light);" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
-          <span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span><span style="background:var(--cream-light);"></span>
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
@@ -42,12 +42,15 @@
     <!-- Hero -->
     <section class="kz-hero" aria-labelledby="kz-heading">
       <div class="kz-hero__bg" aria-hidden="true">
-        <div class="kz-star" style="width:12px;height:12px;top:15%;left:8%;background:var(--pink-soft);--dur:3s;--del:0s;"></div>
-        <div class="kz-star" style="width:8px;height:8px;top:70%;left:90%;background:var(--tony-amber);--dur:4s;--del:0.5s;"></div>
-        <div class="kz-star" style="width:14px;height:14px;top:40%;left:3%;background:var(--flora-green);--dur:5s;--del:1s;"></div>
-        <div class="kz-star" style="width:10px;height:10px;top:80%;left:60%;background:var(--arachna-teal);--dur:3.5s;--del:1.5s;"></div>
-        <div class="kz-star" style="width:6px;height:6px;top:25%;left:75%;background:white;--dur:2.5s;--del:0.8s;"></div>
-        <div class="kz-star" style="width:16px;height:16px;top:55%;left:45%;background:var(--andy-blue);--dur:4.5s;--del:2s;opacity:0.4;"></div>
+        <div class="kz-star" style="width:28px;height:28px;top:15%;left:8%;background:#ffffff;--dur:7s;--del:0s;"></div>
+        <div class="kz-star" style="width:18px;height:18px;top:70%;left:90%;background:#FFE566;--dur:5s;--del:0.5s;"></div>
+        <div class="kz-star" style="width:34px;height:34px;top:40%;left:3%;background:#ffffff;--dur:9s;--del:1s;opacity:0.65;"></div>
+        <div class="kz-star" style="width:22px;height:22px;top:80%;left:60%;background:#b8f0ec;--dur:6.5s;--del:1.5s;"></div>
+        <div class="kz-star" style="width:14px;height:14px;top:25%;left:75%;background:#FFE566;--dur:8s;--del:0.8s;"></div>
+        <div class="kz-star" style="width:20px;height:20px;top:10%;left:55%;background:#c8f5c8;--dur:6s;--del:3s;"></div>
+        <div class="kz-star" style="width:16px;height:16px;top:85%;left:20%;background:#ffffff;--dur:5.5s;--del:1.2s;"></div>
+        <div class="kz-star" style="width:52px;height:52px;top:5%;left:85%;background:#ffffff;--dur:16s;--del:0s;opacity:0.1;"></div>
+        <div class="kz-star" style="width:40px;height:40px;top:62%;left:10%;background:#FFE566;--dur:13s;--del:4s;opacity:0.13;"></div>
       </div>
       <div class="container kz-hero__content">
         <span class="kz-hero__label">Welcome to</span>
@@ -57,7 +60,7 @@
         <p class="kz-hero__subtitle">
           Pick a character to start your adventure!
         </p>
-        <a href="#characters" class="btn btn--primary btn--lg" style="font-family:var(--font-kids);font-size:var(--text-xl);">
+        <a href="#characters" class="btn btn--primary btn--lg">
           Let's Go!
         </a>
       </div>
@@ -67,7 +70,7 @@
     <section class="kz-characters" id="characters" aria-labelledby="chars-kz-heading">
       <div class="container">
         <div class="text-center" style="margin-bottom:var(--space-10);">
-          <h2 id="chars-kz-heading" style="font-family:var(--font-kids);font-size:var(--text-3xl);color:var(--burgundy);" data-reveal>
+          <h2 id="chars-kz-heading" style="font-size:var(--text-3xl);color:var(--burgundy);" data-reveal>
             Who Do You Want to Visit?
           </h2>
           <p style="font-family:var(--font-kids);font-size:var(--text-lg);color:var(--burgundy-light);max-width:46ch;margin-inline:auto;" data-reveal data-reveal-delay="1">
@@ -126,14 +129,14 @@
           <span class="kz-spark__label" id="spark-heading">Imagination spark</span>
           <p class="kz-spark__prompt" id="kz-spark-text" aria-live="polite">Loading a fun idea…</p>
           <div class="kz-spark__actions">
-            <button type="button" class="btn btn--primary btn--lg" id="kz-spark-new" style="font-family:var(--font-kids);">Another idea!</button>
+            <button type="button" class="btn btn--primary btn--lg" id="kz-spark-new">Another idea!</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Safe note for parents -->
-    <div style="background:var(--burgundy);color:var(--cream-light);padding:var(--space-5) 0;" role="note" aria-label="For parents">
+    <div style="background:#1a1a1a;color:var(--cream-light);padding:var(--space-5) 0;border-top:4px solid #1a1a1a;" role="note" aria-label="For parents">
       <div class="container" style="display:flex;align-items:flex-start;gap:var(--space-4);flex-wrap:wrap;">
         <div>
           <strong style="font-size:var(--text-sm);">For Parents:</strong>
