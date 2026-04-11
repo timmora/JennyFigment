@@ -451,6 +451,8 @@
       var btnNext = root.querySelector('.visits-gallery__nav-btn--next');
       if (!scroller || !strip || !btnPrev || !btnNext) return;
 
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       function figures() {
         return strip.querySelectorAll('.visits-gallery__figure');
       }
@@ -498,7 +500,7 @@
         return best;
       }
 
-      function scrollToIndex(i) {
+      function scrollToIndex(i, instant) {
         var figs = figures();
         if (!figs.length) return;
         i = Math.max(0, Math.min(figs.length - 1, i));
@@ -507,25 +509,56 @@
         var target = leftEdge - (scroller.clientWidth - figW) / 2;
         var maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
         target = Math.max(0, Math.min(target, maxScroll));
-        scroller.scrollTo({ left: target, behavior: 'smooth' });
+        var smooth = !instant && !reducedMotion;
+        scroller.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
+      }
+
+      var scrollEps = 8;
+
+      function goNext() {
+        var figs = figures();
+        var n = figs.length;
+        if (n < 2) return;
+        var maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+        /* At the scroll end the last slide often cannot center, so nearestIndex() may not be n-1 — use scrollLeft. */
+        if (maxScroll > scrollEps && scroller.scrollLeft >= maxScroll - scrollEps) {
+          scrollToIndex(0, true);
+          return;
+        }
+        var i = nearestIndex();
+        if (i >= n - 1) {
+          scrollToIndex(0, true);
+        } else {
+          scrollToIndex(i + 1, false);
+        }
+      }
+
+      function goPrev() {
+        var figs = figures();
+        var n = figs.length;
+        if (n < 2) return;
+        var maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+        if (maxScroll > scrollEps && scroller.scrollLeft <= scrollEps) {
+          scrollToIndex(n - 1, true);
+          return;
+        }
+        var i = nearestIndex();
+        if (i <= 0) {
+          scrollToIndex(n - 1, true);
+        } else {
+          scrollToIndex(i - 1, false);
+        }
       }
 
       function updateNav() {
-        var maxScroll = scroller.scrollWidth - scroller.clientWidth;
-        var eps = 4;
-        var atStart = scroller.scrollLeft <= eps;
-        var atEnd = scroller.scrollLeft >= maxScroll - eps;
-        var single = maxScroll <= eps;
-        btnPrev.disabled = atStart || single;
-        btnNext.disabled = atEnd || single;
+        var n = figures().length;
+        var single = n < 2;
+        btnPrev.disabled = single;
+        btnNext.disabled = single;
       }
 
-      btnPrev.addEventListener('click', function () {
-        scrollToIndex(nearestIndex() - 1);
-      });
-      btnNext.addEventListener('click', function () {
-        scrollToIndex(nearestIndex() + 1);
-      });
+      btnPrev.addEventListener('click', goPrev);
+      btnNext.addEventListener('click', goNext);
 
       scroller.addEventListener('scroll', updateNav, { passive: true });
       window.addEventListener(
@@ -539,10 +572,10 @@
       scroller.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') {
           e.preventDefault();
-          scrollToIndex(nearestIndex() - 1);
+          goPrev();
         } else if (e.key === 'ArrowRight') {
           e.preventDefault();
-          scrollToIndex(nearestIndex() + 1);
+          goNext();
         }
       });
 
