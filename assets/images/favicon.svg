@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jennifer Hayes">
+  <title>Jennifer Hayes</title>
+  <rect width="64" height="64" rx="14" fill="#e24d86"/>
+  <!-- four-point sparkle, the site's ✦ motif; simple shapes stay legible at 16px -->
+  <path d="M32 8c1.6 11.2 4.8 20 12 24-7.2 4-10.4 12.8-12 24-1.6-11.2-4.8-20-12-24 7.2-4 10.4-12.8 12-24z" fill="#fffaf7"/>
+  <circle cx="14" cy="17" r="3.2" fill="#f8bfd4"/>
+  <circle cx="50" cy="47" r="2.4" fill="#f8bfd4"/>
+</svg>

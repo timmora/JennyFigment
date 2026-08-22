@@ -20,7 +20,8 @@ function withCurrent(template, current) {
     .replaceAll('{{BOOKS_CURRENT}}', current === 'books' ? ' aria-current="page"' : '')
     .replaceAll('{{EDUCATORS_CURRENT}}', current === 'educators' ? ' aria-current="page"' : '')
     .replaceAll('{{ABOUT_CURRENT}}', current === 'about' ? ' aria-current="page"' : '')
-    .replaceAll('{{CONTACT_CURRENT}}', current === 'contact' ? ' aria-current="page"' : '');
+    .replaceAll('{{CONTACT_CURRENT}}', current === 'contact' ? ' aria-current="page"' : '')
+    .replaceAll('{{VISITS_CURRENT}}', current === 'visits' ? ' aria-current="page"' : '');
 }
 
 for (const target of targets) {

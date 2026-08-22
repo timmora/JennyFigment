@@ -261,9 +261,23 @@
           var img = btn.querySelector('img');
           if (!img) return;
           lastFocused = btn;
+          dialog.classList.remove('is-ready');
           full.src = img.currentSrc || img.src;
           full.alt = img.alt;
           dialog.showModal();
+
+          /* Reveal picture and close button together, once the image has
+             decoded — otherwise the button shows against a blank frame.
+             `finally` so a decode failure can't strand the button hidden. */
+          var reveal = function () { dialog.classList.add('is-ready'); };
+          if (typeof full.decode === 'function') {
+            full.decode().then(reveal).catch(reveal);
+          } else if (full.complete) {
+            reveal();
+          } else {
+            full.addEventListener('load', reveal, { once: true });
+            full.addEventListener('error', reveal, { once: true });
+          }
         });
       });
 
@@ -276,6 +290,7 @@
       });
 
       dialog.addEventListener('close', function () {
+        dialog.classList.remove('is-ready');   /* so the next open re-animates */
         full.removeAttribute('src');
         if (lastFocused) lastFocused.focus();
       });
