@@ -159,11 +159,19 @@
         <span class="section-label">A peek inside</span>
         <h2 id="penny-art-heading" class="section-title crayon-underline crayon-underline--yellow">Illustrations</h2>
         <p style="max-width:60ch;">A little sneak peek of the art from the book! <br> Click to see the full illustration.</p>
-        <div style="display:grid;gap:var(--space-5);grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));margin-top:var(--space-6);">
-          <img src="../assets/images/books/penny-art-alebrije.png" alt="Penny as a winged alebrije dog, glowing among golden butterflies." width="2048" height="2048" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:var(--radius-lg);background:rgba(58,31,43,0.06);" />
-          <img src="../assets/images/books/penny-art-coin-face.png" alt="An illustrated lucky penny, face up." width="2048" height="2048" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:var(--radius-lg);background:rgba(58,31,43,0.06);" />
-          <img src="../assets/images/books/penny-art-butterfly.jpg" alt="Hand-drawn monarch butterfly with orange and black wings." width="900" height="792" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:var(--radius-lg);background:rgba(58,31,43,0.06);" />
-          <img src="../assets/images/books/penny-art-portrait.jpg" alt="Pencil drawing of Penny, a scruffy little dog sitting down, with a butterfly perched on her nose." width="1145" height="1749" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:var(--radius-lg);background:rgba(58,31,43,0.06);" />
+        <div class="penny-art-grid">
+          <button type="button" class="penny-art-thumb">
+            <img src="../assets/images/books/penny-art-alebrije.png" alt="Penny as a winged alebrije dog, glowing among golden butterflies." width="2048" height="2048" loading="lazy" decoding="async" />
+          </button>
+          <button type="button" class="penny-art-thumb">
+            <img src="../assets/images/books/penny-art-coin-face.png" alt="An illustrated lucky penny, face up." width="2048" height="2048" loading="lazy" decoding="async" />
+          </button>
+          <button type="button" class="penny-art-thumb">
+            <img src="../assets/images/books/penny-art-butterfly.jpg" alt="Hand-drawn monarch butterfly with orange and black wings." width="900" height="792" loading="lazy" decoding="async" />
+          </button>
+          <button type="button" class="penny-art-thumb">
+            <img src="../assets/images/books/penny-art-portrait.jpg" alt="Pencil drawing of Penny, a scruffy little dog sitting down, with a butterfly perched on her nose." width="1145" height="1749" loading="lazy" decoding="async" />
+          </button>
         </div>
       </div>
     </section>
@@ -219,7 +227,59 @@
       <div class="site-footer__bottom"><span>© 2024 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>
   </footer>
+  <dialog id="penny-lightbox" class="art-lightbox" aria-label="Illustration viewer">
+    <button type="button" class="art-lightbox__close" aria-label="Close illustration">&times;</button>
+    <img class="art-lightbox__img" alt="" />
+  </dialog>
+
   <script src="../js/main.js" defer></script>
   <script src="../js/lang-toggle.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var thumbs = document.querySelectorAll('.penny-art-thumb');
+      var dialog = document.getElementById('penny-lightbox');
+      if (!thumbs.length || !dialog) return;
+
+      /* No <dialog> support: fall back to opening the file directly rather
+         than leaving a button that does nothing. */
+      if (typeof dialog.showModal !== 'function') {
+        thumbs.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var img = btn.querySelector('img');
+            if (img) window.open(img.currentSrc || img.src, '_blank', 'noopener');
+          });
+        });
+        return;
+      }
+
+      var full = dialog.querySelector('.art-lightbox__img');
+      var closeBtn = dialog.querySelector('.art-lightbox__close');
+      var lastFocused = null;
+
+      thumbs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var img = btn.querySelector('img');
+          if (!img) return;
+          lastFocused = btn;
+          full.src = img.currentSrc || img.src;
+          full.alt = img.alt;
+          dialog.showModal();
+        });
+      });
+
+      closeBtn.addEventListener('click', function () { dialog.close(); });
+
+      /* Clicking the backdrop (anywhere outside the picture) closes it.
+         Esc is handled natively by showModal(). */
+      dialog.addEventListener('click', function (e) {
+        if (e.target === dialog) dialog.close();
+      });
+
+      dialog.addEventListener('close', function () {
+        full.removeAttribute('src');
+        if (lastFocused) lastFocused.focus();
+      });
+    });
+  </script>
 </body>
 </html>

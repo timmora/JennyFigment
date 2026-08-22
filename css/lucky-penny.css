@@ -205,6 +205,118 @@ body.page-theme-penny {
   margin-top: var(--space-4);
 }
 
+/* ---------- Illustrations grid + click-to-enlarge lightbox ---------- */
+.penny-art-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  margin-top: var(--space-6);
+}
+
+.penny-art-thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: rgba(58, 31, 43, 0.06);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform var(--duration-normal) var(--ease-bounce),
+              box-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.penny-art-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.penny-art-thumb:hover,
+.penny-art-thumb:focus-visible {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 28px -12px rgba(36, 21, 72, 0.42);
+}
+
+/* Don't set `position` here. The UA gives dialog:modal position:fixed with
+   inset:0 + margin:auto — that pair is what centres a modal. Overriding it
+   drops the dialog back into normal flow (pinned top-left, and the page
+   jumps to scroll it into view). position:fixed already anchors the
+   absolutely-positioned close button, so `relative` bought nothing. */
+.art-lightbox {
+  inset: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: min(92vw, 60rem);
+  max-height: 92vh;
+  overflow: visible;
+}
+
+.art-lightbox::backdrop {
+  background: rgba(36, 21, 72, 0.82);
+  backdrop-filter: blur(3px);
+}
+
+.art-lightbox__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 60rem);
+  max-height: 92vh;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+  background: var(--penny-cream, #fdf5e8);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+.art-lightbox[open] .art-lightbox__img {
+  animation: art-zoom-in 260ms var(--ease-bounce) both;
+}
+
+@keyframes art-zoom-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.art-lightbox__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: var(--penny-magenta, #c8347f);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-smooth),
+              transform var(--duration-fast) var(--ease-bounce);
+}
+
+.art-lightbox__close:hover,
+.art-lightbox__close:focus-visible {
+  background: var(--penny-orange, #c9601f);
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .penny-art-thumb:hover,
+  .penny-art-thumb:focus-visible { transform: none; }
+  .art-lightbox[open] .art-lightbox__img { animation: none; }
+  .art-lightbox__close:hover,
+  .art-lightbox__close:focus-visible { transform: none; }
+}
+
 /* ---------- Bright section bands ---------- */
 .penny-band-marigold {
   background: linear-gradient(180deg, rgba(240, 176, 62, 0.32), rgba(253, 245, 232, 1));
