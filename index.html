@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jennifer Hayes — Author of Children's Books</title>
-  <meta name="description" content="Dive into the whimsical world of Jenny Figment and friends! Children's books for grades 1–5, school visit programs, and free educator resources by author Jennifer Hayes." />
+  <meta name="description" content="Children's books by Jennifer Hayes — the bilingual picture book Lucky Penny and the Jenny Figment series. School visits in Northern and Central Illinois, free educator resources, and a magical Kids Zone." />
   <meta name="keywords" content="childrens fantasy books, author school visits Illinois, classroom reading activities, middle grade imagination books, Jenny Figment" />
   <meta property="og:title" content="The Extraordinary Imagination of Jenny Figment" />
   <meta property="og:description" content="Children's books for curious young minds. School visits, free resources, and a magical Kids Zone!" />
@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/homepage.css" />
+  <link rel="stylesheet" href="css/lucky-penny.css" />
+  <link rel="stylesheet" href="css/uplift.css" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -24,57 +26,59 @@
   <header class="site-nav" role="banner">
     <div class="container site-nav__inner">
       <a href="index.html" class="site-nav__logo" aria-label="Jennifer Hayes — Home"><span class="site-nav__logo-text">Jennifer Hayes</span></a>
-      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul></nav>
       <div class="site-nav__right"><a href="kids-zone.html" class="btn-kids-zone"><span class="sparkle" aria-hidden="true">✦</span> Kids Zone!</a><button id="nav-toggle" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button></div>
     </div>
   </header>
   <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
-    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul>
     <a href="kids-zone.html" class="btn-kids-zone u-drawer-cta"><span aria-hidden="true">✦</span> Enter Kids Zone!</a>
   </nav>
 
 
   <main id="main-content">
-    <section class="home-hero section" aria-labelledby="hero-heading"> 
+    <section class="home-hero home-hero--elevated section" aria-labelledby="hero-heading">
+      <span class="hero-rules" aria-hidden="true"></span>
+      <span class="hero-torn" aria-hidden="true"></span>
+
       <div class="container home-hero__inner">
         <div>
-          <p class="hero-kicker">Books by Jennifer Hayes</p>
-          <h1 id="hero-heading" class="home-hero__title">Simple stories, BIG imagination</h1>
+          <p class="hero-kicker">Children's books by Jennifer Hayes</p>
+          <h1 id="hero-heading" class="home-hero__title">Simple stories, <span class="home-hero__accent">BIG</span> imagination</h1>
           <p class="home-hero__copy">
-            Welcome to Jenny Figment's world! Explore books, playful activities, and classroom-ready resources!
+            Four books, two languages, and a whole zone of things to make and laugh at. Come find your next favorite story.
           </p>
           <div class="home-hero__actions">
-            <a href="books.html" class="btn btn--primary">Explore the Books</a>
-            <a href="kids-zone.html" class="btn btn--secondary">Visit Kids Zone</a>
+            <a href="books.html" class="btn btn--primary pop-press">Explore the Books</a>
+            <a href="kids-zone.html" class="btn btn--secondary pop-press">Visit Kids Zone</a>
           </div>
+          <ul class="home-hero__facts" role="list">
+            <li><strong>4</strong> books</li>
+            <li><strong>Ages 4–11</strong></li>
+            <li><strong>School visits</strong> in Illinois</li>
+          </ul>
         </div>
-        <aside class="paint-note" aria-labelledby="featured-book-heading">
+
+        <aside class="paint-note paint-note--penny" aria-labelledby="featured-book-heading">
           <div class="paint-note__layout">
             <div class="paint-note__body">
-              <p class="paint-note__label">Featured</p>
-              <h2 id="featured-book-heading">The Extraordinary Imagination of Jenny Figment</h2>
-              <p>A story about a little girl with a BIG imagination!</p>
-              <a href="books/jenny-figment-book-1.html" class="paint-note__cta">Read about the book</a>
+              <p class="paint-note__label paint-note__label--new" style="color: #FFFFFF">New book · Libro nuevo</p>
+              <h2 id="featured-book-heading">Lucky Penny</h2>
+              <p>A bilingual picture book about a rescue dog, a very special little girl, and the true magic of friendship.</p>
+              <a href="books/lucky-penny.html" class="paint-note__cta">Read about Lucky Penny</a>
             </div>
-            <a href="books/jenny-figment-book-1.html" class="paint-note__cover-wrap" aria-label="The Extraordinary Imagination of Jenny Figment — view book page">
-              <img
-                class="paint-note__cover"
-                src="assets/images/books/cover-jenny-figment-book-1.png"
-                alt=""
-                width="320"
-                height="480"
-                loading="eager"
-                decoding="async"
-              />
+            <a href="books/lucky-penny.html" class="paint-note__cover-wrap" aria-label="Lucky Penny — view book page">
+              <img class="paint-note__cover" src="assets/images/books/cover-lucky-penny.png" alt="" width="1226" height="1604" loading="lazy" decoding="async" />
             </a>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section home-paths" aria-labelledby="paths-heading">
+
+    <section class="section home-paths band-blue" aria-labelledby="paths-heading">
       <div class="container">
-        <h2 id="paths-heading" class="section-title">There's something for everyone!</h2>
+        <h2 id="paths-heading" class="section-title crayon-underline crayon-underline--blue">There's something for everyone!</h2>
         <div class="path-grid">
           <article class="path-card path-card--kids">
             <h3>For Kids</h3>
@@ -90,25 +94,42 @@
       </div>
     </section>
 
-    <section class="section home-books" aria-labelledby="books-heading">
+
+    <section class="section home-books band-yellow home-books--paper" aria-labelledby="books-heading">
+      <span class="hero-rules" aria-hidden="true"></span>
+      <span class="hero-torn-top" aria-hidden="true"></span>
+      <span class="hero-torn" aria-hidden="true"></span>
       <div class="container">
         <div class="home-books__head">
-          <h2 id="books-heading" class="section-title">From the bookshelf</h2>
+          <h2 id="books-heading" class="section-title crayon-underline">From the bookshelf</h2>
           <a href="books.html" class="home-text-link">See all books</a>
         </div>
-        <div class="book-shelf">
+        <div class="book-shelf book-shelf--covers">
+          <a href="books/lucky-penny.html" class="mini-book-card">
+            <span class="shelf-cover">
+              <img class="mini-book-card__thumb" src="assets/images/books/cover-lucky-penny.png" alt="Cover of Lucky Penny / Penny con Suerte" width="1226" height="1604" loading="lazy" decoding="async" />
+            </span>
+            <h3>Lucky Penny</h3>
+            <p>A bilingual story about finding a forever home.</p>
+          </a>
           <a href="books/jenny-figment-book-1.html" class="mini-book-card">
-            <img class="mini-book-card__thumb" src="assets/images/books/cover-jenny-figment-book-1.png" alt="" width="200" height="300" loading="lazy" decoding="async" />
+            <span class="shelf-cover">
+              <img class="mini-book-card__thumb" src="assets/images/books/cover-jenny-figment-book-1.png" alt="Cover of The Extraordinary Imagination of Jenny Figment" width="691" height="1024" loading="lazy" decoding="async" />
+            </span>
             <h3>The Extraordinary Imagination of Jenny Figment</h3>
             <p>Where imagination sparks the greatest adventures.</p>
           </a>
           <a href="books/andys-space-friends.html" class="mini-book-card">
-            <img class="mini-book-card__thumb" src="assets/images/books/cover-andys-space-friends.png" alt="" width="200" height="300" loading="lazy" decoding="async" />
+            <span class="shelf-cover">
+              <img class="mini-book-card__thumb" src="assets/images/books/cover-andys-space-friends.png" alt="Cover of Andy's Space Friends" width="691" height="1024" loading="lazy" decoding="async" />
+            </span>
             <h3>Andy's Space Friends</h3>
             <p>Blast off with friendship, discovery, and space fun.</p>
           </a>
           <a href="books/riddle-fairy-tale-village.html" class="mini-book-card">
-            <img class="mini-book-card__thumb" src="assets/images/books/cover-riddle-fairy-tale-village.png" alt="" width="200" height="300" loading="lazy" decoding="async" />
+            <span class="shelf-cover">
+              <img class="mini-book-card__thumb" src="assets/images/books/cover-riddle-fairy-tale-village.png" alt="Cover of The Riddle of the Fairytale Village" width="639" height="1024" loading="lazy" decoding="async" />
+            </span>
             <h3>The Riddle of the Fairytale Village</h3>
             <p>A magical mystery for young imaginations.</p>
           </a>
@@ -116,9 +137,9 @@
       </div>
     </section>
 
-    <section class="section home-newsletter" aria-labelledby="newsletter-heading">
+    <section class="section home-newsletter band-pink" aria-labelledby="newsletter-heading">
       <div class="container">
-        <h2 id="newsletter-heading" class="section-title">Join the Imagination Club</h2>
+        <h2 id="newsletter-heading" class="section-title"><span class="crayon-word">Join</span> the Imagination Club</h2>
         <p class="home-newsletter__copy">Get monthly printable activities and early news about new books!</p>
         <form class="newsletter-form" action="#" method="post" novalidate>
           <label for="newsletter-email" class="sr-only">Email address</label>
@@ -139,9 +160,9 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/lucky-penny.html">Lucky Penny</a></li><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
         <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents.html">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom"><span>© 2024 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>

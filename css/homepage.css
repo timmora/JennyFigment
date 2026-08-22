@@ -252,22 +252,6 @@
   );
 }
 
-.home-books .section-title {
-  position: relative;
-  padding-bottom: var(--space-3);
-}
-
-.home-books .section-title::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 2.75rem;
-  height: 0.22rem;
-  background: var(--tony-amber);
-  border-radius: 2px;
-}
-
 .home-books__head {
   display: flex;
   align-items: baseline;
@@ -371,3 +355,235 @@
 #main-content > .section + .section {
   border-top: none;
 }
+
+#main-content > .home-hero {
+  border-bottom: none;
+}
+
+#main-content > .home-books {
+  border-bottom: none;
+}
+
+#main-content > .home-paths {
+  border-bottom: none;
+}
+
+
+/* ============================================
+   Elevated hero — pastel confetti ground,
+   accented headline, Lucky Penny featured card
+   ============================================ */
+
+.home-hero--elevated {
+  overflow: hidden;
+  /* Tighter above the headline, unchanged below so the torn edge keeps its room */
+  padding-block: clamp(2.75rem, 7vw, 5.5rem) clamp(3.5rem, 9vw, 7rem);
+  background: linear-gradient(180deg, #fffdfa 0%, var(--cream-paper) 100%);
+}
+
+.home-hero--elevated::after { display: none; }
+
+/* --- scrapbook paper ground --- */
+.home-hero__confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-rules {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(180deg, transparent 0 2.1rem, rgba(91, 147, 224, 0.16) 2.1rem 2.2rem),
+    linear-gradient(90deg, transparent 0 3.5rem, rgba(242, 96, 155, 0.3) 3.5rem 3.62rem, transparent 3.62rem);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 70%, transparent 90%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 70%, transparent 90%, transparent);
+}
+
+.hero-torn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2rem;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C30,2 55,22 80,12 C110,2 130,20 160,10 C195,0 215,18 245,8 C275,0 300,16 335,6 C365,0 385,18 420,8 C450,0 470,20 505,10 C535,0 560,22 595,12 C625,2 645,20 680,10 C710,0 735,18 770,8 C800,0 820,16 855,6 C885,0 910,20 945,10 C975,0 995,18 1030,8 C1060,0 1085,22 1120,12 C1150,2 1175,16 1200,8 L1200,28 L0,28 Z' fill='%23e6f2ff'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.hero-torn-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 2rem;
+  z-index: 2;
+  pointer-events: none;
+  transform: scaleY(-1);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C30,2 55,22 80,12 C110,2 130,20 160,10 C195,0 215,18 245,8 C275,0 300,16 335,6 C365,0 385,18 420,8 C450,0 470,20 505,10 C535,0 560,22 595,12 C625,2 645,20 680,10 C710,0 735,18 770,8 C800,0 820,16 855,6 C885,0 910,20 945,10 C975,0 995,18 1030,8 C1060,0 1085,22 1120,12 C1150,2 1175,16 1200,8 L1200,28 L0,28 Z' fill='%23e6f2ff'/%3E%3C/svg%3E");
+}
+
+/* The Books band picks the paper idea up again */
+.home-books--paper {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-books--paper .hero-rules {
+  opacity: 0.75;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 74%, transparent 92%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 74%, transparent 92%, transparent);
+}
+
+.home-books--paper > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.home-books--paper .hero-torn {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C30,2 55,22 80,12 C110,2 130,20 160,10 C195,0 215,18 245,8 C275,0 300,16 335,6 C365,0 385,18 420,8 C450,0 470,20 505,10 C535,0 560,22 595,12 C625,2 645,20 680,10 C710,0 735,18 770,8 C800,0 820,16 855,6 C885,0 910,20 945,10 C975,0 995,18 1030,8 C1060,0 1085,22 1120,12 C1150,2 1175,16 1200,8 L1200,28 L0,28 Z' fill='%23ffeaf3'/%3E%3C/svg%3E");
+}
+
+/* --- headline --- */
+.home-hero--elevated .home-hero__title {
+  max-width: 18ch;
+  line-height: 1.05;
+}
+
+.home-hero__accent {
+  position: relative;
+  display: inline-block;
+  color: var(--pink-hot);
+}
+
+.home-hero__accent::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -0.12em;
+  height: 0.16em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2,8 C18,2 32,10 48,5 C64,0 78,9 94,4 C104,1 112,6 118,4' fill='none' stroke='%23f0b429' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.home-hero--elevated .home-hero__copy {
+  font-size: var(--text-lg);
+  color: var(--burgundy-warm);
+}
+
+/* --- fact row --- */
+.home-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-8) 0 0;
+  font-size: var(--text-sm);
+  color: var(--burgundy-light);
+}
+
+.home-hero__facts li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.home-hero__facts li + li {
+  padding-left: var(--space-6);
+  border-left: 2px dotted rgba(79, 61, 66, 0.22);
+}
+
+.home-hero__facts strong {
+  font-family: var(--font-kids);
+  font-weight: 700;
+  color: var(--pink-hot);
+}
+
+/* --- featured card, Lucky Penny dress --- */
+.paint-note--penny {
+  background: #fdf5e8;
+  border-color: rgba(200, 52, 127, 0.22);
+  box-shadow: 0 14px 38px rgba(36, 21, 72, 0.18);
+  transform: rotate(-0.8deg);
+  transition: transform var(--duration-normal) var(--ease-bounce);
+}
+
+.paint-note--penny:hover {
+  transform: rotate(0deg) translateY(-3px);
+}
+
+/* Same masking tape as the taped covers on the bookshelf */
+.paint-note--penny::before {
+  top: -0.75rem;
+  width: 4.6rem;
+  height: 1.5rem;
+  border-radius: 0;
+  background: rgba(246, 200, 95, 0.62);
+  border-left: 1px dashed rgba(255, 255, 255, 0.55);
+  border-right: 1px dashed rgba(255, 255, 255, 0.55);
+  box-shadow: 0 1px 2px rgba(43, 22, 27, 0.14);
+  transform: rotate(-4deg);
+}
+
+.paint-note--penny h2 {
+  font-size: var(--text-2xl);
+  color: #c9601f;
+}
+
+.paint-note__label--new {
+  display: inline-block;
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: #fff;
+  background: #b32a70;
+  border-radius: 999px;
+  padding: 0.35rem 0.95rem;
+}
+
+.paint-note--penny .paint-note__cta {
+  color: #c8347f;
+}
+
+.paint-note--penny .paint-note__cta:hover {
+  color: #c9601f;
+}
+
+.paint-note--penny .paint-note__cover-wrap {
+  box-shadow: 0 10px 26px rgba(36, 21, 72, 0.24);
+  transform: rotate(2deg);
+}
+
+/* Lucky Penny's cover is ~3:4, not the 2:3 the base rule boxes covers into —
+   letterboxing left a blank band above the art. Let it keep its own ratio. */
+.paint-note--penny .paint-note__cover {
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  background: none;
+}
+
+.art-placeholder--featured {
+  width: 100%;
+  max-width: 11rem;
+  padding: var(--space-4);
+  border-width: 2px;
+  border-radius: var(--radius-md);
+}
+
+.art-placeholder--featured .art-placeholder__title { font-size: var(--text-base); }
+.art-placeholder--featured .art-placeholder__hint { font-size: 0.7rem; }

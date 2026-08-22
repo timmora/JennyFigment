@@ -6,6 +6,7 @@
   <meta name="description" content="Contact Jennifer Hayes for school visit bookings, media inquiries, general questions, or to submit a review. We'd love to hear from you!" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/design-system.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/uplift.css" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -14,22 +15,24 @@
   <header class="site-nav" role="banner">
     <div class="container site-nav__inner">
       <a href="index.html" class="site-nav__logo" aria-label="Jennifer Hayes — Home"><span class="site-nav__logo-text">Jennifer Hayes</span></a>
-      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></nav>
+      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html" aria-current="page">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul></nav>
       <div class="site-nav__right"><a href="kids-zone.html" class="btn-kids-zone"><span class="sparkle" aria-hidden="true">✦</span> Kids Zone!</a><button id="nav-toggle" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button></div>
     </div>
   </header>
   <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
-    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul>
     <a href="kids-zone.html" class="btn-kids-zone u-drawer-cta"><span aria-hidden="true">✦</span> Enter Kids Zone!</a>
   </nav>
 
 
   <main id="main-content">
     <!-- Hero -->
-    <section class="contact-hero" aria-labelledby="contact-heading">
+    <section class="contact-hero paper-band" aria-labelledby="contact-heading">
+      <span class="paper-rules" aria-hidden="true"></span>
+      <span class="paper-torn paper-torn--cream-light" aria-hidden="true"></span>
       <div class="container contact-hero__content">
         <span class="section-label" style="color:var(--pink-soft);">Get in Touch</span>
-        <h1 id="contact-heading" class="section-title">Say Hello!</h1>
+        <h1 id="contact-heading" class="section-title crayon-underline crayon-underline--yellow">Say Hello!</h1>
         <p class="section-subtitle">Whether you'd like to book a school visit, ask about the books, submit a review, or just say hi — I would love to hear from you!</p>
       </div>
     </section>
@@ -117,7 +120,7 @@
             </div>
             <div class="contact-info-card">
               <h3 class="contact-info-card__title">📚 About the Books</h3>
-              <p class="contact-info-card__text">For purchase information and book details, visit the <a href="books.html">Books page</a>. Books are available at local indie bookstores, BookBaby, and Amazon.</p>
+              <p class="contact-info-card__text">For purchase information and book details, visit the <a href="books.html">Books page</a>. Books are available at local indie bookstores and through BookBaby.</p>
             </div>
             <div class="contact-info-card">
               <h3 class="contact-info-card__title">🎨 Free Resources</h3>
@@ -144,7 +147,7 @@
     <section class="section faq-section" aria-labelledby="faq-heading">
       <div class="container container--narrow">
         <span class="section-label">Common Questions</span>
-        <h2 id="faq-heading" class="section-title" data-reveal>Frequently Asked Questions</h2>
+        <h2 id="faq-heading" class="section-title crayon-underline" data-reveal>Frequently Asked Questions</h2>
 
         <div class="stack--sm" role="list">
           <div class="faq-item" role="listitem">
@@ -152,15 +155,15 @@
               Where can I buy the books?
               <span class="faq-question__icon" aria-hidden="true">+</span>
             </button>
-            <div id="faq-1" class="faq-answer">The books are available at local indie bookstores (Harvey's Tales, The Literary, Town House Books), through BookBaby, and on Amazon. Visit the <a href="books.html">Books page</a> for all purchase links.</div>
+            <div id="faq-1" class="faq-answer">The books are available at local indie bookstores (Harvey's Tales, The Literary, Town House Books) and through BookBaby. Visit the <a href="books.html">Books page</a> for all purchase links.</div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
-              Does Jennifer visit schools outside Illinois?
+              Which schools can Jennifer visit?
               <span class="faq-question__icon" aria-hidden="true">+</span>
             </button>
-            <div id="faq-2" class="faq-answer">Yes! Jennifer is based in Illinois but is available for school visits nationwide. Contact Jennifer to discuss availability and arrangements.</div>
+            <div id="faq-2" class="faq-answer">Jennifer visits schools in Northern and Central Illinois only. Sessions run 30 minutes for <em>Lucky Penny</em> and 45 minutes for the Jenny Figment books. Contact Jennifer to discuss dates and details.</div>
           </div>
 
           <div class="faq-item" role="listitem">
@@ -176,7 +179,7 @@
               How do I submit a review or testimonial?
               <span class="faq-question__icon" aria-hidden="true">+</span>
             </button>
-            <div id="faq-5" class="faq-answer">We'd love to hear from readers and educators! Select "Submit a Review" from the Subject dropdown in the contact form above, or leave a review directly on Goodreads or Amazon.</div>
+            <div id="faq-5" class="faq-answer">We'd love to hear from readers and educators! Select "Submit a Review" from the Subject dropdown in the contact form above and tell us what you thought.</div>
           </div>
         </div>
       </div>
@@ -193,9 +196,9 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/lucky-penny.html">Lucky Penny</a></li><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
         <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents.html">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom"><span>© 2024 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>

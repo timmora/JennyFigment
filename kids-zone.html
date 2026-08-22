@@ -7,6 +7,8 @@
   <!-- COPPA: No analytics, no tracking scripts on this page -->
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/design-system.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/kids-zone.css" />
+  <link rel="stylesheet" href="css/lucky-penny.css" />
+  <link rel="stylesheet" href="css/uplift.css" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body class="kids-zone-page">
@@ -122,6 +124,60 @@
       </div>
     </section>
 
+
+    <!-- Penny's Corner -->
+    <section class="section penny-corner" id="lucky-penny" aria-labelledby="penny-corner-heading">
+      <div class="container">
+        <span class="kz-hero__label" style="color:var(--penny-magenta);">Brand new</span>
+        <h2 id="penny-corner-heading" class="penny-corner__title">Penny's Corner</h2>
+        <p class="penny-corner__lede">Penny is a little dog who wanted a home, a bed, and a dish — and got a best friend too. Her book is in two languages, so her corner is too!</p>
+
+        <div class="lang-toggle" role="tablist" aria-label="Choose a language" data-lang-toggle="penny-words" style="margin-top:var(--space-6);">
+          <button type="button" class="lang-toggle__btn" role="tab" data-lang="en" aria-selected="true">English</button>
+          <button type="button" class="lang-toggle__btn" role="tab" data-lang="es" aria-selected="false">Español</button>
+        </div>
+
+        <div class="penny-corner__grid" id="penny-words">
+          <div class="word-card">
+            <span class="word-card__emoji" aria-hidden="true">🐶</span>
+            <span class="word-card__word" data-lang-panel="en">dog</span>
+            <span class="word-card__word" data-lang-panel="es" lang="es" hidden>el perro</span>
+          </div>
+          <div class="word-card">
+            <span class="word-card__emoji" aria-hidden="true">🏠</span>
+            <span class="word-card__word" data-lang-panel="en">home</span>
+            <span class="word-card__word" data-lang-panel="es" lang="es" hidden>la casa</span>
+          </div>
+          <div class="word-card">
+            <span class="word-card__emoji" aria-hidden="true">🛏️</span>
+            <span class="word-card__word" data-lang-panel="en">bed</span>
+            <span class="word-card__word" data-lang-panel="es" lang="es" hidden>la cama</span>
+          </div>
+          <div class="word-card">
+            <span class="word-card__emoji" aria-hidden="true">🍲</span>
+            <span class="word-card__word" data-lang-panel="en">dish</span>
+            <span class="word-card__word" data-lang-panel="es" lang="es" hidden>el plato</span>
+          </div>
+          <div class="word-card">
+            <span class="word-card__emoji" aria-hidden="true">👧</span>
+            <span class="word-card__word" data-lang-panel="en">friend</span>
+            <span class="word-card__word" data-lang-panel="es" lang="es" hidden>la amiga</span>
+          </div>
+          <div class="word-card">
+            <span class="word-card__emoji" aria-hidden="true">🌼</span>
+            <span class="word-card__word" data-lang-panel="en">marigold</span>
+            <span class="word-card__word" data-lang-panel="es" lang="es" hidden>la flor de cempasúchil</span>
+          </div>
+        </div>
+
+        <div class="penny-corner__soon">
+          <h3>More Penny fun on the way! 🐾</h3>
+          <p style="font-size:var(--text-sm);margin-bottom:var(--space-4);">A papel picado coloring page, a marigold craft, and a “find Penny” game are being drawn up right now. Until then, read all about her book:</p>
+          <a href="books/lucky-penny.html" class="penny-cta pop-press">Meet Lucky Penny</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Imagination spark -->
     <section class="kz-spark section" aria-labelledby="spark-heading">
       <div class="container">
@@ -157,9 +213,9 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/lucky-penny.html">Lucky Penny</a></li><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
         <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents.html">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="media-kit.html">Media Kit</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom">
         <span>© 2024 Jennifer Hayes. All rights reserved.</span>
@@ -170,5 +226,6 @@
 
   <script src="js/main.js" defer></script>
   <script src="js/kids-zone/kz-hub.js" defer></script>
+  <script src="js/lang-toggle.js" defer></script>
 </body>
 </html>

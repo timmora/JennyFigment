@@ -6,6 +6,7 @@
   <meta name="description" content="Meet Jennifer Hayes, the imaginative Illinois-based author behind the Jenny Figment children's book series. Bio, press, media kit, and more." />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/design-system.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/uplift.css" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -14,19 +15,21 @@
   <header class="site-nav" role="banner">
     <div class="container site-nav__inner">
       <a href="index.html" class="site-nav__logo" aria-label="Jennifer Hayes — Home"><span class="site-nav__logo-text">Jennifer Hayes</span></a>
-      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html" aria-current="page">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html" aria-current="page">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul></nav>
       <div class="site-nav__right"><a href="kids-zone.html" class="btn-kids-zone"><span class="sparkle" aria-hidden="true">✦</span> Kids Zone!</a><button id="nav-toggle" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button></div>
     </div>
   </header>
   <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
-    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul>
     <a href="kids-zone.html" class="btn-kids-zone u-drawer-cta"><span aria-hidden="true">✦</span> Enter Kids Zone!</a>
   </nav>
 
 
   <main id="main-content">
     <!-- Author hero -->
-    <section class="section about-hero" aria-labelledby="author-heading">
+    <section class="section about-hero paper-band" aria-labelledby="author-heading">
+      <span class="paper-rules" aria-hidden="true"></span>
+      <span class="paper-torn paper-torn--cream-light" aria-hidden="true"></span>
       <div class="container">
         <div class="about-hero__inner">
           <div class="about-hero__intro">
@@ -70,7 +73,7 @@
     <section class="section bg-cream-light" aria-labelledby="timeline-heading">
       <div class="container">
         <span class="section-label">The Journey</span>
-        <h2 id="timeline-heading" class="section-title" data-reveal>Books &amp; Milestones</h2>
+        <h2 id="timeline-heading" class="section-title crayon-underline" data-reveal>Books &amp; Milestones</h2>
         <div class="timeline" style="max-width:42rem;" data-reveal data-reveal-delay="1">
           <div class="timeline__item">
             <div class="timeline__year">January 5, 2024</div>
@@ -100,7 +103,7 @@
     <section class="section bg-cream" id="media-kit" aria-labelledby="press-heading">
       <div class="container">
         <span class="section-label">Press &amp; Media</span>
-        <h2 id="press-heading" class="section-title" data-reveal>In the Press</h2>
+        <h2 id="press-heading" class="section-title crayon-underline" data-reveal>In the Press</h2>
         <div class="press-grid" data-reveal data-reveal-delay="1">
           <div class="press-card">
             <div class="press-card__source">IndieReader</div>
@@ -126,7 +129,7 @@
     <section class="section bg-cream-paper" aria-labelledby="connect-heading">
       <div class="container text-center">
         <span class="section-label">Connect</span>
-        <h2 id="connect-heading" class="section-title" data-reveal>Follow Jennifer's Journey</h2>
+        <h2 id="connect-heading" class="section-title" data-reveal><span class="crayon-word">Follow</span> Jennifer's Journey</h2>
         <p class="section-subtitle" style="margin-inline:auto;" data-reveal data-reveal-delay="1">Stay up to date on new books, school visits, and activities for young readers.</p>
         <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;margin-top:var(--space-6);" data-reveal data-reveal-delay="2">
           <a href="https://www.facebook.com/p/Jennifer-Hayes-Author-61550489016188/" class="btn btn--secondary" aria-label="Facebook" title="Facebook" rel="noopener noreferrer" target="_blank">
@@ -154,9 +157,9 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/lucky-penny.html">Lucky Penny</a></li><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
         <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents.html">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom"><span>© 2024 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>

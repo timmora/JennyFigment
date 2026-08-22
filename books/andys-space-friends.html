@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/layout.css" />
   <link rel="stylesheet" href="../css/components.css" />
   <link rel="stylesheet" href="../css/books.css" />
+  <link rel="stylesheet" href="../css/uplift.css" />
   <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body class="page-theme-books">
@@ -16,12 +17,12 @@
   <header class="site-nav" role="banner">
     <div class="container site-nav__inner">
       <a href="../index.html" class="site-nav__logo" aria-label="Jennifer Hayes — Home"><span class="site-nav__logo-text">Jennifer Hayes</span></a>
-      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="../index.html">Home</a></li><li><a href="../books.html" aria-current="page">Books</a></li><li><a href="../educators-parents.html">Educators &amp; Parents</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="../index.html">Home</a></li><li><a href="../books.html" aria-current="page">Books</a></li><li><a href="../educators-parents.html">Educators &amp; Parents</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../educators-parents/school-visits.html">School Visits</a></li></ul></nav>
       <div class="site-nav__right"><a href="../kids-zone.html" class="btn-kids-zone"><span class="sparkle" aria-hidden="true">✦</span> Kids Zone!</a><button id="nav-toggle" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button></div>
     </div>
   </header>
   <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
-    <ul class="nav-drawer__links" role="list"><li><a href="../index.html">Home</a></li><li><a href="../books.html">Books</a></li><li><a href="../educators-parents.html">Educators &amp; Parents</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li></ul>
+    <ul class="nav-drawer__links" role="list"><li><a href="../index.html">Home</a></li><li><a href="../books.html">Books</a></li><li><a href="../educators-parents.html">Educators &amp; Parents</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../educators-parents/school-visits.html">School Visits</a></li></ul>
     <a href="../kids-zone.html" class="btn-kids-zone u-drawer-cta"><span aria-hidden="true">✦</span> Enter Kids Zone!</a>
   </nav>
 
@@ -63,8 +64,8 @@
               <div class="purchase-section__group" aria-labelledby="purchase-online-heading">
                 <p class="purchase-section__online-label" id="purchase-online-heading">Online</p>
                 <div class="purchase-buttons">
-                  <a href="https://store.bookbaby.com/websearch/websearchindex?searchterms=jennifer+hayes" class="purchase-btn purchase-btn--indie" target="_blank" rel="noopener noreferrer"><div><div>BookBaby</div><div class="purchase-btn__store">Online order</div></div><span class="purchase-btn__arrow" aria-hidden="true">→</span></a>
-                  <a href="https://www.amazon.com/s?k=jenny+figment&amp;crid=35QG2QZUJEN2X&amp;sprefix=jenny+fig%2Caps%2C336&amp;ref=nb_sb_noss_2" class="purchase-btn purchase-btn--indie" target="_blank" rel="noopener noreferrer"><div><div>Amazon</div><div class="purchase-btn__store">Paperback &amp; Kindle</div></div><span class="purchase-btn__arrow" aria-hidden="true">→</span></a>
+                  <a href="https://store.bookbaby.com/book/andys-space-friends" class="purchase-btn purchase-btn--indie" target="_blank" rel="noopener noreferrer"><div><div>BookBaby</div><div class="purchase-btn__store">Online order</div></div><span class="purchase-btn__arrow" aria-hidden="true">→</span></a>
+
                 </div>
               </div>
             </div>
@@ -79,36 +80,22 @@
       </div>
     </section>
 
-    <!-- Book trailer -->
-    <section class="section bg-cream" aria-labelledby="trailer-heading">
-      <div class="container">
-        <span class="section-label">Watch</span>
-        <h2 id="trailer-heading" class="section-title" data-reveal>Book Trailer</h2>
-        <div class="trailer-embed" data-reveal data-reveal-delay="1">
-          <iframe
-            src="https://www.youtube.com/embed/XHYTBqfImVg"
-            title="Book trailer for Andy's Space Friends"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <p style="font-size:var(--text-sm);color:var(--burgundy-light);margin-top:var(--space-3);">
-          <a href="https://www.youtube.com/watch?v=XHYTBqfImVg" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-        </p>
-      </div>
-    </section>
+
 
     <!-- Related books -->
     <section class="section bg-cream-light" aria-labelledby="related-heading">
       <div class="container">
-        <h2 id="related-heading" class="section-title" data-reveal>More Books to Explore</h2>
+        <h2 id="related-heading" class="section-title crayon-underline crayon-underline--blue" data-reveal>More Books to Explore</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-6);">
-          <a href="jenny-figment-book-1.html" class="book-card" data-reveal>
+          <a href="lucky-penny.html" class="book-card" data-reveal>
+            <div class="book-card__cover"><img src="../assets/images/books/cover-lucky-penny.png" alt="" width="1226" height="1604" loading="lazy" decoding="async" /></div>
+            <div class="book-card__body"><div class="book-card__title">Lucky Penny</div><span class="book-card__cta">Explore</span></div>
+          </a>
+          <a href="jenny-figment-book-1.html" class="book-card" data-reveal data-reveal-delay="1">
             <div class="book-card__cover"><img src="../assets/images/books/cover-jenny-figment-book-1.png" alt="" width="320" height="480" loading="lazy" decoding="async" /></div>
             <div class="book-card__body"><div class="book-card__title">The Extraordinary Imagination of Jenny Figment</div><span class="book-card__cta">Explore</span></div>
           </a>
-          <a href="riddle-fairy-tale-village.html" class="book-card" data-reveal data-reveal-delay="1">
+          <a href="riddle-fairy-tale-village.html" class="book-card" data-reveal data-reveal-delay="2">
             <div class="book-card__cover"><img src="../assets/images/books/cover-riddle-fairy-tale-village.png" alt="" width="320" height="480" loading="lazy" decoding="async" /></div>
             <div class="book-card__body"><div class="book-card__title">The Riddle of the Fairytale Village</div><span class="book-card__cta">Explore</span></div>
           </a>
@@ -128,9 +115,9 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="andys-space-friends.html">Andy's Space Friends</a></li><li><a href="riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="lucky-penny.html">Lucky Penny</a></li><li><a href="jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="andys-space-friends.html">Andy's Space Friends</a></li><li><a href="riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
         <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="../educators-parents.html">Resources &amp; Guides</a></li><li><a href="../educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="../educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="../about.html">About Jennifer Hayes</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../kids-zone.html">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="../about.html">About Jennifer Hayes</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../educators-parents/school-visits.html">School Visits</a></li><li><a href="../kids-zone.html">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom"><span>© 2024 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>

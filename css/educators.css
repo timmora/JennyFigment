@@ -262,7 +262,6 @@
 .visits-hero {
   background-color: var(--cream-paper);
   padding-block: var(--space-16);
-  border-bottom: 1px solid var(--cream);
 }
 
 .visits-details {
@@ -427,6 +426,25 @@
   max-width: none;
   object-fit: cover;
   display: block;
+}
+
+/* School visits — author promo video embed */
+.visits-video {
+  position: relative;
+  width: 100%;
+  max-width: 46rem;
+  margin-top: var(--space-6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--cream);
+  box-shadow: var(--shadow-lg);
+}
+
+.visits-video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
 }
 
 /* Inquiry form */

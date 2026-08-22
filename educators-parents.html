@@ -6,6 +6,7 @@
   <meta name="description" content="Free classroom resources, discussion guides, STEM activities, and school visit information for teachers, librarians, and parents. Download now." />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/design-system.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/educators.css" />
+  <link rel="stylesheet" href="css/uplift.css" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body class="page-theme-educators">
@@ -14,22 +15,24 @@
   <header class="site-nav" role="banner">
     <div class="container site-nav__inner">
       <a href="index.html" class="site-nav__logo" aria-label="Jennifer Hayes — Home"><span class="site-nav__logo-text">Jennifer Hayes</span></a>
-      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html" aria-current="page">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html" aria-current="page">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul></nav>
       <div class="site-nav__right"><a href="kids-zone.html" class="btn-kids-zone"><span class="sparkle" aria-hidden="true">✦</span> Kids Zone!</a><button id="nav-toggle" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button></div>
     </div>
   </header>
   <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
-    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <ul class="nav-drawer__links" role="list"><li><a href="index.html">Home</a></li><li><a href="books.html">Books</a></li><li><a href="educators-parents.html">Educators &amp; Parents</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li></ul>
     <a href="kids-zone.html" class="btn-kids-zone u-drawer-cta"><span aria-hidden="true">✦</span> Enter Kids Zone!</a>
   </nav>
 
 
   <main id="main-content">
     <!-- Hero -->
-    <section class="educators-hero" aria-labelledby="educators-heading">
+    <section class="educators-hero paper-band" aria-labelledby="educators-heading">
+      <span class="paper-rules" aria-hidden="true"></span>
+      <span class="paper-torn paper-torn--cream-light" aria-hidden="true"></span>
       <div class="container educators-hero__content">
         <span class="section-label">For Educators &amp; Parents</span>
-        <h1 id="educators-heading" class="section-title">Free Resources to Spark Imagination</h1>
+        <h1 id="educators-heading" class="section-title crayon-underline crayon-underline--yellow">Free Resources to Spark Imagination</h1>
         <p class="section-subtitle">Everything you need to bring Jenny Figment into your classroom or home. Download discussion guides, STEM activities, and creative writing templates — completely free.</p>
         <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);">
           <a href="educators-parents/school-visits.html" class="btn btn--primary btn--lg">Book a School Visit</a>
@@ -39,7 +42,7 @@
     </section>
 
     <!-- Quick links bar -->
-    <div style="background:var(--cream);border-bottom:1px solid var(--pink-soft);padding:var(--space-4) 0;">
+    <div style="background:var(--cream);border-top:1px solid var(--pink-soft);border-bottom:1px solid var(--pink-soft);padding:var(--space-4) 0;">
       <div class="container" style="display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;">
         <span style="font-size:var(--text-sm);font-weight:600;color:var(--burgundy-light);">Jump to:</span>
         <a href="#resources" class="btn btn--sm btn--ghost">Free Resources</a>
@@ -53,7 +56,7 @@
     <section class="section resources-section" id="resources" aria-labelledby="resources-heading">
       <div class="container">
         <span class="section-label">Free Downloads</span>
-        <h2 id="resources-heading" class="section-title" data-reveal>Activity Guides &amp; Resources</h2>
+        <h2 id="resources-heading" class="section-title crayon-underline" data-reveal>Activity Guides &amp; Resources</h2>
         <p class="section-subtitle" data-reveal data-reveal-delay="1">All resources are available as free PDF downloads. No login required.</p>
 
         <!-- Filter buttons -->
@@ -185,7 +188,7 @@
       <div class="container">
         <div class="grown-up-note__inner">
           <span class="section-label">From the author</span>
-          <h2 id="grown-up-note-heading" class="section-title">A Note For Grown-Up Kids</h2>
+          <h2 id="grown-up-note-heading" class="section-title">A <span class="crayon-word">Note</span> For Grown-Up Kids</h2>
           <div class="grown-up-note__prose">
             <p>This book has an extraordinarily long title.</p>
             <p>And a very whimsical cover.</p>
@@ -238,10 +241,10 @@
           <figure class="extraordinary-kids__logo-wrap">
             <img src="assets/images/extraordinary-kids-logo.png" alt="Jenny Figment's Extraordinary Kids logo: a magical open book with stars inside a dotted circle" class="extraordinary-kids__logo" width="512" height="512" loading="lazy" decoding="async" />
           </figure>
-          <p class="extraordinary-kids__text">Jenny is looking for kids like her . . . kids who are using their 
-            imaginations in an extraordinary way to make the world a better place. If you know a kid like Jenny, 
+          <p class="extraordinary-kids__text">Jenny is looking for kids like her . . . kids who are using their
+            imaginations in an extraordinary way to make the world a better place. If you know a kid like Jenny,
             or you are a kid like Jenny (even better!), let us know! Reach out with as much information as you have
-            about who they are, what they’re doing, where they’re doing it, and how they’re making a difference. 
+            about who they are, what they’re doing, where they’re doing it, and how they’re making a difference.
             Jenny wants to celebrate them and share some fun, exclusive Jenny Figment merchandise!</p>
           <a href="contact.html" class="btn btn--lg btn--ghost-panel-strong">Nominate an Extraordinary Kid</a>
         </div>
@@ -259,9 +262,9 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/lucky-penny.html">Lucky Penny</a></li><li><a href="books/jenny-figment-book-1.html">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends.html">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village.html">The Riddle of the Fairytale Village</a></li></ul></div>
         <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents.html">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits.html">Book a School Visit</a></li><li><a href="educators-parents.html#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about.html">About Jennifer Hayes</a></li><li><a href="contact.html">Contact</a></li><li><a href="educators-parents/school-visits.html">School Visits</a></li><li><a href="kids-zone.html">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom"><span>© 2024 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>

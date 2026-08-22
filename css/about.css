@@ -6,7 +6,6 @@
 .about-hero {
   background-color: var(--cream-paper);
   padding-block: var(--space-16);
-  border-bottom: 1px solid var(--cream);
 }
 
 .about-hero__inner {
