@@ -448,7 +448,7 @@
 }
 
 .home-books--paper .hero-torn {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C30,2 55,22 80,12 C110,2 130,20 160,10 C195,0 215,18 245,8 C275,0 300,16 335,6 C365,0 385,18 420,8 C450,0 470,20 505,10 C535,0 560,22 595,12 C625,2 645,20 680,10 C710,0 735,18 770,8 C800,0 820,16 855,6 C885,0 910,20 945,10 C975,0 995,18 1030,8 C1060,0 1085,22 1120,12 C1150,2 1175,16 1200,8 L1200,28 L0,28 Z' fill='%23ffeaf3'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'%3E%3Cpath d='M0,14 C30,2 55,22 80,12 C110,2 130,20 160,10 C195,0 215,18 245,8 C275,0 300,16 335,6 C365,0 385,18 420,8 C450,0 470,20 505,10 C535,0 560,22 595,12 C625,2 645,20 680,10 C710,0 735,18 770,8 C800,0 820,16 855,6 C885,0 910,20 945,10 C975,0 995,18 1030,8 C1060,0 1085,22 1120,12 C1150,2 1175,16 1200,8 L1200,28 L0,28 Z' fill='%23f3ecff'/%3E%3C/svg%3E");
 }
 
 /* --- headline --- */
@@ -587,3 +587,75 @@
 
 .art-placeholder--featured .art-placeholder__title { font-size: var(--text-base); }
 .art-placeholder--featured .art-placeholder__hint { font-size: 0.7rem; }
+
+/* ---------- Reader reviews ---------- */
+.home-reviews__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.review-grid {
+  margin-top: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 36em) {
+  .review-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 64em) {
+  .review-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.review-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: #fff;
+  border: 2px solid rgba(43, 22, 27, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-fast) var(--ease-bounce), box-shadow var(--duration-fast) var(--ease-smooth);
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.review-card__stars {
+  color: var(--crayon-yellow);
+  font-size: var(--text-base);
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.review-card__quote {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--burgundy);
+  flex: 1 1 auto;
+}
+
+.review-card__source {
+  font-family: var(--font-kids);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--burgundy);
+}
+
+.review-card__role {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: var(--burgundy-light);
+  margin-top: 2px;
+}

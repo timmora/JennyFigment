@@ -27,7 +27,6 @@ const JOKES = [
   { setup: "Why did the golfer bring an extra pair of socks?", punchline: "In case he got a hole in one! ⛳" },
   { setup: "What do you call a parade of rabbits hopping backwards?", punchline: "A receding hare-line! 🐰" },
   { setup: "Why did Jenny Figment bring a ladder to the library?", punchline: "Because she heard the books were on a higher level! 📚" },
-  { setup: "What did Grandpa Tony say when he sat on a pin?", punchline: "Nothing — it was a silent PRICK! 😄 (Kidding! He said OUCH!)" },
 ];
 
 // Fisher-Yates shuffle
