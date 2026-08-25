@@ -31,20 +31,58 @@ body.page-theme-penny {
   background-size: 200px 40px;
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero ----------
+   Coin field: a flat cream ground, a drift of coin outlines settling toward
+   the bottom, and one hard-edged marigold disc behind the cover. Both
+   decorative layers are pseudo-elements, so the hero markup stays clean. */
 .penny-hero {
   position: relative;
+  overflow: hidden;
   padding-block: clamp(2.5rem, 6vw, 4.5rem);
-  background:
-    radial-gradient(circle at 88% 12%, rgba(240, 176, 62, 0.34) 0%, transparent 46%),
-    radial-gradient(circle at 6% 88%, rgba(111, 75, 182, 0.2) 0%, transparent 42%),
-    var(--penny-cream);
+  background: var(--penny-cream);
+}
+
+/* The hill of pennies — densest along the bottom edge, faded out well before
+   it reaches the title. */
+.penny-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='76' height='76'%3E%3Cg fill='none' stroke='%23c9601f' stroke-opacity='0.34'%3E%3Ccircle cx='19' cy='20' r='10' stroke-width='2'/%3E%3Ccircle cx='19' cy='20' r='5' stroke-width='1.3'/%3E%3Ccircle cx='57' cy='55' r='13' stroke-width='2'/%3E%3Ccircle cx='57' cy='55' r='6.5' stroke-width='1.3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 76px 76px;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.35) 42%, transparent 74%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.35) 42%, transparent 74%);
+}
+
+/* Lifts the hero content above the coin field. */
+.penny-hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* The marigold disc. Anchored to the container rather than the section edge
+   so it keeps its place just outside the cover at every width — pinned to the
+   viewport edge it would drift away from the cover on wide screens. */
+.penny-hero > .container::before {
+  content: "";
+  position: absolute;
+  left: -2.25rem;
+  top: 4rem;
+  z-index: -1;
+  width: 26rem;
+  height: 26rem;
+  border-radius: 999px;
+  background: #f7d089;
+  pointer-events: none;
 }
 
 .penny-hero__inner {
   display: grid;
   gap: var(--space-8);
   align-items: start;
+  /* Drops the cover and the title block clear of the disc's top edge. */
+  margin-top: var(--space-8);
 }
 
 @media (min-width: 60em) {
@@ -206,16 +244,32 @@ body.page-theme-penny {
 }
 
 /* ---------- Illustrations grid + click-to-enlarge lightbox ---------- */
+/* Justified rows, the way a photo wall is hung: every tile in a row shares
+   one height, and widths run in proportion to each picture's own aspect
+   ratio (--ar), so the row fills edge to edge with nothing cropped. Basis
+   AND grow both scale with --ar — that is what keeps the heights equal:
+   width ends up ar x k for every tile in the row, so height = k. */
 .penny-art-grid {
-  display: grid;
-  gap: var(--space-5);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
   margin-top: var(--space-6);
 }
 
+/* Soaks up the leftover width on the final row so one lonely picture
+   doesn't balloon to full-bleed. */
+.penny-art-grid::after {
+  content: "";
+  flex: 1000 1 0;
+  height: 0;
+  align-self: flex-start;
+}
+
 .penny-art-thumb {
+  --ar: 1;
   display: block;
-  width: 100%;
+  flex: var(--ar) 1 calc(var(--ar) * 13rem);
+  min-width: 0;
   padding: 0;
   border: 0;
   background: rgba(58, 31, 43, 0.06);
@@ -229,7 +283,9 @@ body.page-theme-penny {
 .penny-art-thumb img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  aspect-ratio: var(--ar);
+  object-fit: cover;
 }
 
 .penny-art-thumb:hover,

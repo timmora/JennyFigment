@@ -5,7 +5,7 @@
   <title>Jennifer Hayes — School Visits</title>
   <meta name="description" content="Book author Jennifer Hayes for an imaginative school visit! Interactive presentations for grades K–5. Based in Illinois, available nationwide. Request a visit today." />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="../css/design-system.css" /><link rel="stylesheet" href="../css/layout.css" /><link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/educators.css" />
+  <link rel="stylesheet" href="../css/design-system.css" /><link rel="stylesheet" href="../css/layout.css" /><link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/testimonials.css" /><link rel="stylesheet" href="../css/educators.css" />
   <link rel="stylesheet" href="../css/uplift.css" />
   <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
 </head>
@@ -307,6 +307,24 @@
             </div>
             <p class="testimonial-card__author">Dorcey Bartholomew</p><p class="testimonial-card__role">Librarian, McDole Elementary School</p>
           </div>
+          <div class="testimonial-card" data-reveal>
+            <div class="testimonial-card__quote-frame">
+            <div class="testimonial-card__quote-scroll">
+            <blockquote class="testimonial-card__quote">Our school recently had author Jennifer Hayes come and visit to share her extraordinary books she has written. Jennifer is an amazing author with such a magnificant imagination! Her stories not only intrigued our students&#8217; interests, but also inspired them to use their own imaginations while writing their own stories. During her presentation the students were fully engaged as a whole, and also entertained as she shared her stories. We cannot wait to have her back and to meet book 3!! Woodbury Elementary loves Mrs. Jennifer Hayes!            </blockquote>
+            </div>
+            <div class="testimonial-card__quote-more-cue" aria-hidden="true"></div>
+            </div>
+            <p class="testimonial-card__author">Vanessa Ballas</p><p class="testimonial-card__role">Librarian, Woodbury Elementary</p>
+          </div>
+          <div class="testimonial-card" data-reveal data-reveal-delay="1">
+            <div class="testimonial-card__quote-frame">
+            <div class="testimonial-card__quote-scroll">
+            <blockquote class="testimonial-card__quote">Jennifer came to our school and mesmerized all of us while reading the beginning of her book. We had reluctant readers who could NOT stop reading her book.            </blockquote>
+            </div>
+            <div class="testimonial-card__quote-more-cue" aria-hidden="true"></div>
+            </div>
+            <p class="testimonial-card__author">Jennifer Ring</p><p class="testimonial-card__role">4th Grade Teacher, Dimmick School</p>
+          </div>
             </div>
           </div>
           </div>
@@ -416,61 +434,7 @@
     </div>
   </footer>
   <script src="../js/main.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var el = document.getElementById('visits-testimonials-scroller');
-      if (!el) return;
-
-      function updateQuoteOverflow(wrap) {
-        var frame = wrap.closest('.testimonial-card__quote-frame');
-        if (!frame) return;
-        frame.classList.remove('has-more-below');
-        frame.removeAttribute('aria-label');
-        var sh = wrap.scrollHeight;
-        var ch = wrap.clientHeight;
-        if (sh > ch + 6) {
-          var atEnd = wrap.scrollTop + ch >= sh - 8;
-          if (!atEnd) {
-            frame.classList.add('has-more-below');
-            frame.setAttribute(
-              'aria-label',
-              'More of this quote below; scroll inside the quote area to read.'
-            );
-          }
-        }
-      }
-
-      function refreshAllQuoteHints() {
-        el.querySelectorAll('.testimonial-card__quote-scroll').forEach(updateQuoteOverflow);
-      }
-
-      el.addEventListener(
-        'scroll',
-        function (e) {
-          if (e.target.classList && e.target.classList.contains('testimonial-card__quote-scroll')) {
-            updateQuoteOverflow(e.target);
-          }
-        },
-        true
-      );
-
-      requestAnimationFrame(function () {
-        requestAnimationFrame(refreshAllQuoteHints);
-      });
-
-      window.setTimeout(refreshAllQuoteHints, 700);
-
-      window.addEventListener(
-        'resize',
-        function () {
-          requestAnimationFrame(refreshAllQuoteHints);
-        },
-        { passive: true }
-      );
-
-      document.addEventListener('school-visits:quotes-need-refresh', refreshAllQuoteHints);
-    });
-  </script>
+  <script src="../js/testimonials-carousel.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var root = document.querySelector('[data-visits-gallery]');
@@ -615,164 +579,6 @@
       });
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-      var root = document.querySelector('[data-visits-testimonials-gallery]');
-      if (!root) return;
-
-      var scroller = document.getElementById('visits-testimonials-scroller');
-      var track = scroller && scroller.querySelector('[data-testimonials-track]');
-      var btnPrev = root.querySelector('.visits-gallery__nav-btn--prev');
-      var btnNext = root.querySelector('.visits-gallery__nav-btn--next');
-      if (!scroller || !track || !btnPrev || !btnNext) return;
-
-      var activeIndex = 0;
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      function cards() {
-        return track.querySelectorAll(':scope > .testimonial-card');
-      }
-
-      function updateScrollPadding() {
-        var list = cards();
-        if (!list.length) return;
-        var w = scroller.clientWidth;
-        var cw = list[0].offsetWidth;
-        var pad = Math.max(0, (w - cw) / 2);
-        scroller.style.setProperty('--tt-scroll-padding', pad + 'px');
-      }
-
-      function viewportCenterX() {
-        return scroller.scrollLeft + scroller.clientWidth / 2;
-      }
-
-      function distToCenter(card) {
-        var r = card.getBoundingClientRect();
-        var sr = scroller.getBoundingClientRect();
-        var cx = scroller.scrollLeft + (r.left - sr.left) + r.width / 2;
-        return Math.abs(cx - viewportCenterX());
-      }
-
-      function indexNearCenter() {
-        var list = cards();
-        var n = list.length;
-        if (!n) return 0;
-        var best = 0;
-        var bestD = Infinity;
-        for (var i = 0; i < n; i++) {
-          var d = distToCenter(list[i]);
-          if (d < bestD) {
-            bestD = d;
-            best = i;
-          }
-        }
-        return best;
-      }
-
-      function scrollBehavior() {
-        return reducedMotion ? 'auto' : 'smooth';
-      }
-
-      /** Center a card inside the horizontal scroller only — never call scrollIntoView (it scrolls the page). */
-      function scrollCardIntoScroller(card, behavior) {
-        if (!card) return;
-        var r = card.getBoundingClientRect();
-        var sr = scroller.getBoundingClientRect();
-        var delta = r.left + r.width / 2 - (sr.left + sr.width / 2);
-        var smooth = behavior === 'smooth' && !reducedMotion;
-        if (smooth) {
-          scroller.scrollBy({ left: delta, behavior: 'smooth' });
-        } else {
-          scroller.scrollLeft += delta;
-        }
-      }
-
-      function goToIndex(i, instant) {
-        var list = cards();
-        var n = list.length;
-        if (n < 1) return;
-        i = ((i % n) + n) % n;
-        activeIndex = i;
-        var el = list[i];
-        if (!el) return;
-        var b = instant || reducedMotion ? 'auto' : scrollBehavior();
-        scrollCardIntoScroller(el, b === 'smooth' ? 'smooth' : 'auto');
-      }
-
-      function goNext() {
-        var n = cards().length;
-        if (n < 2) return;
-        var next = (activeIndex + 1) % n;
-        if (activeIndex === n - 1 && next === 0) {
-          goToIndex(0, true);
-          return;
-        }
-        goToIndex(next, false);
-      }
-
-      function goPrev() {
-        var n = cards().length;
-        if (n < 2) return;
-        if (activeIndex === 0) {
-          goToIndex(n - 1, true);
-          return;
-        }
-        goToIndex(activeIndex - 1, false);
-      }
-
-      function syncAfterScroll() {
-        activeIndex = indexNearCenter();
-        var n = cards().length;
-        btnPrev.disabled = n < 2;
-        btnNext.disabled = n < 2;
-      }
-
-      var debounceT;
-      function onScrollerScroll() {
-        window.clearTimeout(debounceT);
-        debounceT = window.setTimeout(syncAfterScroll, 100);
-      }
-
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          updateScrollPadding();
-          var list = cards();
-          if (list.length) {
-            scrollCardIntoScroller(list.item(0), 'auto');
-          }
-          syncAfterScroll();
-          document.dispatchEvent(new Event('school-visits:quotes-need-refresh'));
-        });
-      });
-
-      scroller.addEventListener('scroll', onScrollerScroll, { passive: true });
-      scroller.addEventListener('scrollend', syncAfterScroll);
-
-      btnPrev.addEventListener('click', goPrev);
-      btnNext.addEventListener('click', goNext);
-
-      scroller.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          goPrev();
-        } else if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          goNext();
-        }
-      });
-
-      window.addEventListener(
-        'resize',
-        function () {
-          requestAnimationFrame(function () {
-            updateScrollPadding();
-            goToIndex(activeIndex, true);
-            syncAfterScroll();
-            document.dispatchEvent(new Event('school-visits:quotes-need-refresh'));
-          });
-        },
-        { passive: true }
-      );
-    });
   </script>
 </body>
 </html>
