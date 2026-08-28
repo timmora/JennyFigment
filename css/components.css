@@ -20,29 +20,17 @@
     0 4px 16px rgba(43, 22, 27, 0.06);
 }
 
-/* Mobile: pin the bar flush to the true top of the screen, full stop —
-   no safe-area offset math. Its own background simply starts at y:0 and
-   sits under/behind the notch, so there's nothing above it for content
-   to show through. */
+/* Mobile: plain in-flow bar, not pinned. It sits at the top of the
+   document like any other content and scrolls away with the page once
+   you scroll past it — no fixed/sticky positioning, no safe-area offset
+   math, and (as a side effect) no gap above it for content to show
+   through, since it's just normal content in normal document flow. */
 @media screen and (max-width: 63.99em) {
   .site-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: static;
     background-color: #fdf6f0;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-  }
-
-  /* Fixed nav leaves the flow, so the page has to reserve its height back. */
-  body {
-    padding-top: var(--site-nav-h);
-  }
-
-  /* Keep anchor targets from landing underneath the pinned bar. */
-  html {
-    scroll-padding-top: var(--site-nav-h);
   }
 }
 

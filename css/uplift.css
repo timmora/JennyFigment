@@ -392,8 +392,12 @@
   width: 100%;
   height: auto;
   max-height: none;
-  aspect-ratio: auto;
-  object-fit: fill;
+  /* Force every cover into the same box regardless of its source file's
+     own proportions — cover-lucky-penny.png is a wider/shorter image
+     (1226x1604) than the other three (~691x1024), which otherwise made
+     it render visibly shorter in the grid. */
+  aspect-ratio: 691 / 1024;
+  object-fit: cover;
   margin: 0;
   border-radius: 2px 6px 6px 2px;
   background: #fff;
