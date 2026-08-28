@@ -131,7 +131,10 @@
 }
 
 .visits-testimonials__scroller .testimonial-card {
-  flex: 0 0 min(36rem, calc(100vw - 2.5rem));
+  /* Same allowance as the image gallery's cards: subtract the two nav
+     buttons and the gaps around the scroller, not just page padding,
+     so the card doesn't get clipped by the scroller's overflow. */
+  flex: 0 0 min(36rem, calc(100vw - var(--visits-gallery-nav) * 2 - var(--space-2) * 2 - 2.5rem));
   box-sizing: border-box;
   max-height: 24rem;
   display: flex;

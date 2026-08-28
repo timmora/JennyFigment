@@ -18,6 +18,9 @@
     0 2px 0 rgba(43,22,27,0.03),
     0 3px 0 rgba(43,22,27,0.015),
     0 4px 16px rgba(43, 22, 27, 0.06);
+  /* Extend the header's background behind the notch/Dynamic Island
+     instead of stopping short of it and letting content show through. */
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 .site-nav__inner {
