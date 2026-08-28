@@ -82,10 +82,6 @@
   --duration-normal: 300ms;
   --duration-slow: 500ms;
 
-  /* Site nav (safe-area-aware on notched iPhones) */
-  --site-nav-inner-height: 4.5rem;
-  --site-nav-offset: calc(var(--site-nav-inner-height) + env(safe-area-inset-top, 0px));
-
   /* Z-index scale */
   --z-base: 1;
   --z-dropdown: 100;

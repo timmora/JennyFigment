@@ -23,41 +23,11 @@
   padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* Solid fill above the bar for notch / Dynamic Island (iOS rubber-band scroll) */
-.site-nav::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(-1 * env(safe-area-inset-top, 0px));
-  height: env(safe-area-inset-top, 0px);
-  background-color: rgba(253, 246, 240, 0.96);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  pointer-events: none;
-}
-
-/* Mobile: fixed nav — sticky breaks on iOS when body has overflow-x:hidden */
-@media (max-width: 63.99em) {
-  .site-nav {
-    position: fixed;
-    left: 0;
-    right: 0;
-    width: 100%;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
-  body:has(.site-nav) {
-    padding-top: var(--site-nav-offset);
-  }
-}
-
 .site-nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--site-nav-inner-height);
+  height: 4.5rem;
   gap: var(--space-4);
 }
 
@@ -228,7 +198,7 @@
 .nav-drawer {
   display: none;
   position: fixed;
-  inset: var(--site-nav-offset) 0 0 0;
+  inset: 4.5rem 0 0 0;
   background-color: var(--cream-paper);
   z-index: var(--z-dropdown);
   padding: var(--space-6);
