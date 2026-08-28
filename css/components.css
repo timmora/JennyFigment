@@ -18,15 +18,12 @@
     0 2px 0 rgba(43,22,27,0.03),
     0 3px 0 rgba(43,22,27,0.015),
     0 4px 16px rgba(43, 22, 27, 0.06);
-  /* Extend the header's background behind the notch/Dynamic Island
-     instead of stopping short of it and letting content show through. */
-  padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* Mobile: pin the bar to the viewport rather than letting it ride the document.
-   The fill is opaque because a backdrop-filtered header on iOS gets its own
-   compositing layer that fails to paint across the safe-area padding, which is
-   what let hero content show through the notch strip. */
+/* Mobile: pin the bar flush to the true top of the screen, full stop —
+   no safe-area offset math. Its own background simply starts at y:0 and
+   sits under/behind the notch, so there's nothing above it for content
+   to show through. */
 @media screen and (max-width: 63.99em) {
   .site-nav {
     position: fixed;
@@ -38,29 +35,14 @@
     backdrop-filter: none;
   }
 
-  /* Belt-and-suspenders for the safe-area strip itself: rather than relying
-     on the header's own padding-top to extend its paint area under the
-     notch/Dynamic Island (unreliable across iOS versions), paint that strip
-     with its own explicit fixed bar in the same background. */
-  .site-nav::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: env(safe-area-inset-top, 0px);
-    background-color: #fdf6f0;
-    z-index: var(--z-sticky);
-  }
-
   /* Fixed nav leaves the flow, so the page has to reserve its height back. */
   body {
-    padding-top: var(--site-nav-offset);
+    padding-top: var(--site-nav-h);
   }
 
   /* Keep anchor targets from landing underneath the pinned bar. */
   html {
-    scroll-padding-top: var(--site-nav-offset);
+    scroll-padding-top: var(--site-nav-h);
   }
 }
 
@@ -239,7 +221,7 @@
 .nav-drawer {
   display: none;
   position: fixed;
-  inset: var(--site-nav-offset) 0 0 0;
+  inset: var(--site-nav-h) 0 0 0;
   background-color: var(--cream-paper);
   z-index: var(--z-dropdown);
   padding: var(--space-6);

@@ -492,6 +492,28 @@
   color: var(--burgundy-light);
 }
 
+/* Keep all three facts on one line rather than wrapping to a lonely
+   second line — shrink text/spacing first, and only as a last resort
+   (very narrow phones) let the row scroll horizontally. */
+@media (max-width: 36em) {
+  .home-hero__facts {
+    flex-wrap: nowrap;
+    gap: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .home-hero__facts::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-hero__facts li {
+    flex-shrink: 0;
+  }
+}
+
 .home-hero__facts li {
   display: flex;
   align-items: baseline;
@@ -502,6 +524,12 @@
 .home-hero__facts li + li {
   padding-left: var(--space-6);
   border-left: 2px dotted rgba(79, 61, 66, 0.22);
+}
+
+@media (max-width: 36em) {
+  .home-hero__facts li + li {
+    padding-left: var(--space-3);
+  }
 }
 
 .home-hero__facts strong {

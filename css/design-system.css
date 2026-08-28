@@ -82,9 +82,7 @@
   --duration-normal: 300ms;
   --duration-slow: 500ms;
 
-  /* Site nav — offset includes the iOS notch inset the bar sits behind */
   --site-nav-h: 4.5rem;
-  --site-nav-offset: calc(var(--site-nav-h) + env(safe-area-inset-top, 0px));
 
   /* Z-index scale */
   --z-base: 1;
