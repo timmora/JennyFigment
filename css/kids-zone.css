@@ -42,6 +42,10 @@
   border-bottom: 3px solid var(--ink);
 }
 
+.kids-zone-page .site-nav::before {
+  background-color: var(--ink);
+}
+
 /* 3-column grid: logo | links | toggle */
 .kids-zone-page .site-nav__inner {
   display: grid;
