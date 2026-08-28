@@ -1329,6 +1329,46 @@
   display: block;
 }
 
+/* Honeypot field for Formspree spam protection — hidden from sighted users
+   and screen readers, but left in the DOM/tab order for bots to fall into. */
+.form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Inline success/error banner shown after a Formspree submission */
+.form-status {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-status[hidden] {
+  display: none;
+}
+
+.form-status--success {
+  background: rgba(56, 142, 60, 0.1);
+  color: var(--success);
+  border: 2px solid var(--success);
+}
+
+.form-status--error {
+  background: rgba(211, 47, 47, 0.1);
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
 /* ===== BADGE / TAG ===== */
 .badge {
   display: inline-block;

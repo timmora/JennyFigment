@@ -4,6 +4,17 @@
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jennifer Hayes — School Visits</title>
   <meta name="description" content="Book author Jennifer Hayes for an imaginative school visit! Interactive presentations for grades K–5. Based in Illinois, available nationwide. Request a visit today." />
+  <link rel="canonical" href="https://jennyfigment.com/educators-parents/school-visits.html" />
+  <meta property="og:title" content="Jennifer Hayes — School Visits" />
+  <meta property="og:description" content="Book author Jennifer Hayes for an imaginative school visit! Interactive presentations for grades K–5. Based in Illinois, available nationwide. Request a visit today." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jennyfigment.com/educators-parents/school-visits.html" />
+  <meta property="og:image" content="https://jennyfigment.com/assets/images/extraordinary-kids-logo.png" />
+  <meta property="og:site_name" content="Jennifer Hayes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jennifer Hayes — School Visits" />
+  <meta name="twitter:description" content="Book author Jennifer Hayes for an imaginative school visit! Interactive presentations for grades K–5. Based in Illinois, available nationwide. Request a visit today." />
+  <meta name="twitter:image" content="https://jennyfigment.com/assets/images/extraordinary-kids-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../css/design-system.css" /><link rel="stylesheet" href="../css/layout.css" /><link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/testimonials.css" /><link rel="stylesheet" href="../css/educators.css" />
   <link rel="stylesheet" href="../css/uplift.css" />
@@ -347,7 +358,9 @@
           <h2 id="inquiry-heading" class="inquiry-form__title">Request a School Visit</h2>
           <p class="inquiry-form__subtitle">Fill out the form below and Jennifer will be in touch within 2–3 business days.</p>
 
-          <form action="#" method="post" enctype="multipart/form-data" novalidate>
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="post" enctype="multipart/form-data" novalidate data-formspree>
+            <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="_subject" value="New school visit request from jennyfigment.com" />
             <div class="grid grid--2">
               <div class="form-group">
                 <label class="form-label" for="contact-name">Your Name <span class="required" aria-label="required">*</span></label>
@@ -434,6 +447,7 @@
     </div>
   </footer>
   <script src="../js/main.js" defer></script>
+  <script src="../js/forms.js" defer></script>
   <script src="../js/testimonials-carousel.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
