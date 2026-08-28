@@ -23,28 +23,29 @@
   padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* With viewport-fit=cover the page scrolls under the Dynamic Island, and iOS
-   gives a backdrop-filtered sticky header its own compositing layer that fails
-   to paint across the safe-area padding — hero content shows through the strip.
-   Dropping the blur for an opaque fill is what keeps that band covered. */
-@media (max-width: 63.99em) {
+/* Mobile: pin the bar to the viewport rather than letting it ride the document.
+   The fill is opaque because a backdrop-filtered header on iOS gets its own
+   compositing layer that fails to paint across the safe-area padding, which is
+   what let hero content show through the notch strip. */
+@media screen and (max-width: 63.99em) {
   .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     background-color: #fdf6f0;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
 
-  /* Anchored to the viewport rather than the sticky bar, so the notch strip
-     stays covered even while iOS is repainting the header mid-scroll. */
-  .site-nav::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: env(safe-area-inset-top, 0px);
-    background-color: #fdf6f0;
-    pointer-events: none;
+  /* Fixed nav leaves the flow, so the page has to reserve its height back. */
+  body {
+    padding-top: var(--site-nav-offset);
+  }
+
+  /* Keep anchor targets from landing underneath the pinned bar. */
+  html {
+    scroll-padding-top: var(--site-nav-offset);
   }
 }
 
@@ -52,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.5rem;
+  height: var(--site-nav-h);
   gap: var(--space-4);
 }
 
@@ -223,7 +224,7 @@
 .nav-drawer {
   display: none;
   position: fixed;
-  inset: calc(4.5rem + env(safe-area-inset-top, 0px)) 0 0 0;
+  inset: var(--site-nav-offset) 0 0 0;
   background-color: var(--cream-paper);
   z-index: var(--z-dropdown);
   padding: var(--space-6);
