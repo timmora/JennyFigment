@@ -1,3 +1,16 @@
+ErrorDocument 404 /404.html
+
 RewriteEngine On
+
+# /index.html -> /
 RewriteCond %{THE_REQUEST} \s/+index\.html[?\s] [NC]
 RewriteRule ^index\.html$ / [R=301,L]
+
+# /page.html -> /page (any other page)
+RewriteCond %{THE_REQUEST} \s/+(.+)\.html[?\s] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Serve the matching .html file when a clean URL is requested
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^.]+)$ $1.html [L]
