@@ -23,6 +23,40 @@
   color: var(--cream-light);
 }
 
+/* Quick links bar */
+.quick-links {
+  background: var(--cream);
+  border-top: 1px solid var(--pink-soft);
+  border-bottom: 1px solid var(--pink-soft);
+  padding-block: var(--space-4);
+}
+
+.quick-links__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.quick-links__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--burgundy-light);
+}
+
+/* Below ~576px, ghost links (transparent background) wrapped onto multiple
+   rows read as inconsistently indented — whichever link happens to lead a
+   row shows its own invisible left padding, while a row led by the plain
+   label doesn't. A single-column stack sidesteps that: every link starts
+   at the same left edge regardless of how narrow the screen is. */
+@media (max-width: 36em) {
+  .quick-links__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
+
 .educators-hero .section-title { color: var(--cream-light); }
 .educators-hero .section-subtitle { color: rgba(247, 223, 234, 0.75); }
 
@@ -430,6 +464,22 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+/* The "Nominate an Extraordinary Kid" CTA is a .btn--lg, which pairs
+   large horizontal padding with white-space: nowrap — on a narrow phone
+   there isn't room for the card's own padding, the button's padding, and
+   that whole phrase on one line, so it ran past the card's edge. */
+@media (max-width: 30em) {
+  .extraordinary-kids {
+    padding-inline: var(--space-5);
+  }
+
+  .extraordinary-kids .btn--lg {
+    max-width: 100%;
+    white-space: normal;
+    padding-inline: var(--space-5);
+  }
 }
 
 .extraordinary-kids__title {
