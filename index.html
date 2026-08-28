@@ -239,7 +239,9 @@
       <div class="container">
         <h2 id="newsletter-heading" class="section-title"><span class="crayon-word">Join</span> the Imagination Club</h2>
         <p class="home-newsletter__copy">Get monthly printable activities and early news about new books!</p>
-        <form class="newsletter-form" action="#" method="post" novalidate>
+        <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="post" novalidate data-formspree data-success-message="You're in! Watch your inbox for monthly printable activities and book news.">
+          <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="_subject" value="New Imagination Club signup from jennyfigment.com" />
           <label for="newsletter-email" class="sr-only">Email address</label>
           <input type="email" id="newsletter-email" name="email" class="newsletter-form__input" placeholder="Your email address" autocomplete="email" required aria-required="true" />
           <button type="submit" class="btn btn--primary">Join</button>
@@ -269,5 +271,6 @@
 
   <script src="js/main.js" defer></script>
   <script src="js/testimonials-carousel.js" defer></script>
+  <script src="js/forms.js" defer></script>
 </body>
 </html>

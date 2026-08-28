@@ -1343,8 +1343,11 @@
   border: 0;
 }
 
-/* Inline success/error banner shown after a Formspree submission */
+/* Inline success/error banner shown after a Formspree submission.
+   flex-basis: 100% makes it wrap onto its own line inside flex forms
+   like .newsletter-form; harmless in ordinary block-flow forms. */
 .form-status {
+  flex: 1 1 100%;
   margin-top: var(--space-4);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);

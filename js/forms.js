@@ -105,11 +105,10 @@
             form.reset();
             var conditional = form.querySelector('.conditional-field.is-visible');
             if (conditional) conditional.classList.remove('is-visible');
-            showStatus(
-              form,
-              'success',
-              "Thanks! Your message is on its way — Jennifer typically responds within 2–3 business days."
-            );
+            var successMessage =
+              form.getAttribute('data-success-message') ||
+              "Thanks! Your message is on its way — Jennifer typically responds within 2–3 business days.";
+            showStatus(form, 'success', successMessage);
             return;
           }
           return response.json().catch(function () { return null; }).then(function (payload) {
