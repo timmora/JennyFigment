@@ -41,19 +41,23 @@
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* minmax(0, 1fr), not bare 1fr: a bare 1fr track still respects its
+     content's min-content size, so a column holding a wider source image
+     (cover-lucky-penny.png is 1226px vs ~691px for the other covers) comes
+     out a different width than its neighbor despite both being "1fr". */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-8);
 }
 
 @media (min-width: 64em) {
   .books-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 80em) {
   .books-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
