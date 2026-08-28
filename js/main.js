@@ -122,15 +122,40 @@ function initOutboundModal() {
 }
 
 // ── Active nav link ─────────────────────────────────────────────────────────
+function normalizePath(pathname) {
+  const trimmed = pathname
+    .replace(/\.html$/, '')
+    .replace(/\/index$/, '')
+    .replace(/\/+$/, '');
+  return trimmed || '/';
+}
+
 function initActiveNav() {
-  const currentPath = window.location.pathname;
+  const currentPath = normalizePath(window.location.pathname);
+  const entries = [];
+
   document.querySelectorAll('.site-nav__links a, .nav-drawer__links a').forEach(link => {
     try {
-      const linkPath = new URL(link.href).pathname;
-      if (linkPath === currentPath || (currentPath !== '/' && currentPath.startsWith(linkPath) && linkPath !== '/')) {
-        link.setAttribute('aria-current', 'page');
-      }
+      entries.push({ link, path: normalizePath(new URL(link.href).pathname) });
     } catch (_) { /* ignore */ }
+  });
+
+  // Longest match wins, so a section link never lights up alongside the child
+  // page the visitor is actually on. Comparing against `path + '/'` keeps the
+  // match on segment boundaries, so /about can't claim /about-the-author.
+  let activePath = '';
+  entries.forEach(({ path }) => {
+    const matches = path === currentPath ||
+      (path !== '/' && currentPath.startsWith(path + '/'));
+    if (matches && path.length > activePath.length) activePath = path;
+  });
+
+  entries.forEach(({ link, path }) => {
+    if (activePath && path === activePath) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
   });
 }
 
