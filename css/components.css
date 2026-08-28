@@ -23,6 +23,18 @@
   padding-top: env(safe-area-inset-top, 0px);
 }
 
+/* With viewport-fit=cover the page scrolls under the Dynamic Island, and iOS
+   gives a backdrop-filtered sticky header its own compositing layer that fails
+   to paint across the safe-area padding — hero content shows through the strip.
+   Dropping the blur for an opaque fill is what keeps that band covered. */
+@media (max-width: 63.99em) {
+  .site-nav {
+    background-color: #fdf6f0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 .site-nav__inner {
   display: flex;
   align-items: center;
@@ -198,7 +210,7 @@
 .nav-drawer {
   display: none;
   position: fixed;
-  inset: 4.5rem 0 0 0;
+  inset: calc(4.5rem + env(safe-area-inset-top, 0px)) 0 0 0;
   background-color: var(--cream-paper);
   z-index: var(--z-dropdown);
   padding: var(--space-6);
