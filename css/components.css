@@ -38,6 +38,21 @@
     backdrop-filter: none;
   }
 
+  /* Belt-and-suspenders for the safe-area strip itself: rather than relying
+     on the header's own padding-top to extend its paint area under the
+     notch/Dynamic Island (unreliable across iOS versions), paint that strip
+     with its own explicit fixed bar in the same background. */
+  .site-nav::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top, 0px);
+    background-color: #fdf6f0;
+    z-index: var(--z-sticky);
+  }
+
   /* Fixed nav leaves the flow, so the page has to reserve its height back. */
   body {
     padding-top: var(--site-nav-offset);
