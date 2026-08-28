@@ -3,3 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/jennyfi2/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -f .htaccess $DEPLOYPATH
