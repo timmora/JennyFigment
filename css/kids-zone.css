@@ -42,12 +42,18 @@
   border-bottom: 3px solid var(--ink);
 }
 
+.kids-zone-page .site-nav::before {
+  background-color: var(--ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 /* 3-column grid: logo | links | toggle */
 .kids-zone-page .site-nav__inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  height: 4.5rem;
+  height: var(--site-nav-inner-height);
 }
 
 .kids-zone-page .site-nav__logo {
