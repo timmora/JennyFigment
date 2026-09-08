@@ -1343,18 +1343,14 @@
   display: block;
 }
 
-/* Honeypot field for Formspree spam protection — hidden from sighted users
-   and screen readers, but left in the DOM/tab order for bots to fall into. */
+/* Honeypot field for Formspree spam protection. Deliberately NOT the .sr-only
+   pattern this used to use: a visually-hidden field stays in the accessibility
+   tree and stays visible to password managers, so screen reader users and
+   anyone with autofill were filling it in and having real submissions dropped
+   as spam. display:none hides it from assistive tech and autofill both, while
+   bots that parse the HTML and fill every input still fall into it. */
 .form-honeypot {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  display: none !important;
 }
 
 /* Inline success/error banner shown after a Formspree submission.
