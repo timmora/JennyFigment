@@ -456,19 +456,23 @@
   overflow: hidden;
 }
 
-/* The "Nominate an Extraordinary Kid" CTA is a .btn--lg, which pairs
-   large horizontal padding with white-space: nowrap — on a narrow phone
-   there isn't room for the card's own padding, the button's padding, and
-   that whole phrase on one line, so it ran past the card's edge. */
+/* The "Nominate an Extraordinary Kid" and "Learn About School Visits" CTAs
+   are .btn--lg, which pairs large horizontal padding with white-space: nowrap
+   — on a narrow phone there isn't room for the card's own padding, the
+   button's padding, and that whole phrase on one line, so it ran past the
+   card's edge. */
 @media (max-width: 30em) {
-  .extraordinary-kids {
+  .extraordinary-kids,
+  .school-visit-cta {
     padding-inline: var(--space-5);
   }
 
-  .extraordinary-kids .btn--lg {
+  .extraordinary-kids .btn--lg,
+  .school-visit-cta .btn--lg {
     max-width: 100%;
     white-space: normal;
     padding-inline: var(--space-5);
+    text-align: center;
   }
 }
 
