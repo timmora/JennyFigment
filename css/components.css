@@ -445,13 +445,37 @@
 
 /* Fixed height, natural width: Lucky Penny is squarer than the series
    covers, and cropping it to 2:3 would cut the art. */
+.mega-book__cover {
+  position: relative;
+  align-self: flex-start;
+  max-width: 100%;
+}
+
 .mega-book img {
+  display: block;
   width: auto;
   max-width: 100%;
   height: 9rem;
-  align-self: flex-start;
   border-radius: 3px;
   box-shadow: 2px 3px 0 rgba(43, 22, 27, 0.14);
+}
+
+/* Small sticker on the cover's corner, echoing the home page's
+   "New book" pill, so the details line below stays the same for every book. */
+.mega-book__badge {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.55rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--pink-hot);
+  color: var(--white);
+  font-family: var(--font-kids);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: 0 0 0 2px var(--cream-light);
+  transform: rotate(4deg);
 }
 
 .mega-book:hover,
@@ -475,12 +499,6 @@
   color: var(--burgundy-light);
 }
 
-.mega-book__meta--new {
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #b0621f;
-}
 
 .mega-panel__card {
   display: flex;

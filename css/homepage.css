@@ -569,20 +569,6 @@
   color: #c9601f;
 }
 
-.paint-note__label--new {
-  display: inline-block;
-  font-family: var(--font-kids);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0.01em;
-  line-height: 1.4;
-  color: #fff;
-  background: #b32a70;
-  border-radius: 999px;
-  padding: 0.35rem 0.95rem;
-}
-
 .paint-note--penny .paint-note__cta {
   color: #c8347f;
 }
