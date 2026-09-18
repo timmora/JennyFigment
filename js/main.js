@@ -160,6 +160,12 @@
     items.forEach((item) => observer.observe(item));
   }
 
+  // Smooth scrolling waits until the browser has finished jumping to any
+  // #section in the URL (see html.is-loaded in design-system.css).
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => document.documentElement.classList.add('is-loaded'));
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     initNav();
     initMegaPanels();

@@ -140,10 +140,28 @@ body.page-theme-educators .educators-hero .section-label {
   padding: 0;
 }
 
+/* Smooth scrolling is switched on by main.js only once the page has loaded.
+   Left on from the start, it also animates the jump to a #section when a page
+   opens at one (/educators-parents#resources), and fonts, images and
+   carousels settling during that animation cut it short — it stalls partway
+   or snaps back to the top. Loading at an anchor now jumps straight there;
+   in-page links still glide. */
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Land #section targets a little below the top edge… */
+  scroll-padding-top: var(--space-4);
+}
+
+html.is-loaded {
+  scroll-behavior: smooth;
+}
+
+/* …and clear the pinned desktop header (about 4.4rem tall). */
+@media (min-width: 64em) {
+  html {
+    scroll-padding-top: calc(4.5rem + var(--space-4));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
