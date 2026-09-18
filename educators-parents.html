@@ -16,24 +16,124 @@
   <meta name="twitter:description" content="Free classroom resources, discussion guides, STEM activities, and school visit information for teachers, librarians, and parents. Download now." />
   <meta name="twitter:image" content="https://jennyfigment.com/assets/images/extraordinary-kids-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/design-system.css?v=20260828" /><link rel="stylesheet" href="css/layout.css?v=20260828" /><link rel="stylesheet" href="css/components.css?v=20260828" /><link rel="stylesheet" href="css/educators.css?v=20260909" />
-  <link rel="stylesheet" href="css/uplift.css?v=20260902" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Fredoka:wght@400;600;700&amp;family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" />
+  <link rel="stylesheet" href="css/design-system.css?v=20260917" /><link rel="stylesheet" href="css/layout.css?v=20260917" /><link rel="stylesheet" href="css/components.css?v=20260917" /><link rel="stylesheet" href="css/educators.css?v=20260917" />
+  <link rel="stylesheet" href="css/uplift.css?v=20260917" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body class="page-theme-educators">
+  <!-- @header -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-nav" role="banner">
-    <div class="container site-nav__inner">
-      <a href="/" class="site-nav__logo" aria-label="Jennifer Hayes — Home"><span class="site-nav__logo-text">Jennifer Hayes</span></a>
-      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="/">Home</a></li><li><a href="books">Books</a></li><li><a href="educators-parents" aria-current="page">Educators &amp; Parents</a></li><li><a href="about">About</a></li><li><a href="contact">Contact</a></li><li><a href="educators-parents/school-visits">School Visits</a></li></ul></nav>
-      <div class="site-nav__right"><a href="kids-zone" class="btn-kids-zone"><span class="sparkle" aria-hidden="true">✦</span> Kids Zone!</a><button id="nav-toggle" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button></div>
+  <header class="masthead" role="banner">
+    <div class="container masthead__row">
+      <button id="nav-toggle" class="masthead__toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+
+      <nav class="masthead__nav masthead__nav--left" aria-label="Primary">
+        <ul class="masthead__links" role="list">
+          <li class="masthead__group">
+            <button type="button" class="masthead__link masthead__trigger" aria-expanded="false" aria-controls="panel-books">Books <span class="masthead__caret" aria-hidden="true">▾</span></button>
+            <div id="panel-books" class="mega-panel mega-panel--books">
+              <div class="container mega-panel__inner">
+                <div class="mega-panel__main">
+                  <p class="mega-panel__label">The books</p>
+                  <ul class="mega-books" role="list">
+                    <li><a href="/books/lucky-penny" class="mega-book"><img src="assets/images/books/thumbs/cover-lucky-penny.webp" alt="" width="240" height="314" decoding="async" /><span class="mega-book__title">Lucky Penny</span><span class="mega-book__meta mega-book__meta--new">New · Ages 4–9</span></a></li>
+                    <li><a href="/books/jenny-figment-book-1" class="mega-book"><img src="assets/images/books/thumbs/cover-jenny-figment-book-1.webp" alt="" width="240" height="356" decoding="async" /><span class="mega-book__title">The Extraordinary Imagination of Jenny Figment</span><span class="mega-book__meta">Ages 6–11</span></a></li>
+                    <li><a href="/books/andys-space-friends" class="mega-book"><img src="assets/images/books/thumbs/cover-andys-space-friends.webp" alt="" width="240" height="356" decoding="async" /><span class="mega-book__title">Andy's Space Friends</span><span class="mega-book__meta">Ages 6–11</span></a></li>
+                    <li><a href="/books/riddle-fairy-tale-village" class="mega-book"><img src="assets/images/books/thumbs/cover-riddle-fairy-tale-village.webp" alt="" width="240" height="385" decoding="async" /><span class="mega-book__title">The Riddle of the Fairytale Village</span><span class="mega-book__meta">Ages 6–11</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega-panel__aside">
+                  <p class="mega-panel__label">Where to buy</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="https://harveystales.com/" target="_blank" rel="noopener noreferrer">Harvey's Tales</a></li>
+                    <li><a href="https://shop.literarybookbar.com/browse/filter/t/jennifer%20hayes/k/keyword" target="_blank" rel="noopener noreferrer">The Literary</a></li>
+                    <li><a href="https://townhousebooks.com/" target="_blank" rel="noopener noreferrer">Town House Books</a></li>
+                    <li><a href="https://store.bookbaby.com/websearch/websearchindex?searchterms=jennifer%20hayes&amp;search=jennifer%20hayes" target="_blank" rel="noopener noreferrer">BookBaby</a></li>
+                  </ul>
+                  <a href="/books" class="mega-panel__more">All four books →</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="masthead__group">
+            <button type="button" class="masthead__link masthead__trigger" aria-expanded="false" aria-controls="panel-educators" aria-current="page">Educators &amp; Parents <span class="masthead__caret" aria-hidden="true">▾</span></button>
+            <div id="panel-educators" class="mega-panel mega-panel--educators">
+              <div class="container mega-panel__inner mega-panel__inner--cols">
+                <div>
+                  <p class="mega-panel__label">In the classroom</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="/educators-parents#resources">Activity guides &amp; resources</a></li>
+                    <li><a href="/assets/resources/Discussion%20Questions.pdf" target="_blank" rel="noopener">Discussion questions (PDF)</a></li>
+                    <li><a href="/educators-parents#extraordinary-kids">Extraordinary Kids campaign</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="mega-panel__label">School visits</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="/educators-parents/school-visits">What a visit looks like</a></li>
+                    <li><a href="/educators-parents/school-visits#visit-reviews-heading">Educator testimonials</a></li>
+                    <li><a href="/educators-parents/school-visits#inquiry-form">Request a visit</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="mega-panel__label">For parents &amp; press</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="/educators-parents#note-for-grown-up-kids">A note for grown-up kids</a></li>
+                    <li><a href="/media-kit">Media kit</a></li>
+                    <li><a href="/kids-zone">Kids Zone for home</a></li>
+                  </ul>
+                </div>
+                <div class="mega-panel__card">
+                  <p class="mega-panel__card-title">Bring Jennifer to your school</p>
+                  <p class="mega-panel__card-text">Free readings, Q&amp;A and writing fun for grades K–5 in Northern &amp; Central Illinois.</p>
+                  <a href="/educators-parents/school-visits#inquiry-form" class="mega-panel__card-cta">Book a visit</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="/" class="masthead__brand" aria-label="Jennifer Hayes — Home">
+        <span class="masthead__wordmark">Jennifer Hayes</span>
+        <span class="masthead__tagline" aria-hidden="true">Children's author</span>
+      </a>
+
+      <div class="masthead__right">
+        <ul class="masthead__links masthead__links--right" role="list">
+          <li><a href="/about" class="masthead__link">About</a></li>
+          <li><a href="/contact" class="masthead__link">Contact</a></li>
+        </ul>
+        <span class="masthead__divider" aria-hidden="true"></span>
+        <a href="/kids-zone" class="masthead__kids" aria-label="Kids Zone"><span class="sparkle" aria-hidden="true">✦</span><span class="masthead__kids-label"> Kids Zone</span></a>
+      </div>
     </div>
   </header>
-  <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
-    <ul class="nav-drawer__links" role="list"><li><a href="/">Home</a></li><li><a href="books">Books</a></li><li><a href="educators-parents">Educators &amp; Parents</a></li><li><a href="about">About</a></li><li><a href="contact">Contact</a></li><li><a href="educators-parents/school-visits">School Visits</a></li></ul>
-    <a href="kids-zone" class="btn-kids-zone u-drawer-cta"><span aria-hidden="true">✦</span> Enter Kids Zone!</a>
-  </nav>
+
+  <div id="nav-drawer" class="masthead-drawer" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="masthead-drawer__bar">
+      <button type="button" class="masthead-drawer__close" data-nav-close aria-label="Close navigation menu"><span></span><span></span></button>
+      <span class="masthead__wordmark masthead__wordmark--sm" aria-hidden="true">Jennifer Hayes</span>
+      <span class="masthead-drawer__spacer"></span>
+    </div>
+    <nav aria-label="Mobile">
+      <ul class="masthead-drawer__links" role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/books">Books <span class="masthead-drawer__hint">4 titles</span></a></li>
+        <li><a href="/educators-parents" aria-current="page">Educators &amp; Parents</a></li>
+        <li><a href="/educators-parents/school-visits">School Visits</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="masthead-drawer__ctas">
+      <a href="/educators-parents/school-visits#inquiry-form" class="masthead-drawer__cta masthead-drawer__cta--visit">Book a school visit</a>
+      <a href="/kids-zone" class="masthead-drawer__cta masthead-drawer__cta--kids"><span aria-hidden="true">✦</span> Kids Zone</a>
+    </div>
+  </div>
+  <!-- /@header -->
 
 
   <main id="main-content">
@@ -72,11 +172,11 @@
 
         <!-- Filter buttons -->
         <div class="resource-filter" role="group" aria-label="Filter resources">
-          <button class="filter-btn is-active" data-filter="all">All Resources</button>
-          <button class="filter-btn" data-filter="discussion">Discussion Guides</button>
-          <button class="filter-btn" data-filter="stem">STEM Activities</button>
-          <button class="filter-btn" data-filter="creative">Creative Writing</button>
-          <button class="filter-btn" data-filter="coloring">Coloring Pages</button>
+          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All Resources</button>
+          <button type="button" class="filter-btn" data-filter="discussion" aria-pressed="false">Discussion Guides</button>
+          <button type="button" class="filter-btn" data-filter="stem" aria-pressed="false">STEM Activities</button>
+          <button type="button" class="filter-btn" data-filter="creative" aria-pressed="false">Creative Writing</button>
+          <button type="button" class="filter-btn" data-filter="coloring" aria-pressed="false">Coloring Pages</button>
         </div>
 
         <div class="resources-grid">
@@ -272,6 +372,7 @@
       </div>
     </section>
   </main>
+  <!-- @footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="site-footer__grid">
@@ -283,32 +384,17 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="books/lucky-penny">Lucky Penny</a></li><li><a href="books/jenny-figment-book-1">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="books/andys-space-friends">Andy's Space Friends</a></li><li><a href="books/riddle-fairy-tale-village">The Riddle of the Fairytale Village</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="educators-parents">Resources &amp; Guides</a></li><li><a href="educators-parents/school-visits">Book a School Visit</a></li><li><a href="educators-parents#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="about">About Jennifer Hayes</a></li><li><a href="contact">Contact</a></li><li><a href="educators-parents/school-visits">School Visits</a></li><li><a href="kids-zone">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="/books/lucky-penny">Lucky Penny</a></li><li><a href="/books/jenny-figment-book-1">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="/books/andys-space-friends">Andy's Space Friends</a></li><li><a href="/books/riddle-fairy-tale-village">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="/educators-parents">Resources &amp; Guides</a></li><li><a href="/educators-parents/school-visits">Book a School Visit</a></li><li><a href="/educators-parents#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="/about">About Jennifer Hayes</a></li><li><a href="/contact">Contact</a></li><li><a href="/media-kit">Media Kit</a></li><li><a href="/kids-zone">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom"><span>© 2026 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>
   </footer>
+  <!-- /@footer -->
 
 
-  <script>
-    // Resource filter
-    document.addEventListener('DOMContentLoaded', () => {
-      const btns = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('[data-resource]');
-      btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          btns.forEach(b => b.classList.remove('is-active'));
-          btn.classList.add('is-active');
-          const filter = btn.dataset.filter;
-          cards.forEach(card => {
-            card.style.display = (filter === 'all' || card.dataset.resource === filter) ? '' : 'none';
-          });
-        });
-      });
-    });
-  </script>
-  <script src="js/main.js?v=20260828" defer></script>
+  <script src="js/main.js?v=20260917" defer></script>
+  <script src="js/pages/educators.js?v=20260917" defer></script>
 </body>
 </html>

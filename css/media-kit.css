@@ -1,0 +1,96 @@
+/* ============================================
+   JENNY FIGMENT — Media Kit page
+
+   The page is a set of download tiles repeated a dozen times over. These
+   classes replace the inline style attributes that used to carry the same
+   declarations on every one of them.
+   ============================================ */
+
+/* Row of buttons under a section intro. */
+.mk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.mk-intro {
+  max-width: 60ch;
+}
+
+/* ---------- Download tiles ---------- */
+.mk-grid {
+  display: grid;
+  gap: var(--space-6);
+  /* min(100%, …) so a single column never overflows a narrow screen. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  margin-top: var(--space-6);
+}
+
+/* Cover art and photos are smaller files than the kit pages, so they tile
+   tighter. */
+.mk-grid--assets {
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+}
+
+.mk-tile {
+  padding: var(--space-3);
+}
+
+.mk-tile__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin-bottom: var(--space-3);
+  box-shadow: 0 4px 14px rgba(43, 22, 27, 0.15);
+}
+
+/* The kit pages are all one aspect ratio and sit above a single caption
+   line, so they need less room beneath. */
+.mk-grid--pages .mk-tile__img {
+  margin-bottom: var(--space-2);
+}
+
+/* The author photo is landscape-ish; crop it to the book-cover shape so the
+   row of tiles lines up. */
+.mk-tile__img--portrait {
+  aspect-ratio: 691 / 1024;
+  object-fit: cover;
+}
+
+.mk-tile__label {
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.mk-tile__title {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-1);
+}
+
+.mk-tile__meta {
+  font-size: var(--text-sm);
+  color: var(--burgundy-light);
+}
+
+/* ---------- Quick facts ---------- */
+.mk-facts {
+  margin-top: var(--space-8);
+}
+
+.mk-fact__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.mk-fact__title {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+}
+
+.mk-fact__text {
+  font-size: var(--text-sm);
+  color: var(--burgundy-light);
+}

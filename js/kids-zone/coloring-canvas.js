@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function startDraw(e) {
     e.preventDefault();
     isDrawing = true;
-    strokeDirty = false;
     const pos = getPos(e);
     lastX = pos.x;
     lastY = pos.y;

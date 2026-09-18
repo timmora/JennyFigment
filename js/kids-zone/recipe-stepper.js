@@ -14,86 +14,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const steps = stepsContainer.querySelectorAll('.recipe-step');
   const total = steps.length;
+  if (!total) return;
   let current = 0;
 
-  for (let i = 0; i < total; i++) {
+  const dots = [];
+  steps.forEach((_step, i) => {
     const dot = document.createElement('button');
     dot.type = 'button';
     dot.className = 'recipe-progress-dot';
     dot.setAttribute('aria-label', `Go to step ${i + 1}`);
-    dot.addEventListener('click', () => {
-      current = i;
-      showStep(current);
-    });
+    dot.addEventListener('click', () => showStep(i));
     progressContainer?.appendChild(dot);
-  }
-
-  const dots = progressContainer?.querySelectorAll('.recipe-progress-dot') || [];
+    dots.push(dot);
+  });
 
   function showStep(index) {
-    steps.forEach((step, i) => {
-      step.classList.toggle('is-active', i === index);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === index);
-    });
+    current = index;
 
-    prevBtn.disabled = index === 0;
-    prevBtn.style.opacity = index === 0 ? '0.4' : '1';
+    steps.forEach((step, i) => step.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
 
+    const isFirst = index === 0;
     const isLast = index === total - 1;
-    if (isLast) {
-      nextBtn.textContent = '🎉 Done!';
-      nextBtn.disabled = true;
-      nextBtn.style.opacity = '0.6';
-      restartBtn.style.display = 'inline-flex';
-    } else {
-      nextBtn.textContent = 'Next Step →';
-      nextBtn.disabled = false;
-      nextBtn.style.opacity = '1';
-      restartBtn.style.display = 'none';
-    }
+
+    prevBtn.disabled = isFirst;
+    prevBtn.style.opacity = isFirst ? '0.4' : '1';
+
+    nextBtn.disabled = isLast;
+    nextBtn.style.opacity = isLast ? '0.6' : '1';
+    nextBtn.textContent = isLast ? '🎉 Done!' : 'Next Step →';
+    if (restartBtn) restartBtn.style.display = isLast ? 'inline-flex' : 'none';
 
     const msg = `Step ${index + 1} of ${total}`;
     if (progressText) progressText.textContent = msg;
-    if (progressContainer) {
-      progressContainer.setAttribute('aria-label', msg);
-    }
+    progressContainer?.setAttribute('aria-label', msg);
 
+    /* On a phone the steps sit below the controls, so bring them back up. */
     if (window.innerWidth < 640) {
       stepsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
-  prevBtn.addEventListener('click', () => {
-    if (current > 0) {
-      current -= 1;
-      showStep(current);
-    }
-  });
+  const move = (delta) => {
+    const next = current + delta;
+    if (next >= 0 && next < total) showStep(next);
+  };
 
-  nextBtn.addEventListener('click', () => {
-    if (current < total - 1) {
-      current += 1;
-      showStep(current);
-    }
-  });
+  prevBtn.addEventListener('click', () => move(-1));
+  nextBtn.addEventListener('click', () => move(1));
 
   restartBtn?.addEventListener('click', () => {
-    current = 0;
-    showStep(current);
+    showStep(0);
     nextBtn.focus();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' && current < total - 1) {
-      current += 1;
-      showStep(current);
-    }
-    if (e.key === 'ArrowLeft' && current > 0) {
-      current -= 1;
-      showStep(current);
-    }
+    if (e.key === 'ArrowRight') move(1);
+    else if (e.key === 'ArrowLeft') move(-1);
   });
 
   showStep(0);

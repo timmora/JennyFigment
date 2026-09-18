@@ -504,3 +504,11 @@
   margin-bottom: var(--space-6);
 }
 
+
+/* ---------- Section note under the visit detail cards ---------- */
+.visits-detail-note {
+  max-width: 62ch;
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--burgundy-warm);
+}

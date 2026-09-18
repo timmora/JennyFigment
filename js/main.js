@@ -1,169 +1,169 @@
 /* ============================================
    JENNY FIGMENT — Main JS
-   Shared: nav toggle, skip-link, scroll effects,
-           reduced-motion detection, outbound modal
+   Shared across every page: mobile nav drawer, masthead drop panels,
+   sticky-nav shadow, scroll reveal.
+
+   The active nav link is not set here — tools/sync-layout.mjs stamps
+   aria-current="page" into the markup at build time, so it is right before
+   any JavaScript runs and stays right with JavaScript off.
    ============================================ */
 
-// ── Reduced motion preference ───────────────────────────────────────────────
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ── Mobile nav toggle ───────────────────────────────────────────────────────
-function initNav() {
-  const toggle = document.getElementById('nav-toggle');
-  const drawer = document.getElementById('nav-drawer');
-  if (!toggle || !drawer) return;
+  // ── Mobile nav drawer ─────────────────────────────────────────────────────
+  function initNav() {
+    const toggle = document.getElementById('nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    if (!toggle || !drawer) return;
 
-  toggle.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    drawer.classList.toggle('is-open', !isOpen);
-    document.body.style.overflow = !isOpen ? 'hidden' : '';
-  });
+    // The main-site drawer covers the whole screen (hamburger included), so it
+    // carries its own close button; the Kids Zone drawer sits under its bar.
+    const closeButton = drawer.querySelector('[data-nav-close]');
 
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
-      toggle.setAttribute('aria-expanded', 'false');
-      drawer.classList.remove('is-open');
-      document.body.style.overflow = '';
-      toggle.focus();
-    }
-  });
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      drawer.classList.toggle('is-open', open);
+      // Lock the page behind the drawer so only the drawer scrolls.
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (closeButton) (open ? closeButton : toggle).focus();
+    };
 
-  // Close when clicking a drawer link
-  drawer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      drawer.classList.remove('is-open');
-      document.body.style.overflow = '';
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
     });
-  });
-}
 
-// ── Sticky nav shadow on scroll ─────────────────────────────────────────────
-function initNavScroll() {
-  const nav = document.querySelector('.site-nav');
-  if (!nav) return;
+    if (closeButton) closeButton.addEventListener('click', () => setOpen(false));
 
-  const handler = () => {
-    nav.classList.toggle('is-scrolled', window.scrollY > 10);
-  };
-  window.addEventListener('scroll', handler, { passive: true });
-  handler();
-}
+    document.addEventListener('keydown', (e) => {
+      if (!drawer.classList.contains('is-open')) return;
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.focus();
+        return;
+      }
+      // Full-screen drawer is modal: keep Tab cycling inside it.
+      if (e.key !== 'Tab' || !closeButton) return;
+      const focusable = drawer.querySelectorAll('a[href], button');
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
 
-// ── Animate elements on scroll (IntersectionObserver) ───────────────────────
-function initScrollReveal() {
-  if (prefersReducedMotion) return;
+    drawer.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  }
 
-  const items = document.querySelectorAll('[data-reveal]');
-  if (!items.length) return;
+  // ── Masthead drop panels (Books, Educators & Parents) ─────────────────────
+  // One open/closed state per panel, driven here for mouse hover, click/tap
+  // and keyboard alike; at most one panel is open at a time. (CSS only opens
+  // them on hover when this hasn't run — see .is-enhanced.)
+  function initMegaPanels() {
+    const masthead = document.querySelector('.masthead');
+    const groups = [...document.querySelectorAll('.masthead__group')];
+    if (!masthead || !groups.length) return;
+    masthead.classList.add('is-enhanced');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
+    // Grace period so a mouse cutting a corner on the way into the panel
+    // doesn't slam it shut.
+    const HOVER_CLOSE_DELAY = 150;
+    let closeTimer = null;
+
+    const isOpen = (group) => group.classList.contains('is-open');
+
+    const setOpen = (group, open) => {
+      group.classList.toggle('is-open', open);
+      group.querySelector('.masthead__trigger').setAttribute('aria-expanded', String(open));
+    };
+
+    const openOnly = (group) => {
+      clearTimeout(closeTimer);
+      groups.forEach((g) => setOpen(g, g === group));
+    };
+
+    const closeAll = () => {
+      clearTimeout(closeTimer);
+      groups.forEach((g) => setOpen(g, false));
+    };
+
+    groups.forEach((group) => {
+      const trigger = group.querySelector('.masthead__trigger');
+
+      // Mouse only: touch and pen go through click, so a tap doesn't
+      // open-then-immediately-toggle-closed.
+      group.addEventListener('pointerenter', (e) => {
+        if (e.pointerType === 'mouse') openOnly(group);
+      });
+
+      group.addEventListener('pointerleave', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(() => setOpen(group, false), HOVER_CLOSE_DELAY);
+      });
+
+      trigger.addEventListener('click', () => {
+        if (isOpen(group)) closeAll();
+        else openOnly(group);
+      });
+
+      group.addEventListener('focusout', (e) => {
+        if (!group.contains(e.relatedTarget)) setOpen(group, false);
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const open = groups.find(isOpen);
+      if (!open) return;
+      const hadFocus = open.contains(document.activeElement);
+      closeAll();
+      if (hadFocus) open.querySelector('.masthead__trigger').focus();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!groups.some((g) => g.contains(e.target))) closeAll();
+    });
+  }
+
+  // ── Sticky nav shadow on scroll ───────────────────────────────────────────
+  function initNavScroll() {
+    const nav = document.querySelector('.masthead, .site-nav');
+    if (!nav) return;
+
+    const sync = () => nav.classList.toggle('is-scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', sync, { passive: true });
+    sync();
+  }
+
+  // ── Reveal elements as they scroll into view ──────────────────────────────
+  function initScrollReveal() {
+    if (prefersReducedMotion) return;
+
+    const items = document.querySelectorAll('[data-reveal]');
+    if (!items.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
         entry.target.classList.add('is-revealed');
         observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  items.forEach(item => observer.observe(item));
-}
-
-// ── Outbound link warning modal (Kids Zone only) ────────────────────────────
-function initOutboundModal() {
-  const modal = document.getElementById('outbound-modal');
-  if (!modal) return;
-
-  const closeBtn = modal.querySelector('[data-modal-close]');
-  const proceedBtn = modal.querySelector('[data-modal-proceed]');
-  let pendingHref = '';
-
-  document.querySelectorAll('[data-external]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      pendingHref = link.href;
-      modal.classList.add('is-open');
-      modal.querySelector('.outbound-modal__box').focus();
-    });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('is-open');
-      pendingHref = '';
-    });
+    items.forEach((item) => observer.observe(item));
   }
 
-  if (proceedBtn) {
-    proceedBtn.addEventListener('click', () => {
-      modal.classList.remove('is-open');
-      if (pendingHref) {
-        window.open(pendingHref, '_blank', 'noopener,noreferrer');
-        pendingHref = '';
-      }
-    });
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('is-open');
-      pendingHref = '';
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    initNav();
+    initMegaPanels();
+    initNavScroll();
+    initScrollReveal();
   });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-      modal.classList.remove('is-open');
-      pendingHref = '';
-    }
-  });
-}
-
-// ── Active nav link ─────────────────────────────────────────────────────────
-function normalizePath(pathname) {
-  const trimmed = pathname
-    .replace(/\.html$/, '')
-    .replace(/\/index$/, '')
-    .replace(/\/+$/, '');
-  return trimmed || '/';
-}
-
-function initActiveNav() {
-  const currentPath = normalizePath(window.location.pathname);
-  const entries = [];
-
-  document.querySelectorAll('.site-nav__links a, .nav-drawer__links a').forEach(link => {
-    try {
-      entries.push({ link, path: normalizePath(new URL(link.href).pathname) });
-    } catch (_) { /* ignore */ }
-  });
-
-  // Longest match wins, so a section link never lights up alongside the child
-  // page the visitor is actually on. Comparing against `path + '/'` keeps the
-  // match on segment boundaries, so /about can't claim /about-the-author.
-  let activePath = '';
-  entries.forEach(({ path }) => {
-    const matches = path === currentPath ||
-      (path !== '/' && currentPath.startsWith(path + '/'));
-    if (matches && path.length > activePath.length) activePath = path;
-  });
-
-  entries.forEach(({ link, path }) => {
-    if (activePath && path === activePath) {
-      link.setAttribute('aria-current', 'page');
-    } else {
-      link.removeAttribute('aria-current');
-    }
-  });
-}
-
-// ── Initialize ───────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  initNav();
-  initNavScroll();
-  initScrollReveal();
-  initOutboundModal();
-  initActiveNav();
-});
+})();

@@ -1,96 +1,71 @@
 /* ============================================
    JENNY FIGMENT — Jenny Q&A Accordion
+   One answer open at a time.
    ============================================ */
-
-function closeAnswer(btn, answer, buttons) {
-  btn.setAttribute('aria-expanded', 'false');
-  answer.classList.remove('is-open');
-  answer.style.maxHeight = '0';
-}
-
-function openAnswer(btn, answer, buttons) {
-  buttons.forEach(otherBtn => {
-    if (otherBtn !== btn) {
-      otherBtn.setAttribute('aria-expanded', 'false');
-      const otherId = otherBtn.getAttribute('aria-controls');
-      const otherAnswer = document.getElementById(otherId);
-      if (otherAnswer) {
-        otherAnswer.classList.remove('is-open');
-        otherAnswer.style.maxHeight = '0';
-      }
-    }
-  });
-
-  btn.setAttribute('aria-expanded', 'true');
-  answer.classList.add('is-open');
-  answer.style.maxHeight = `${answer.scrollHeight}px`;
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   const qaContainer = document.getElementById('qa-container');
   if (!qaContainer) return;
 
-  const buttons = qaContainer.querySelectorAll('.qa-question-btn');
+  const buttons = [...qaContainer.querySelectorAll('.qa-question-btn')];
   const surpriseBtn = document.getElementById('qa-surprise');
   const closeAllBtn = document.getElementById('qa-close-all');
 
-  buttons.forEach(btn => {
+  const answerFor = (btn) => document.getElementById(btn.getAttribute('aria-controls'));
+  const isOpen = (btn) => btn.getAttribute('aria-expanded') === 'true';
+
+  /* max-height drives the CSS transition, so it has to be a real pixel value
+     while open — 'none' would not animate. */
+  function setOpen(btn, open) {
+    const answer = answerFor(btn);
+    if (!answer) return;
+    btn.setAttribute('aria-expanded', String(open));
+    answer.classList.toggle('is-open', open);
+    answer.style.maxHeight = open ? `${answer.scrollHeight}px` : '0';
+    /* Re-measure next frame: opening one answer closes another above it, and
+       the reflow can change this one's height after the first measurement. */
+    if (open) {
+      requestAnimationFrame(() => {
+        if (isOpen(btn)) answer.style.maxHeight = `${answer.scrollHeight}px`;
+      });
+    }
+  }
+
+  function openOnly(btn) {
+    buttons.forEach((other) => {
+      if (other !== btn) setOpen(other, false);
+    });
+    setOpen(btn, true);
+  }
+
+  buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      const answerId = btn.getAttribute('aria-controls');
-      const answer = document.getElementById(answerId);
-
-      if (!answer) return;
-
-      if (isOpen) {
-        closeAnswer(btn, answer, buttons);
-      } else {
-        openAnswer(btn, answer, buttons);
-      }
+      if (isOpen(btn)) setOpen(btn, false);
+      else openOnly(btn);
     });
   });
 
   surpriseBtn?.addEventListener('click', () => {
-    const list = [...buttons];
-    const openBtn = list.find(b => b.getAttribute('aria-expanded') === 'true');
-    let pool = list;
-    if (openBtn && list.length > 1) {
-      pool = list.filter(b => b !== openBtn);
-    }
+    /* Never re-pick the one already open — that would look like a dud click. */
+    const openBtn = buttons.find(isOpen);
+    const pool = openBtn && buttons.length > 1
+      ? buttons.filter((b) => b !== openBtn)
+      : buttons;
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    const answerId = pick.getAttribute('aria-controls');
-    const answer = document.getElementById(answerId);
-    if (!answer) return;
+    if (!pick) return;
 
-    openAnswer(pick, answer, buttons);
+    openOnly(pick);
     pick.focus();
     pick.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-    requestAnimationFrame(() => {
-      answer.style.maxHeight = `${answer.scrollHeight}px`;
-    });
   });
 
   closeAllBtn?.addEventListener('click', () => {
-    buttons.forEach(btn => {
-      const answerId = btn.getAttribute('aria-controls');
-      const answer = document.getElementById(answerId);
-      if (answer) closeAnswer(btn, answer, buttons);
-    });
+    buttons.forEach((btn) => setOpen(btn, false));
   });
 
-  window.addEventListener(
-    'resize',
-    () => {
-      buttons.forEach(btn => {
-        if (btn.getAttribute('aria-expanded') !== 'true') return;
-        const answerId = btn.getAttribute('aria-controls');
-        const answer = document.getElementById(answerId);
-        if (answer?.classList.contains('is-open')) {
-          answer.style.maxHeight = `${answer.scrollHeight}px`;
-        }
-      });
-    },
-    { passive: true }
-  );
+  /* A reflowed answer is a different height, so the pinned max-height has to
+     be re-measured or the text gets clipped. */
+  window.addEventListener('resize', () => {
+    buttons.filter(isOpen).forEach((btn) => setOpen(btn, true));
+  }, { passive: true });
 });

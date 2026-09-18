@@ -16,23 +16,124 @@
   <meta name="twitter:description" content="Book author Jennifer Hayes for an imaginative school visit! Interactive presentations for grades K–5. Based in Illinois, available nationwide. Request a visit today." />
   <meta name="twitter:image" content="https://jennyfigment.com/assets/images/extraordinary-kids-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="../css/design-system.css?v=20260828" /><link rel="stylesheet" href="../css/layout.css?v=20260828" /><link rel="stylesheet" href="../css/components.css?v=20260828" /><link rel="stylesheet" href="../css/testimonials.css?v=20260828" /><link rel="stylesheet" href="../css/educators.css?v=20260909" />
-  <link rel="stylesheet" href="../css/uplift.css?v=20260902" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Fredoka:wght@400;600;700&amp;family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" />
+  <link rel="stylesheet" href="../css/design-system.css?v=20260917" /><link rel="stylesheet" href="../css/layout.css?v=20260917" /><link rel="stylesheet" href="../css/components.css?v=20260917" /><link rel="stylesheet" href="../css/testimonials.css?v=20260917" /><link rel="stylesheet" href="../css/educators.css?v=20260917" />
+  <link rel="stylesheet" href="../css/uplift.css?v=20260917" />
   <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
 </head>
 <body class="page-theme-educators">
+  <!-- @header -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <header class="site-nav" role="banner">
-    <div class="container site-nav__inner">
-      <a href="/" class="site-nav__logo" aria-label="Jennifer Hayes — Home"><span class="site-nav__logo-text">Jennifer Hayes</span></a>
-      <nav aria-label="Primary"><ul class="site-nav__links" role="list"><li><a href="/">Home</a></li><li><a href="../books">Books</a></li><li><a href="../educators-parents">Educators &amp; Parents</a></li><li><a href="../about">About</a></li><li><a href="../contact">Contact</a></li><li><a href="../educators-parents/school-visits" aria-current="page">School Visits</a></li></ul></nav>
-      <div class="site-nav__right"><a href="../kids-zone" class="btn-kids-zone"><span class="sparkle" aria-hidden="true">✦</span> Kids Zone!</a><button id="nav-toggle" class="nav-toggle hide-desktop" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button></div>
+
+  <header class="masthead" role="banner">
+    <div class="container masthead__row">
+      <button id="nav-toggle" class="masthead__toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+
+      <nav class="masthead__nav masthead__nav--left" aria-label="Primary">
+        <ul class="masthead__links" role="list">
+          <li class="masthead__group">
+            <button type="button" class="masthead__link masthead__trigger" aria-expanded="false" aria-controls="panel-books">Books <span class="masthead__caret" aria-hidden="true">▾</span></button>
+            <div id="panel-books" class="mega-panel mega-panel--books">
+              <div class="container mega-panel__inner">
+                <div class="mega-panel__main">
+                  <p class="mega-panel__label">The books</p>
+                  <ul class="mega-books" role="list">
+                    <li><a href="/books/lucky-penny" class="mega-book"><img src="../assets/images/books/thumbs/cover-lucky-penny.webp" alt="" width="240" height="314" decoding="async" /><span class="mega-book__title">Lucky Penny</span><span class="mega-book__meta mega-book__meta--new">New · Ages 4–9</span></a></li>
+                    <li><a href="/books/jenny-figment-book-1" class="mega-book"><img src="../assets/images/books/thumbs/cover-jenny-figment-book-1.webp" alt="" width="240" height="356" decoding="async" /><span class="mega-book__title">The Extraordinary Imagination of Jenny Figment</span><span class="mega-book__meta">Ages 6–11</span></a></li>
+                    <li><a href="/books/andys-space-friends" class="mega-book"><img src="../assets/images/books/thumbs/cover-andys-space-friends.webp" alt="" width="240" height="356" decoding="async" /><span class="mega-book__title">Andy's Space Friends</span><span class="mega-book__meta">Ages 6–11</span></a></li>
+                    <li><a href="/books/riddle-fairy-tale-village" class="mega-book"><img src="../assets/images/books/thumbs/cover-riddle-fairy-tale-village.webp" alt="" width="240" height="385" decoding="async" /><span class="mega-book__title">The Riddle of the Fairytale Village</span><span class="mega-book__meta">Ages 6–11</span></a></li>
+                  </ul>
+                </div>
+                <div class="mega-panel__aside">
+                  <p class="mega-panel__label">Where to buy</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="https://harveystales.com/" target="_blank" rel="noopener noreferrer">Harvey's Tales</a></li>
+                    <li><a href="https://shop.literarybookbar.com/browse/filter/t/jennifer%20hayes/k/keyword" target="_blank" rel="noopener noreferrer">The Literary</a></li>
+                    <li><a href="https://townhousebooks.com/" target="_blank" rel="noopener noreferrer">Town House Books</a></li>
+                    <li><a href="https://store.bookbaby.com/websearch/websearchindex?searchterms=jennifer%20hayes&amp;search=jennifer%20hayes" target="_blank" rel="noopener noreferrer">BookBaby</a></li>
+                  </ul>
+                  <a href="/books" class="mega-panel__more">All four books →</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="masthead__group">
+            <button type="button" class="masthead__link masthead__trigger" aria-expanded="false" aria-controls="panel-educators" aria-current="page">Educators &amp; Parents <span class="masthead__caret" aria-hidden="true">▾</span></button>
+            <div id="panel-educators" class="mega-panel mega-panel--educators">
+              <div class="container mega-panel__inner mega-panel__inner--cols">
+                <div>
+                  <p class="mega-panel__label">In the classroom</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="/educators-parents#resources">Activity guides &amp; resources</a></li>
+                    <li><a href="/assets/resources/Discussion%20Questions.pdf" target="_blank" rel="noopener">Discussion questions (PDF)</a></li>
+                    <li><a href="/educators-parents#extraordinary-kids">Extraordinary Kids campaign</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="mega-panel__label">School visits</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="/educators-parents/school-visits" aria-current="page">What a visit looks like</a></li>
+                    <li><a href="/educators-parents/school-visits#visit-reviews-heading">Educator testimonials</a></li>
+                    <li><a href="/educators-parents/school-visits#inquiry-form">Request a visit</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="mega-panel__label">For parents &amp; press</p>
+                  <ul class="mega-panel__list" role="list">
+                    <li><a href="/educators-parents#note-for-grown-up-kids">A note for grown-up kids</a></li>
+                    <li><a href="/media-kit">Media kit</a></li>
+                    <li><a href="/kids-zone">Kids Zone for home</a></li>
+                  </ul>
+                </div>
+                <div class="mega-panel__card">
+                  <p class="mega-panel__card-title">Bring Jennifer to your school</p>
+                  <p class="mega-panel__card-text">Free readings, Q&amp;A and writing fun for grades K–5 in Northern &amp; Central Illinois.</p>
+                  <a href="/educators-parents/school-visits#inquiry-form" class="mega-panel__card-cta">Book a visit</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="/" class="masthead__brand" aria-label="Jennifer Hayes — Home">
+        <span class="masthead__wordmark">Jennifer Hayes</span>
+        <span class="masthead__tagline" aria-hidden="true">Children's author</span>
+      </a>
+
+      <div class="masthead__right">
+        <ul class="masthead__links masthead__links--right" role="list">
+          <li><a href="/about" class="masthead__link">About</a></li>
+          <li><a href="/contact" class="masthead__link">Contact</a></li>
+        </ul>
+        <span class="masthead__divider" aria-hidden="true"></span>
+        <a href="/kids-zone" class="masthead__kids" aria-label="Kids Zone"><span class="sparkle" aria-hidden="true">✦</span><span class="masthead__kids-label"> Kids Zone</span></a>
+      </div>
     </div>
   </header>
-  <nav id="nav-drawer" class="nav-drawer" aria-label="Mobile navigation">
-    <ul class="nav-drawer__links" role="list"><li><a href="/">Home</a></li><li><a href="../books">Books</a></li><li><a href="../educators-parents">Educators &amp; Parents</a></li><li><a href="../about">About</a></li><li><a href="../contact">Contact</a></li><li><a href="../educators-parents/school-visits" aria-current="page">School Visits</a></li></ul>
-    <a href="../kids-zone" class="btn-kids-zone u-drawer-cta"><span aria-hidden="true">✦</span> Enter Kids Zone!</a>
-  </nav>
+
+  <div id="nav-drawer" class="masthead-drawer" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="masthead-drawer__bar">
+      <button type="button" class="masthead-drawer__close" data-nav-close aria-label="Close navigation menu"><span></span><span></span></button>
+      <span class="masthead__wordmark masthead__wordmark--sm" aria-hidden="true">Jennifer Hayes</span>
+      <span class="masthead-drawer__spacer"></span>
+    </div>
+    <nav aria-label="Mobile">
+      <ul class="masthead-drawer__links" role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/books">Books <span class="masthead-drawer__hint">4 titles</span></a></li>
+        <li><a href="/educators-parents">Educators &amp; Parents</a></li>
+        <li><a href="/educators-parents/school-visits" aria-current="page">School Visits</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="masthead-drawer__ctas">
+      <a href="/educators-parents/school-visits#inquiry-form" class="masthead-drawer__cta masthead-drawer__cta--visit">Book a school visit</a>
+      <a href="/kids-zone" class="masthead-drawer__cta masthead-drawer__cta--kids"><span aria-hidden="true">✦</span> Kids Zone</a>
+    </div>
+  </div>
+  <!-- /@header -->
 
   <main id="main-content">
     <!-- Hero -->
@@ -108,7 +209,7 @@
         <span class="section-label">In the classroom</span>
         <h2 id="visits-gallery-heading" class="section-title crayon-underline" data-reveal>Visit snapshots</h2>
         <p class="section-subtitle" data-reveal data-reveal-delay="1">Moments from recent school visits with Jennifer and students.</p>
-        <div class="visits-gallery__viewport" data-visits-gallery>
+        <div class="visits-gallery__viewport" data-carousel data-carousel-item=".visits-gallery__figure">
           <button
             type="button"
             class="visits-gallery__nav-btn visits-gallery__nav-btn--prev"
@@ -228,7 +329,7 @@
       <div class="container">
         <span class="section-label">What Schools Say</span>
         <h2 id="visit-reviews-heading" class="section-title crayon-underline" data-reveal>Educator Testimonials</h2>
-        <div class="visits-gallery__viewport" data-visits-testimonials-gallery>
+        <div class="visits-gallery__viewport" data-carousel data-carousel-item=".testimonial-card">
           <button
             type="button"
             class="visits-gallery__nav-btn visits-gallery__nav-btn--prev"
@@ -245,7 +346,7 @@
             tabindex="0"
           >
           <div class="visits-testimonials__marquee">
-            <div class="visits-testimonials__track" data-testimonials-track>
+            <div class="visits-testimonials__track">
           <div class="testimonial-card" data-reveal>
             <div class="testimonial-card__quote-frame">
             <div class="testimonial-card__quote-scroll">
@@ -423,6 +524,7 @@
     </section>
   </main>
 
+  <!-- @footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="site-footer__grid">
@@ -434,160 +536,17 @@
             <a href="https://www.instagram.com/jhayesauthor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><span class="site-footer__social-icon" aria-hidden="true">◎</span>Instagram</a>
           </div>
         </div>
-        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="../books/lucky-penny">Lucky Penny</a></li><li><a href="../books/jenny-figment-book-1">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="../books/andys-space-friends">Andy's Space Friends</a></li><li><a href="../books/riddle-fairy-tale-village">The Riddle of the Fairytale Village</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="../educators-parents">Resources &amp; Guides</a></li><li><a href="../educators-parents/school-visits">Book a School Visit</a></li><li><a href="../educators-parents#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
-        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="../about">About Jennifer Hayes</a></li><li><a href="../contact">Contact</a></li><li><a href="../educators-parents/school-visits" aria-current="page">School Visits</a></li><li><a href="../kids-zone">Kids Zone ✦</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Books</h2><ul class="site-footer__links"><li><a href="/books/lucky-penny">Lucky Penny</a></li><li><a href="/books/jenny-figment-book-1">The Extraordinary Imagination of Jenny Figment</a></li><li><a href="/books/andys-space-friends">Andy's Space Friends</a></li><li><a href="/books/riddle-fairy-tale-village">The Riddle of the Fairytale Village</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Educators</h2><ul class="site-footer__links"><li><a href="/educators-parents">Resources &amp; Guides</a></li><li><a href="/educators-parents/school-visits">Book a School Visit</a></li><li><a href="/educators-parents#extraordinary-kids">Extraordinary Kids</a></li></ul></div>
+        <div><h2 class="site-footer__heading">Info</h2><ul class="site-footer__links"><li><a href="/about">About Jennifer Hayes</a></li><li><a href="/contact">Contact</a></li><li><a href="/media-kit">Media Kit</a></li><li><a href="/kids-zone">Kids Zone ✦</a></li></ul></div>
       </div>
       <div class="site-footer__bottom"><span>© 2026 Jennifer Hayes. All rights reserved.</span><span>Jennifer Hayes</span></div>
     </div>
   </footer>
-  <script src="../js/main.js?v=20260828" defer></script>
-  <script src="../js/forms.js?v=20260828" defer></script>
-  <script src="../js/testimonials-carousel.js?v=20260828" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var root = document.querySelector('[data-visits-gallery]');
-      if (!root) return;
-
-      var scroller = document.getElementById('visits-gallery-scroller');
-      var strip = root.querySelector('.visits-gallery__strip');
-      var btnPrev = root.querySelector('.visits-gallery__nav-btn--prev');
-      var btnNext = root.querySelector('.visits-gallery__nav-btn--next');
-      if (!scroller || !strip || !btnPrev || !btnNext) return;
-
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      function figures() {
-        return strip.querySelectorAll('.visits-gallery__figure');
-      }
-
-      function stripGapPx() {
-        var g = window.getComputedStyle(strip).gap || window.getComputedStyle(strip).columnGap;
-        var n = parseFloat(g, 10);
-        return isNaN(n) ? 0 : n;
-      }
-
-      /* Left edge of slide i in scroller content coordinates. */
-      function slideLeftEdge(i) {
-        var figs = figures();
-        var f = figs[i];
-        if (f && f.offsetParent === strip) {
-          return strip.offsetLeft + f.offsetLeft;
-        }
-        var gap = stripGapPx();
-        var x = strip.offsetLeft;
-        for (var j = 0; j < i; j++) {
-          x += figs[j].offsetWidth + gap;
-        }
-        return x;
-      }
-
-      function slideCenter(i) {
-        var figs = figures();
-        return slideLeftEdge(i) + figs[i].offsetWidth / 2;
-      }
-
-      function nearestIndex() {
-        var figs = figures();
-        if (!figs.length) return 0;
-        var mid = scroller.scrollLeft + scroller.clientWidth / 2;
-        var best = 0;
-        var bestDist = Infinity;
-        for (var i = 0; i < figs.length; i++) {
-          var c = slideCenter(i);
-          var d = Math.abs(c - mid);
-          if (d < bestDist) {
-            bestDist = d;
-            best = i;
-          }
-        }
-        return best;
-      }
-
-      function scrollToIndex(i, instant) {
-        var figs = figures();
-        if (!figs.length) return;
-        i = Math.max(0, Math.min(figs.length - 1, i));
-        var figW = figs[i].offsetWidth;
-        var leftEdge = slideLeftEdge(i);
-        var target = leftEdge - (scroller.clientWidth - figW) / 2;
-        var maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
-        target = Math.max(0, Math.min(target, maxScroll));
-        var smooth = !instant && !reducedMotion;
-        scroller.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
-      }
-
-      var scrollEps = 8;
-
-      function goNext() {
-        var figs = figures();
-        var n = figs.length;
-        if (n < 2) return;
-        var maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
-        /* At the scroll end the last slide often cannot center, so nearestIndex() may not be n-1 — use scrollLeft. */
-        if (maxScroll > scrollEps && scroller.scrollLeft >= maxScroll - scrollEps) {
-          scrollToIndex(0, true);
-          return;
-        }
-        var i = nearestIndex();
-        if (i >= n - 1) {
-          scrollToIndex(0, true);
-        } else {
-          scrollToIndex(i + 1, false);
-        }
-      }
-
-      function goPrev() {
-        var figs = figures();
-        var n = figs.length;
-        if (n < 2) return;
-        var maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
-        if (maxScroll > scrollEps && scroller.scrollLeft <= scrollEps) {
-          scrollToIndex(n - 1, true);
-          return;
-        }
-        var i = nearestIndex();
-        if (i <= 0) {
-          scrollToIndex(n - 1, true);
-        } else {
-          scrollToIndex(i - 1, false);
-        }
-      }
-
-      function updateNav() {
-        var n = figures().length;
-        var single = n < 2;
-        btnPrev.disabled = single;
-        btnNext.disabled = single;
-      }
-
-      btnPrev.addEventListener('click', goPrev);
-      btnNext.addEventListener('click', goNext);
-
-      scroller.addEventListener('scroll', updateNav, { passive: true });
-      window.addEventListener(
-        'resize',
-        function () {
-          requestAnimationFrame(updateNav);
-        },
-        { passive: true }
-      );
-
-      scroller.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          goPrev();
-        } else if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          goNext();
-        }
-      });
-
-      requestAnimationFrame(function () {
-        requestAnimationFrame(updateNav);
-      });
-    });
-
-  </script>
+  <!-- /@footer -->
+  <script src="../js/main.js?v=20260917" defer></script>
+  <script src="../js/forms.js?v=20260917" defer></script>
+  <script src="../js/carousel.js?v=20260917" defer></script>
+  <script src="../js/testimonial-quotes.js?v=20260917" defer></script>
 </body>
 </html>

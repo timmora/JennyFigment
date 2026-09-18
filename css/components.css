@@ -2,7 +2,664 @@
    JENNY FIGMENT — Components
    ============================================ */
 
-/* ===== NAVIGATION ===== */
+/* ===== MASTHEAD (main site header) =====
+   Centred author imprint: grouped nav on the left, wordmark in the middle,
+   About / Contact / Kids Zone on the right, pinned on desktop. Kids Zone
+   pages keep the .site-nav header below. */
+
+.masthead {
+  position: relative;
+  z-index: var(--z-sticky);
+  background: var(--cream-light);
+  box-shadow: 0 1px 0 rgba(79, 61, 66, 0.12);
+}
+
+.masthead__row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 3.75rem;
+}
+
+.masthead__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.masthead__links li {
+  margin: 0;
+}
+
+.masthead__link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.8rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--duration-fast), color var(--duration-fast);
+}
+
+.masthead__link:hover,
+.masthead__link:focus-visible,
+.masthead__link[aria-current="page"],
+.masthead__trigger[aria-expanded="true"] {
+  background: rgba(226, 77, 134, 0.1);
+  color: var(--pink-hot);
+}
+
+.masthead__link:focus-visible,
+.masthead__brand:focus-visible,
+.masthead__kids:focus-visible,
+.masthead__toggle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.masthead__caret {
+  font-size: 0.6rem;
+  opacity: 0.6;
+  transition: transform var(--duration-fast) var(--ease-smooth);
+}
+
+.masthead__trigger[aria-expanded="true"] .masthead__caret {
+  transform: rotate(180deg);
+}
+
+/* No-JS fallback only: hover opens the panel in CSS (see .mega-panel), so the
+   trigger and caret follow it. Once main.js adds .is-enhanced it drives
+   hover itself and aria-expanded above covers these states. */
+@media (hover: hover) and (min-width: 64em) {
+  .masthead:not(.is-enhanced) .masthead__group:hover > .masthead__trigger {
+    background: rgba(226, 77, 134, 0.1);
+    color: var(--pink-hot);
+  }
+
+  .masthead:not(.is-enhanced) .masthead__group:hover .masthead__caret {
+    transform: rotate(180deg);
+  }
+}
+
+.masthead__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding-inline: var(--space-2);
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.masthead__wordmark {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 0.9rem + 0.9vw, 1.65rem);
+  line-height: 1;
+  color: var(--burgundy);
+  white-space: nowrap;
+}
+
+.masthead__wordmark--sm {
+  font-size: 1.2rem;
+}
+
+.masthead__tagline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--burgundy-light);
+}
+
+.masthead__tagline::before,
+.masthead__tagline::after {
+  content: "";
+  width: 1.4rem;
+  height: 1px;
+  background: rgba(79, 61, 66, 0.3);
+}
+
+.masthead__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.masthead__divider {
+  width: 1px;
+  height: 1.6rem;
+  margin-inline: var(--space-1);
+  background: rgba(79, 61, 66, 0.15);
+}
+
+.masthead__kids {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.05rem;
+  border-radius: 999px;
+  background: var(--pink-hot);
+  font-family: var(--font-kids);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--duration-fast) var(--ease-bounce);
+}
+
+.masthead__kids:hover,
+.masthead__kids:focus-visible {
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.masthead__kids:active {
+  transform: scale(0.97);
+}
+
+.masthead__kids .sparkle {
+  display: inline-block;
+  animation: sparkle-spin 3s linear infinite;
+}
+
+/* Hamburger (mobile) */
+.masthead__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.7rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+}
+
+.masthead__toggle span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--burgundy);
+}
+
+.masthead__toggle:hover {
+  background: var(--pink-glow);
+}
+
+/* Mobile: hamburger · wordmark · round Kids Zone button. The bar stays in
+   normal flow (see the note on .site-nav below for why it isn't pinned). */
+@media (max-width: 63.99em) {
+  .masthead__row {
+    grid-template-columns: 2.75rem 1fr 2.75rem;
+    width: 100%;
+    padding-inline: var(--space-3);
+  }
+
+  .masthead__nav,
+  .masthead__links--right,
+  .masthead__divider,
+  .masthead__kids-label {
+    display: none;
+  }
+
+  .masthead__brand { gap: 0.2rem; }
+
+  .masthead__tagline {
+    font-size: 0.53rem;
+    letter-spacing: 0.22em;
+  }
+
+  .masthead__tagline::before,
+  .masthead__tagline::after { display: none; }
+
+  .masthead__right { gap: 0; }
+
+  .masthead__kids {
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .masthead {
+    position: sticky;
+    top: 0;
+  }
+
+  .masthead.is-scrolled {
+    box-shadow: 0 1px 0 rgba(43, 22, 27, 0.08), 0 10px 26px rgba(43, 22, 27, 0.1);
+  }
+
+  .masthead__row {
+    gap: var(--space-4);
+    padding-block: 0.75rem;
+  }
+
+  .masthead__toggle { display: none; }
+
+  /* Pull the first link out by its own padding so the "Books" text, not its
+     hover pill, lines up with the page content edge. */
+  .masthead__nav--left .masthead__links {
+    margin-left: -0.8rem;
+  }
+}
+
+/* 1024–1280px: tighten so both link groups fit either side of the wordmark */
+@media (min-width: 64em) and (max-width: 79.99em) {
+  .masthead__link {
+    padding-inline: 0.55rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  .masthead__nav--left .masthead__links { margin-left: -0.55rem; }
+  .masthead__kids { padding-inline: 0.85rem; }
+  .masthead__divider { margin-inline: 0; }
+}
+
+/* ── Drop panels ── */
+.mega-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-dropdown);
+  background: var(--cream-light);
+  border-top: 2px solid var(--pink-hot);
+  box-shadow: 0 22px 40px rgba(43, 22, 27, 0.18);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity var(--duration-fast) var(--ease-smooth),
+              transform var(--duration-fast) var(--ease-smooth),
+              visibility 0s linear var(--duration-fast);
+}
+
+/* Invisible bridge over the gap between trigger and panel, so the pointer
+   can travel down without the hover dropping. */
+.mega-panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 1.25rem;
+}
+
+.mega-panel--educators {
+  border-top-color: var(--flora-green);
+}
+
+/* No-JS fallback: open on hover. With JS, .is-open is the only switch, so
+   hover and click can't disagree about whether a panel is up. */
+@media (hover: hover) and (min-width: 64em) {
+  .masthead:not(.is-enhanced) .masthead__group:hover > .mega-panel {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+}
+
+.masthead__group.is-open > .mega-panel {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+
+@media (max-width: 63.99em) {
+  .mega-panel { display: none; }
+}
+
+.mega-panel__inner {
+  display: flex;
+  gap: var(--space-8);
+  padding-block: 1.6rem 1.75rem;
+}
+
+.mega-panel__inner--cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 16rem;
+}
+
+/* Sized to the shelf, so the covers stay together on the left. */
+.mega-panel__main {
+  flex: none;
+  min-width: 0;
+}
+
+/* "Where to buy" pinned to the panel's right edge. */
+.mega-panel__aside {
+  width: 14.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+  padding-left: var(--space-8);
+  border-left: 1px solid rgba(79, 61, 66, 0.12);
+}
+
+.mega-panel__label {
+  margin: 0 0 var(--space-4);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--burgundy-light);
+}
+
+.mega-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mega-panel__list li {
+  margin: 0;
+}
+
+.mega-panel__list a {
+  display: inline-block;
+  padding-block: 0.3rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--burgundy);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+
+.mega-panel__list a:hover,
+.mega-panel__list a:focus-visible,
+.mega-panel__list a[aria-current="page"] {
+  color: var(--pink-hot);
+}
+
+.mega-panel--educators .mega-panel__list a:hover,
+.mega-panel--educators .mega-panel__list a:focus-visible,
+.mega-panel--educators .mega-panel__list a[aria-current="page"] {
+  color: #2f8a38;
+}
+
+.mega-panel__more {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--pink-hot);
+  text-decoration: none;
+}
+
+.mega-panel__more:hover {
+  color: var(--burgundy);
+}
+
+.mega-books {
+  display: grid;
+  /* Fixed columns packed to the left, so the covers sit together as a shelf
+     instead of spreading across the full panel width. */
+  grid-template-columns: repeat(4, 8.5rem);
+  gap: var(--space-12);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mega-books li {
+  margin: 0;
+}
+
+.mega-book {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: opacity var(--duration-fast);
+}
+
+/* Fixed height, natural width: Lucky Penny is squarer than the series
+   covers, and cropping it to 2:3 would cut the art. */
+.mega-book img {
+  width: auto;
+  max-width: 100%;
+  height: 9rem;
+  align-self: flex-start;
+  border-radius: 3px;
+  box-shadow: 2px 3px 0 rgba(43, 22, 27, 0.14);
+}
+
+.mega-book:hover,
+.mega-book:focus-visible {
+  opacity: 0.74;
+}
+
+.mega-book__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--burgundy);
+}
+
+.mega-book[aria-current="page"] .mega-book__title {
+  color: var(--pink-hot);
+}
+
+.mega-book__meta {
+  font-size: 0.78rem;
+  color: var(--burgundy-light);
+}
+
+.mega-book__meta--new {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b0621f;
+}
+
+.mega-panel__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: #f2f8f1;
+}
+
+.mega-panel__card p {
+  margin: 0;
+}
+
+.mega-panel__card-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--burgundy);
+}
+
+.mega-panel__card-text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--burgundy-warm);
+}
+
+.mega-panel__card-cta {
+  margin-top: 2px;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: #2f8a38;
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 3px 0 rgba(43, 22, 27, 0.18);
+  transition: background var(--duration-fast);
+}
+
+.mega-panel__card-cta:hover,
+.mega-panel__card-cta:focus-visible {
+  background: #256e2c;
+  color: var(--white);
+}
+
+/* ── Mobile drawer ── */
+.masthead-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  overflow-y: auto;
+  background: var(--cream-light);
+  padding: 0 var(--space-4) var(--space-8);
+}
+
+.masthead-drawer.is-open {
+  display: block;
+}
+
+.masthead-drawer__bar {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr 2.75rem;
+  align-items: center;
+  justify-items: center;
+  min-height: 3.75rem;
+  margin-inline: calc(var(--space-4) * -1);
+  padding-inline: var(--space-3);
+  box-shadow: 0 1px 0 rgba(79, 61, 66, 0.12);
+}
+
+.masthead-drawer__close {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(226, 77, 134, 0.14);
+  cursor: pointer;
+}
+
+.masthead-drawer__close span {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  top: calc(50% - 1px);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--pink-hot);
+  transform: rotate(45deg);
+}
+
+.masthead-drawer__close span + span {
+  transform: rotate(-45deg);
+}
+
+.masthead-drawer__close:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.masthead-drawer__links {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.masthead-drawer__links li {
+  margin: 0;
+  border-bottom: 1px solid #f0e0d8;
+}
+
+.masthead-drawer__links li:last-child {
+  border-bottom: 0;
+}
+
+.masthead-drawer__links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--burgundy);
+  text-decoration: none;
+}
+
+.masthead-drawer__links a:hover,
+.masthead-drawer__links a[aria-current="page"] {
+  color: var(--pink-hot);
+}
+
+.masthead-drawer__hint {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a58c8c;
+}
+
+.masthead-drawer__ctas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.masthead-drawer__cta {
+  padding: 0.95rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.masthead-drawer__cta--visit {
+  background: #2f8a38;
+  color: var(--white);
+  box-shadow: 0 3px 0 rgba(43, 22, 27, 0.18);
+}
+
+.masthead-drawer__cta--kids {
+  background: var(--pink-hot);
+  font-family: var(--font-kids);
+  color: var(--white);
+  box-shadow: 0 3px 12px rgba(250, 3, 107, 0.35);
+}
+
+@media (min-width: 64em) {
+  .masthead-drawer { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .masthead__kids .sparkle { animation: none; }
+  .mega-panel { transition: none; }
+}
+
+/* ===== NAVIGATION (Kids Zone pages) ===== */
 .site-nav {
   position: sticky;
   top: 0;
@@ -511,59 +1168,6 @@
   z-index: 3;
 }
 
-/* ===== CHARACTER BADGE ===== */
-.char-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  text-decoration: none;
-  color: var(--burgundy);
-  transition: transform var(--duration-normal) var(--ease-bounce);
-}
-
-.char-badge:hover {
-  transform: translateY(-6px);
-  color: var(--burgundy);
-}
-
-.char-badge__avatar {
-  width: 7rem;
-  height: 7rem;
-  border-radius: var(--radius-full);
-  background-color: var(--cream);
-  border: 4px solid var(--character-color, var(--pink-vivid));
-  box-shadow:
-    0 0 0 2px var(--white),
-    0 4px 16px rgba(43, 22, 27, 0.12);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
-}
-
-.char-badge:hover .char-badge__avatar {
-  box-shadow:
-    0 0 0 2px var(--white),
-    0 8px 24px rgba(43, 22, 27, 0.18),
-    0 0 0 4px var(--character-color, var(--pink-vivid));
-}
-
-.char-badge__name {
-  font-family: var(--font-heading);
-  font-size: var(--text-base);
-  text-align: center;
-}
-
-/* Character color assignments */
-.char-badge--jenny { --character-color: var(--jenny-purple); }
-.char-badge--tony  { --character-color: var(--tony-amber); }
-.char-badge--flora { --character-color: var(--flora-green); }
-.char-badge--arachna { --character-color: var(--arachna-teal); }
-.char-badge--andy  { --character-color: var(--andy-blue); }
-
 
 /* ===== TESTIMONIAL CARD ===== */
 /* Ruled composition notebook page look */
@@ -874,160 +1478,6 @@
 
 .resource-card__download:hover {
   color: var(--burgundy);
-}
-
-
-/* ===== CAROUSEL ===== */
-.carousel {
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel__track-wrapper {
-  overflow: hidden;
-}
-
-.carousel__track {
-  display: flex;
-  gap: var(--space-6);
-  transition: transform var(--duration-slow) var(--ease-smooth);
-  will-change: transform;
-}
-
-.carousel__slide {
-  flex-shrink: 0;
-  width: 100%;
-}
-
-@media (min-width: 64em) {
-  .carousel__slide {
-    width: calc(50% - var(--space-3));
-  }
-}
-
-.carousel__controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
-  margin-top: var(--space-8);
-}
-
-.carousel__btn {
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: var(--radius-full);
-  background-color: var(--white);
-  border: 2px solid var(--pink-soft);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  transition: background var(--duration-fast), border-color var(--duration-fast), transform var(--duration-fast) var(--ease-bounce);
-  color: var(--burgundy);
-}
-
-.carousel__btn:hover {
-  background-color: var(--pink-hot);
-  border-color: var(--pink-hot);
-  color: var(--white);
-  transform: scale(1.08);
-}
-
-.carousel__dots {
-  display: flex;
-  gap: var(--space-2);
-  align-items: center;
-}
-
-.carousel__dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: var(--radius-full);
-  background-color: var(--pink-soft);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: background var(--duration-fast), transform var(--duration-fast) var(--ease-bounce);
-}
-
-.carousel__dot:hover:not(.is-active) {
-  background-color: var(--burgundy-light);
-  transform: scale(1.25);
-}
-
-.carousel__dot.is-active {
-  background-color: var(--pink-hot);
-  transform: scale(1.4);
-}
-
-.carousel__dot.is-active:hover {
-  background-color: #e0005e;
-  transform: scale(1.45);
-}
-
-.carousel__pause {
-  width: 2rem;
-  height: 2rem;
-  border-radius: var(--radius-full);
-  background: none;
-  border: 1px solid var(--pink-soft);
-  cursor: pointer;
-  font-size: 0.65rem;
-  color: var(--burgundy-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carousel__pause:hover {
-  background-color: var(--pink-glow);
-}
-
-
-/* ===== SOCIAL PROOF BANNER ===== */
-.social-proof {
-  background-color: var(--burgundy);
-  color: var(--cream-light);
-  padding-block: var(--space-3);
-  overflow: hidden;
-}
-
-.social-proof__track {
-  display: flex;
-  gap: var(--space-12);
-  animation: proof-scroll 30s linear infinite;
-  white-space: nowrap;
-  width: max-content;
-}
-
-.social-proof:hover .social-proof__track {
-  animation-play-state: paused;
-}
-
-@keyframes proof-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.social-proof__item {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  flex-shrink: 0;
-}
-
-.social-proof__stars {
-  color: var(--tony-amber);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-}
-
-.social-proof__divider {
-  opacity: 0.3;
 }
 
 
@@ -1438,55 +1888,3 @@
 .animate-fade-up--delay-2 { animation-delay: 0.2s; }
 .animate-fade-up--delay-3 { animation-delay: 0.35s; }
 .animate-fade-up--delay-4 { animation-delay: 0.5s; }
-
-/* ===== OUTBOUND LINK MODAL ===== */
-.outbound-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-modal);
-  background-color: var(--overlay);
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-6);
-}
-
-.outbound-modal.is-open {
-  display: flex;
-}
-
-.outbound-modal__box {
-  background: var(--cream-paper);
-  border-radius: var(--radius-xl);
-  padding: var(--space-10) var(--space-8);
-  max-width: 28rem;
-  width: 100%;
-  text-align: center;
-  box-shadow: var(--shadow-lg);
-  animation: fade-up 0.3s var(--ease-bounce) both;
-}
-
-.outbound-modal__emoji {
-  font-size: 3rem;
-  margin-bottom: var(--space-4);
-}
-
-.outbound-modal__title {
-  font-family: var(--font-kids);
-  font-size: var(--text-xl);
-  color: var(--burgundy);
-  margin-bottom: var(--space-3);
-}
-
-.outbound-modal__text {
-  font-size: var(--text-base);
-  color: var(--burgundy-light);
-  margin-bottom: var(--space-6);
-}
-
-.outbound-modal__actions {
-  display: flex;
-  gap: var(--space-3);
-  justify-content: center;
-  flex-wrap: wrap;
-}
