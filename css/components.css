@@ -395,15 +395,15 @@
   transition: color var(--duration-fast);
 }
 
+/* No colour for aria-current here: the panel's trigger already marks the
+   section you're in, and a permanently green link reads as stuck. */
 .mega-panel__list a:hover,
-.mega-panel__list a:focus-visible,
-.mega-panel__list a[aria-current="page"] {
+.mega-panel__list a:focus-visible {
   color: var(--pink-hot);
 }
 
 .mega-panel--educators .mega-panel__list a:hover,
-.mega-panel--educators .mega-panel__list a:focus-visible,
-.mega-panel--educators .mega-panel__list a[aria-current="page"] {
+.mega-panel--educators .mega-panel__list a:focus-visible {
   color: #2f8a38;
 }
 
