@@ -328,6 +328,12 @@ small {
   border-radius: var(--radius-sm);
 }
 
+/* Sections that main.js focuses after a #link scroll: focus moves there for
+   keyboard and screen-reader users, but a ring around a whole section is noise. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
 /* --- Selection --- */
 ::selection {
   background-color: var(--pink-soft);

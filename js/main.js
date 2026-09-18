@@ -21,12 +21,12 @@
     // carries its own close button; the Kids Zone drawer sits under its bar.
     const closeButton = drawer.querySelector('[data-nav-close]');
 
-    const setOpen = (open) => {
+    const setOpen = (open, { restoreFocus = true } = {}) => {
       toggle.setAttribute('aria-expanded', String(open));
       drawer.classList.toggle('is-open', open);
       // Lock the page behind the drawer so only the drawer scrolls.
       document.body.style.overflow = open ? 'hidden' : '';
-      if (closeButton) (open ? closeButton : toggle).focus();
+      if (closeButton && (open || restoreFocus)) (open ? closeButton : toggle).focus();
     };
 
     toggle.addEventListener('click', () => {
@@ -56,8 +56,10 @@
       }
     });
 
+    // Following a link: focus goes wherever the link leads. Sending it back to
+    // the hamburger would scroll the page to the top first.
     drawer.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
+      link.addEventListener('click', () => setOpen(false, { restoreFocus: false }));
     });
   }
 
@@ -166,9 +168,96 @@
     requestAnimationFrame(() => document.documentElement.classList.add('is-loaded'));
   });
 
+  // ── Same-page #section links glide ────────────────────────────────────────
+  // Arriving from another page jumps straight to the section (see above), but
+  // a link to a section of the page you're already on should always scroll
+  // smoothly — even before `load` fires, and even when the link's path is
+  // written differently from the address bar (/educators-parents vs
+  // /educators-parents.html, which the browser would otherwise treat as a
+  // new page load).
+  const pagePath = (path) =>
+    path.replace(/\/index(\.html)?$/, '/').replace(/\.html$/, '').replace(/(.)\/$/, '$1');
+
+  // Hand-rolled rather than scrollIntoView({ behavior: 'smooth' }): the
+  // browser's smooth scroll is cancelled by any layout shift mid-flight (a
+  // font or image arriving, a carousel measuring itself), which leaves it
+  // stranded partway down. This re-measures the target every frame, so the
+  // page can shift under it and it still lands on the section.
+  let activeScroll = null;
+
+  function scrollToSection(target) {
+    if (activeScroll) activeScroll.cancel();
+
+    const padding = () => parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const destination = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const y = target.getBoundingClientRect().top + window.scrollY - padding();
+      return Math.max(0, Math.min(y, max));
+    };
+    const jump = (y) => window.scrollTo({ top: y, behavior: 'instant' });
+
+    if (prefersReducedMotion) {
+      jump(destination());
+      return;
+    }
+
+    const start = window.scrollY;
+    // Longer trips take a little longer, within sensible bounds.
+    const duration = Math.min(900, Math.max(350, Math.abs(destination() - start) * 0.25));
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    let startTime = null;
+    let frame = 0;
+
+    // A wheel, touch or key press from the reader takes over.
+    const userScroll = () => cancel();
+    const cancel = () => {
+      cancelAnimationFrame(frame);
+      ['wheel', 'touchstart', 'keydown'].forEach((t) => window.removeEventListener(t, userScroll));
+      activeScroll = null;
+    };
+    ['wheel', 'touchstart', 'keydown'].forEach((t) =>
+      window.addEventListener(t, userScroll, { passive: true, once: true }));
+
+    const step = (now) => {
+      if (startTime === null) startTime = now;
+      const t = Math.min(1, (now - startTime) / duration);
+      jump(start + (destination() - start) * ease(t));
+      if (t < 1) frame = requestAnimationFrame(step);
+      else cancel();
+    };
+    frame = requestAnimationFrame(step);
+    activeScroll = { cancel };
+  }
+
+  function initSectionLinks() {
+    document.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const link = e.target.closest('a[href*="#"]');
+      if (!link || link.target === '_blank') return;
+
+      const url = new URL(link.href, location.href);
+      if (url.origin !== location.origin || pagePath(url.pathname) !== pagePath(location.pathname)) return;
+
+      const id = decodeURIComponent(url.hash.slice(1));
+      const target = id && document.getElementById(id);
+      if (!target) return;
+
+      e.preventDefault();
+      scrollToSection(target);
+      if (location.hash !== url.hash) history.pushState(null, '', url.hash);
+
+      // Move keyboard focus to the section too, without a second jump.
+      if (!target.matches('a, button, input, select, textarea, [tabindex]')) {
+        target.setAttribute('tabindex', '-1');
+      }
+      target.focus({ preventScroll: true });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initNav();
     initMegaPanels();
+    initSectionLinks();
     initNavScroll();
     initScrollReveal();
   });
